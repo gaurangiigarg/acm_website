@@ -1,4 +1,3 @@
-/* Container setup */
 .home-container {
   position: relative;
   width: 100%;
@@ -6,40 +5,18 @@
   overflow: hidden;
 }
 
-/* Wrapper for scaling control */
 .spline-wrapper {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 0;
 }
 
-/* Spline scene */
-.spline-scene {
-  width: 100%;
-  height: 100%;
-  max-width: 100vw;
-  max-height: 100vh;
-  object-fit: contain !important;
-  display: block;
-}
-
-/* Watermark patch */
 .watermark-patch {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  height: auto;
-  max-width: 25vw;
+  width: 80px; /* adjust size as needed */
+  opacity: 1;
   z-index: 10;
   pointer-events: none;
-  opacity: 0.9;
-  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
-.watermark-patch:hover {
-  transform: scale(1.05);
-  opacity: 1;
-}
-

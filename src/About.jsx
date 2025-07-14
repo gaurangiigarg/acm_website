@@ -1,18 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Stack from '../Stack/Stack/Stack';
+import BlurText from '../BlurText/BlurText/BlurText';
 import './About.css';
-import backgroundVideo from '../background.mp4';
 
 const About = () => {
-  const videoRef = useRef();
   const sectionRef = useRef();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-      },
+      ([entry]) => setVisible(entry.isIntersecting),
       { threshold: 0.3 }
     );
 
@@ -21,48 +17,43 @@ const About = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="about-container" data-scroll-section>
-      {/* Background Video */}
-      <video
-        className={`background-video ${visible ? 'fade-in' : 'fade-out'}`}
-        src={backgroundVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        ref={videoRef}
-      />
-
-      {/* Stack Component */}
-      <div className="stack-container">
-        <Stack />
+    <section
+      className={`about-container fade-section ${visible ? 'visible' : ''}`}
+      ref={sectionRef}
+      id="about"
+    >
+      {/* Animated Title */}
+      <div className="about-title-wrapper">
+        <BlurText
+          text="ABOUT US"
+          delay={350}
+          animateBy="words"
+          direction="top"
+          className="about-label"
+          stepDuration={0.6}
+        />
       </div>
 
-      {/* About Content */}
-      <div className="about-content">
-        <h2 className="about-title">ABOUT US</h2>
+      {/* Main Heading */}
+      <h2 className="about-heading">
+        One of the Best <span className="highlight">Student Chapters</span><br />
+        since <span className="highlight">10 Years.</span>
+      </h2>
 
-        <h3 className="about-heading">
-          Welcome to <span className="highlighted">UPES ACM</span><br />
-          Student Chapters
-        </h3>
+      {/* Description */}
+      <p className="about-description">
+        We work round-the-clock to hone the adroit programmer in our members through many events,
+        workshops, fests, contests, and talks all year long. Our student body is headed by confident
+        and proficient members who work seamlessly for this cause.
+      </p>
 
-        <p className="about-description">
-          We work round-the-clock to hone the adroit programmer in our members through
-          many events, workshops, fests, contests, and talks all year long. Our student
-          body is headed by confident and proficient members who work seamlessly for
-          this cause.
-        </p>
-
-        <ul className="about-features">
-          <li> Complete Holistic Development</li>
-          <li> Guided Mentorship from Seniors</li>
-          <li> Community Access, Coding classes, Projects etc.</li>
-        </ul>
-
-        <button className="learn-more-btn">LEARN MORE ➤</button>
-      </div>
-    </div>
+      {/* Feature List */}
+      <ul className="about-features">
+        <li>Complete Holistic Development</li>
+        <li>Guided Mentorship from Seniors</li>
+        <li>Community Access, Coding classes, Projects etc.</li>
+      </ul>
+    </section>
   );
 };
 

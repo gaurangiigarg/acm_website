@@ -1,11 +1,9 @@
 .particles-container {
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Shift the canvas slightly to the right */
-  transform: translateX(0vw); /* Tweak this value as needed */
+  transform: translateX(0vw); 
 }

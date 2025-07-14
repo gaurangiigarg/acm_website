@@ -1,131 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.adobe.com/fonts/myriad-variable');
+
+/* Container for About Section */
 .about-container {
   position: relative;
   min-height: 100vh;
-  color: white;
-  overflow: hidden;
+  width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  column-gap: 14rem;
-  flex-wrap: wrap;
+  background: transparent;
+  padding: 6rem 4rem;
+  overflow: hidden;
   z-index: 1;
-  background: transparent !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  width: 100%;
-  min-height: 100vh;
-
-}
-
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
   opacity: 0;
-  pointer-events: none;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
-
-.about-heading {
-  font-family: 'Inter', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 1.5rem;
-  color: white;
+.about-container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.highlighted {
-  color: #2841c7;
-  text-shadow: 0 0 8px #1e1169, 0 0 16px #4627f3
-}
-
-
-.about-section {
-  min-height: 100vh;
-  height: auto;
-  filter: none !important;
-  backdrop-filter: none !important;
-}
-
-.about-content {
-  flex: 1;
-  max-width: 600px;
-}
-
-.about-title {
-  font-family: "myriad-variable",sans-serif;
-  font-variation-settings: 'wght' 400, 'wdth' 100;
-  font-size: 2rem;
-  color: #2f1fa4;
-  padding-bottom: 20px;
-}
-
-.about-description {
+/* About Title (TOP LEFT) */
+.about-title-wrapper {
   font-family: 'myriad-pro', sans-serif;
-  font-size: 1.1rem;
-  color: #ddd;
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
+  font-size: 7rem;
+  font-weight: 500;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 2;
+  color: #ffffff;
+  text-shadow:
+    0 0 8px rgb(75, 26, 182),
+    0 0 16px rgb(49, 27, 157);
+  margin-bottom: 2rem;
+  padding-left: 30px;
+  padding-top: 25px;
 }
 
-.learn-more-btn {
-  background-color: transparent;
-  border: 2px solid #1f28a4;
-  color: #2f1fa4;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 999px;
-  transition: all 0.3s ease;
+.about-title-wrapper .text-2xl {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.learn-more-btn:hover {
-  background-color: #3027ea;
+/* Responsive font scaling */
+@media (max-width: 768px) {
+  .about-title-wrapper .text-2xl {
+    font-size: 2.5rem;
+  }
+
+  .about-container {
+    padding: 5rem 1.5rem;
+  }
+}
+
+/* Main Heading */
+.about-heading {
+  margin-top: 6rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
   color: white;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  font-family: 'myriad-pro';
 }
 
-.about-content,
-.stack-container {
-  position: relative;
-  z-index: 1;
+.about-heading .highlight {
+  color: #1f3fee;
 }
 
+/* Description Paragraph */
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 750px;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Features List */
 .about-features {
   list-style: none;
-  font-family: 'myriad-pro';
-  color: #cfcfcf;
-  padding-left: 0;
-  margin-bottom: 2rem;
+  padding: 0;
+  margin: 0;
+  color: #dddddd;
+  font-size: 1rem;
 }
 
 .about-features li {
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  padding-left: 2.2rem;
+  position: relative;
+  font-size: 1.05rem;
   font-weight: 500;
+  color: #ddd;
+  font-family: 'Poppins';
 }
 
-.background-video {
+.about-features li::before {
+  content: '';
   position: absolute;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  transition: opacity 1s ease;
-  pointer-events: none;
-}
-
-.fade-in {
-  opacity: 0.5;
-}
-
-.fade-out {
-  opacity: 0;
+  top: 0.15rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url('../src/assets/tick_symbol.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 0 4px #1e3deb);
 }
