@@ -10,7 +10,7 @@ function Home() {
     <main className="home-container" ref={wrapperRef}>
       <div className="spline-wrapper">
         <Spline
-          scene="https://prod.spline.design/YuDYpOXFvZdDEsm4/scene.splinecode"
+          scene="https://prod.spline.design/C6ZCHkUf6TA8vvX5/scene.splinecode"
           className="spline-scene"
         />
       </div>
