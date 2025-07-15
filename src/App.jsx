@@ -14,52 +14,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    // Fade in each section
-    gsap.utils.toArray('.app-section').forEach((section) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
+  const elements = gsap.utils.toArray('.app-section, .home-container');
 
-    // Animate body background color between Home and About
-    gsap.to('body', {
-      backgroundColor: '#001f3f', // Deep Blue
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#about',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true,
-      },
-    });
+  elements.forEach((section) => {
+    gsap.fromTo(
+      section,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play reverse play reverse',
+          scrub: false,
+        },
+      }
+    );
+  });
 
-    // Optional: revert background when leaving About
-    gsap.to('body', {
-      backgroundColor: 'black',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#robot',
-        start: 'top center',
-        end: 'bottom center',
-        scrub: true,
-      },
-    });
+  return () => {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}, []);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+   
 
   return (
     <>
