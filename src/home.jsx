@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 import './Home.css';
-import patch from '../src/assets/logo.png';
 
 function Home() {
   const wrapperRef = useRef(null);
@@ -16,12 +15,16 @@ function Home() {
         />
       </div>
 
-      {/* Watermark or logo at bottom-right */}
-      <img
-        src={patch}
-        alt="Watermark Patch"
-        className="watermark-patch"
-      />
+      {/* ACM-W Button */}
+      <a
+        href="https://upesacmw.org"  // Replace with actual ACM-W link
+        className="acmw-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      Visit ACM-W
+      </a>
+
     </main>
   );
 }

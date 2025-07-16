@@ -9,6 +9,7 @@ import About from './About';
 import Initiatives from './Initiatives';
 import Silk from '../Silk_background/Silk/Silk';
 import './App.css';
+import RevealSection1 from './RevealSection1';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ function App() {
       {
         opacity: 1,
         y: 0,
-        duration: 1.2,
+        duration: 0.5,
         scrollTrigger: {
           trigger: section,
           start: 'top 80%',
@@ -65,7 +66,7 @@ function App() {
           particleBaseSize={100}
           moveParticlesOnHover={true}
           alphaParticles={true}
-          disableRotation={true}
+          disableRotation={false}
         />
       </section>
 
@@ -73,6 +74,9 @@ function App() {
         <About />
       </section>
 
+      <section className="app-section reveal-section">
+        <RevealSection1 />
+      </section>
 
       <section className="app-section initiatives-section" id="initiatives">
         <Initiatives />

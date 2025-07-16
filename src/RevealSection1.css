@@ -1,0 +1,38 @@
+.reveal-container {
+  width: 100vw;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.reveal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reveal-content .DecryptedText,
+.reveal-content [class*="DecryptedText"] {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #fff;
+  text-align: center;
+  margin: 0.5em 0;
+  /* Optionally add a text-shadow for more contrast */
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+  .reveal-content .DecryptedText,
+  .reveal-content [class*="DecryptedText"] {
+    font-size: 1.5rem;
+  }
+  .reveal-container {
+    padding: 36px 0;
+  }
+}

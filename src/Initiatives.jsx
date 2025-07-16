@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Initiatives.css';
 import ShinyText from '../ShinyText/ShinyText/ShinyText';
-import backgroundInitiativesVideo from '../background_initiatives.mp4';
+
 
 const initiatives = [
   {
@@ -49,16 +49,7 @@ export default function Initiatives() {
 
   return (
     <section ref={sectionRef} className="initiatives-section" id="initiatives">
-      {/* Background Video */}
-      <video
-        ref={videoRef}
-        className={`initiatives-background-video ${visible ? 'fade-in' : 'fade-out'}`}
-        src={backgroundInitiativesVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+      
 
       {/* Content */}
       <div className="initiatives-content">

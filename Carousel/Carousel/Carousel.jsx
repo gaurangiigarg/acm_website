@@ -23,7 +23,7 @@ const DEFAULT_ITEMS = [
   },
   {
     id: 5,
-    imageUrl: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34",
+    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_6866.JPG",
   },
 ];
 
