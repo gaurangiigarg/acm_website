@@ -1,6 +1,6 @@
 .reveal-container {
   width: 100vw;
-  min-height: 40vh;
+  height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: flex-start; /* align everything to the left */
@@ -10,8 +10,10 @@
 .reveal-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* align internal elements to the left */
+  align-items: flex-start;
   justify-content: center;
+  height: 100%; /* full height match */
+  width: 100%;
 }
 
 .reveal-content .DecryptedText,
@@ -27,6 +29,48 @@
   0 2px 12px rgba(0, 0, 0, 0.3),     /* soft black shadow for contrast */
   0 0 8px rgba(0, 140, 255, 0.6),    /* blue glow */
   0 0 16px rgba(0, 140, 255, 0.5);
+}
+
+.achievements-box {
+  margin-top: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 60px; /* extra space from the edge */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 24px 48px 24px 24px; /* top, right, bottom, left */
+  border-right: 4px solid #1966ca; /* thicker blue right border */
+  background: rgba(0, 140, 255, 0.08);
+  box-shadow: 0 0 24px rgba(0, 140, 255, 0.25);
+  opacity: 0;
+  transform: translateX(100px);
+   transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: right;
+  border-radius: 4px 0 0 4px; /* optional: rounded left edges */
+}
+
+.achievements-box ul {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+.achievements-box li {
+  margin-bottom: 1rem;
+}
+
+.reveal-tagline {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  color: #4fc3f7;
+  font-family: 'Orbitron';
+  font-style: italic;
+  text-align: left;
+  align-self: flex-start; 
+  text-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
 }
 
 /* Responsive adjustments */
