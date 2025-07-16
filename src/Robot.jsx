@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
-import Robot_Background from '../Robot_Background.mp4';
 
 function Robot() {
   const wrapperRef = useRef(null);
-  const videoRef = useRef(null);
-
   const [showRobot, setShowRobot] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
 
@@ -17,10 +14,6 @@ function Robot() {
         if (inView && !hasPlayed) {
           setShowRobot(true);
           setHasPlayed(true);
-
-          if (videoRef.current && videoRef.current.paused) {
-            videoRef.current.play();
-          }
 
           setTimeout(() => {
             const canvas = wrapperRef.current?.querySelector('canvas');
@@ -49,26 +42,10 @@ function Robot() {
     };
   }, [hasPlayed]);
 
-  const handleVideoEnd = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = videoRef.current.duration;
-    }
-  };
-
   return (
     <div className="robot-wrapper" ref={wrapperRef}>
-      <video
-        ref={videoRef}
-        className="robot-background-video"
-        src={Robot_Background}
-        muted
-        playsInline
-        onEnded={handleVideoEnd}
-      />
-
       {showRobot && (
-        <Spline scene="https://prod.spline.design/ZE3KD8HNLrviO0HS/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/CxsNMqmHnwzkPn98/scene.splinecode" />
       )}
     </div>
   );

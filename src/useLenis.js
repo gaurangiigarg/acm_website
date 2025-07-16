@@ -1,15 +1,17 @@
-// src/hooks/useLenis.js
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
       smooth: true,
-      lerp: 0.08, // Adjust for scroll speed smoothing
-      wheelMultiplier: 1.2, // Sensitivity
-      touchMultiplier: 2,
-      infinite: false,
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      mouseMultiplier: 1.2,
+      smoothTouch: false,
     });
 
     function raf(time) {
@@ -19,6 +21,11 @@ export default function useLenis() {
 
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    // Sync with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 }

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import useLenis from './useLenis'; // ✅ Import the hook
-
+import useLenis from './useLenis';
+import Robot from './Robot';
 import Particles from '../Background1/Particles/Particles';
 import Home from './home';
 import Navbar from './Navbar';
@@ -16,36 +16,39 @@ import RevealSection1 from './RevealSection1';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  useLenis(); // ✅ Enable Lenis smooth scroll for vertical sections
+  useLenis(); // vertical scroll
 
   useEffect(() => {
-    // Horizontal scroll setup
-    const horizontalSections = gsap.utils.toArray('.horizontal-scroll-section');
+  const horizontalSections = gsap.utils.toArray('.horizontal-scroll-section');
 
-    horizontalSections.forEach((section) => {
-      const inner = section.querySelector('.horizontal-inner');
-      const panels = gsap.utils.toArray('.horizontal-panel', inner);
-      const totalScroll = (panels.length - 1) * window.innerWidth;
+  horizontalSections.forEach((section) => {
+    const inner = section.querySelector('.horizontal-inner');
+    const panels = gsap.utils.toArray('.horizontal-panel', inner);
 
-      gsap.to(inner, {
-        x: () => `-${totalScroll}px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${totalScroll}`,
-          scrub: 0.75,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
+    if (!inner || panels.length === 0) return;
+
+    const totalScroll = inner.scrollWidth - window.innerWidth; // ✅ accurate scroll distance
+
+    gsap.to(inner, {
+      x: () => `-${totalScroll}px`,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => `+=${totalScroll}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 0.5,
+        invalidateOnRefresh: true,
+      },
     });
+  });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  return () => {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}, []);
+
 
   return (
     <>
@@ -69,10 +72,18 @@ function App() {
       </section>
 
       <section className="app-section horizontal-scroll-section" id="about-reveal">
-        <div className="horizontal-inner">
-          <div className="horizontal-panel"><About /></div>
-          <div className="horizontal-panel"><RevealSection1 /></div>
+        <div className="horizontal-inner" style={{ display: 'flex', height: '100vh' }}>
+          <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
+            <About />
+          </div>
+          <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
+            <RevealSection1 />
+          </div>
         </div>
+      </section>
+
+      <section className="app-section Robot-section">
+        <Robot />
       </section>
 
       <section className="app-section initiatives-section" id="initiatives">
