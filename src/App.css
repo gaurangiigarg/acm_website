@@ -163,3 +163,20 @@ body {
   width: 100%;
   will-change: transform; /* Boosts performance */
 }
+
+html, body {
+  height: 100%;
+}
+
+body.lenis {
+  height: auto;
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-scroll] {
+  will-change: transform;
+}
