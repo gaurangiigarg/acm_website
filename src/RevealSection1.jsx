@@ -8,23 +8,25 @@ function RevealSection1() {
 
         {/* Example 1: Defaults (hover to decrypt) */}
         <DecryptedText
-          text="DRIVEN THROUGH PURPOSE"
+          text="DRIVEN THROUGH PURPOSE."
           sequential={true}
           useOriginalCharsOnly={false}
           animateOn='view'
           revealDirection='start'
           speed={60}
           maxIterations={10}
+          parentClassName='DecryptedText'
         />
 
         <DecryptedText
-          text="EMPOWERED BY TECHNOLOGY"
+          text="EMPOWERED BY TECHNOLOGY."
           sequential={true}
           useOriginalCharsOnly={false}
           animateOn='view'
           revealDirection='start'
           speed={60}
           maxIterations={10}
+          parentClassName='DecryptedText'
         />
       </div>
     </section>

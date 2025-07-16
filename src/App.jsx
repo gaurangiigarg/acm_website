@@ -15,47 +15,41 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-  const elements = gsap.utils.toArray('.app-section, .home-container');
+    // Horizontal scroll setup ONLY
+    const horizontalSections = gsap.utils.toArray('.horizontal-scroll-section');
 
-  elements.forEach((section) => {
-    gsap.fromTo(
-      section,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
+    horizontalSections.forEach((section) => {
+      const inner = section.querySelector('.horizontal-inner');
+      const panels = gsap.utils.toArray('.horizontal-panel', inner);
+      const totalScroll = (panels.length - 1) * window.innerWidth;
+
+      gsap.to(inner, {
+        x: () => `-${totalScroll}px`,
+        ease: 'none',
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play reverse play reverse',
-          scrub: false,
+          start: 'top top',
+          end: () => `+=${totalScroll}`,
+          scrub: 0.75,
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
-      }
-    );
-  });
+      });
+    });
 
-  return () => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  };
-}, []);
-
-   
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <>
       <Navbar />
-      {/* Global Background Layer */}
       <div className="global-silk-bg">
-        <Silk
-          speed={5}
-          scale={1}
-          color="#0d1b3f"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
+        <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
+
       <section className="app-section particles-section">
         <Home />
         <Particles
@@ -70,12 +64,11 @@ function App() {
         />
       </section>
 
-      <section className="app-section about-section" id="about">
-        <About />
-      </section>
-
-      <section className="app-section reveal-section">
-        <RevealSection1 />
+      <section className="app-section horizontal-scroll-section" id="about-reveal">
+        <div className="horizontal-inner">
+        <div className="horizontal-panel"><About /></div>
+        <div className="horizontal-panel"><RevealSection1 /></div>
+        </div>
       </section>
 
       <section className="app-section initiatives-section" id="initiatives">

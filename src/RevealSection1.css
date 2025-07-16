@@ -3,27 +3,30 @@
   min-height: 40vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 60px 0;
+  justify-content: flex-start; /* align everything to the left */
+  padding: 60px 0 30px 60px; /* top right bottom left */
 }
 
 .reveal-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* align internal elements to the left */
   justify-content: center;
 }
 
 .reveal-content .DecryptedText,
 .reveal-content [class*="DecryptedText"] {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   color: #fff;
-  text-align: center;
-  margin: 0.5em 0;
-  /* Optionally add a text-shadow for more contrast */
-  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  font-family: 'myriad-pro';
+  text-align: left;
+  margin: 0.2rem 0; /* reduced vertical spacing */
+  text-shadow:
+  0 2px 12px rgba(0, 0, 0, 0.3),     /* soft black shadow for contrast */
+  0 0 8px rgba(0, 140, 255, 0.6),    /* blue glow */
+  0 0 16px rgba(0, 140, 255, 0.5);
 }
 
 /* Responsive adjustments */
@@ -31,8 +34,9 @@
   .reveal-content .DecryptedText,
   .reveal-content [class*="DecryptedText"] {
     font-size: 1.5rem;
+    text-align: left;
   }
   .reveal-container {
-    padding: 36px 0;
+    padding: 36px 0 36px 24px;
   }
 }
