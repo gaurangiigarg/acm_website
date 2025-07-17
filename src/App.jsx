@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -16,38 +17,46 @@ import RevealSection1 from './RevealSection1';
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  useLenis(); // vertical scroll
+   useLenis(); // vertical scroll with sync
 
-  useEffect(() => {
-  const horizontalSections = gsap.utils.toArray('.horizontal-scroll-section');
+  useLayoutEffect(() => {
+    const sections = gsap.utils.toArray('.horizontal-scroll-section');
 
-  horizontalSections.forEach((section) => {
-    const inner = section.querySelector('.horizontal-inner');
-    const panels = gsap.utils.toArray('.horizontal-panel', inner);
+    sections.forEach((section) => {
+      const inner = section.querySelector('.horizontal-inner');
+      const panels = gsap.utils.toArray('.horizontal-panel', inner);
 
-    if (!inner || panels.length === 0) return;
+      if (!inner || panels.length === 0) return;
 
-    const totalScroll = inner.scrollWidth - window.innerWidth; // ✅ accurate scroll distance
+      const totalScroll = inner.scrollWidth - window.innerWidth;
 
-    gsap.to(inner, {
-      x: () => `-${totalScroll}px`,
-      ease: 'power1.out',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: () => `+=${totalScroll}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 0.5,
-        invalidateOnRefresh: true,
-      },
+      // GPU optimization hint
+      gsap.set(inner, {
+        willChange: 'transform',
+        force3D: true,
+      });
+
+      // GSAP animation
+      gsap.to(inner, {
+        x: () => `-${totalScroll}px`,
+        ease: 'none', // best for scroll-linked performance
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${totalScroll}`,
+          scrub: 0.6, // <– tweaked scrub for smoother feel
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          // markers: true, // Uncomment for debugging
+        },
+      });
     });
-  });
 
-  return () => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  };
-}, []);
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
 
   return (
@@ -72,7 +81,14 @@ function App() {
       </section>
 
       <section className="app-section horizontal-scroll-section" id="about-reveal">
-        <div className="horizontal-inner" style={{ display: 'flex', height: '100vh' }}>
+        <div 
+          className="horizontal-inner" 
+          style={{ 
+            display: 'flex', 
+            height: '100vh',
+            willChange: 'transform' // CSS hint for browsers
+          }}
+        >
           <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
             <About />
           </div>

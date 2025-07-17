@@ -135,10 +135,13 @@ body {
   will-change: transform;
 }
 
+
 .horizontal-inner {
   display: flex;
   height: 100%;
   width: 100%;
+  transform: translateZ(0); /* trigger GPU */
+  backface-visibility: hidden;
   will-change: transform; /* Boosts performance */
 }
 

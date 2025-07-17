@@ -14,18 +14,22 @@ export default function useLenis() {
       smoothTouch: false,
     });
 
+    // GSAP update sync
+    lenis.on('scroll', ScrollTrigger.update);
+
+    let animationFrame;
+
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      ScrollTrigger.update(); // ✅ sync every frame
+      animationFrame = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
-
-    // Sync with GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+    animationFrame = requestAnimationFrame(raf);
 
     return () => {
       lenis.destroy();
+      cancelAnimationFrame(animationFrame); // ✅ clean up
     };
   }, []);
 }

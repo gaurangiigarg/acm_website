@@ -54,6 +54,7 @@ const About = () => {
       </div>
 
       {/* Right Carousel */}
+
       <div className="about-right">
         <AboutCarousel
         baseWidth={500}
@@ -63,6 +64,7 @@ const About = () => {
         loop={true}
         round={false} />
       </div>
+
     </section>
   );
 };
