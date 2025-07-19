@@ -1,23 +1,26 @@
-import { useEffect } from 'react';
 import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import useLenis from './useLenis';
-import Robot from './Robot';
+
+
 import Particles from '../Background1/Particles/Particles';
 import Home from './home';
 import Navbar from './Navbar';
 import About from './About';
-import Initiatives from './Initiatives';
+import ScrollReveal from '../ScrollReveal/ScrollReveal/ScrollReveal';
 import Silk from '../Silk_background/Silk/Silk';
-import './App.css';
 import RevealSection1 from './RevealSection1';
+import BackgroundReveal from './BackgroundReveal';
+import Robot from './Robot'
+import CommitteesShowcase from './CommitteShowcase';
+import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-   useLenis(); // vertical scroll with sync
+  useLenis(); // enable smooth vertical scrolling
 
   useLayoutEffect(() => {
     const sections = gsap.utils.toArray('.horizontal-scroll-section');
@@ -30,25 +33,23 @@ function App() {
 
       const totalScroll = inner.scrollWidth - window.innerWidth;
 
-      // GPU optimization hint
       gsap.set(inner, {
         willChange: 'transform',
         force3D: true,
       });
 
-      // GSAP animation
       gsap.to(inner, {
         x: () => `-${totalScroll}px`,
-        ease: 'none', // best for scroll-linked performance
+        ease: 'none',
         scrollTrigger: {
           trigger: section,
           start: 'top top',
           end: () => `+=${totalScroll}`,
-          scrub: 0.6, // <– tweaked scrub for smoother feel
+          scrub: 0.6,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          // markers: true, // Uncomment for debugging
+          // markers: true,
         },
       });
     });
@@ -58,10 +59,10 @@ function App() {
     };
   }, []);
 
-
   return (
     <>
       <Navbar />
+
       <div className="global-silk-bg">
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
@@ -81,12 +82,12 @@ function App() {
       </section>
 
       <section className="app-section horizontal-scroll-section" id="about-reveal">
-        <div 
-          className="horizontal-inner" 
-          style={{ 
-            display: 'flex', 
+        <div
+          className="horizontal-inner"
+          style={{
+            display: 'flex',
             height: '100vh',
-            willChange: 'transform' // CSS hint for browsers
+            willChange: 'transform',
           }}
         >
           <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
@@ -98,13 +99,34 @@ function App() {
         </div>
       </section>
 
-      <section className="app-section Robot-section">
-        <Robot />
+
+      <section className="app-section scroll-reveal-section" id="reveal-text">
+  <div className="scroll-reveal-content">
+    <ScrollReveal
+      baseOpacity={0.8}
+      enableBlur={true}
+      baseRotation={20}
+      blurStrength={50}
+    >
+      Want to know who makes it all happen?
+    </ScrollReveal>
+  </div>
+</section>
+
+
+      <section className="spline-scroll-wrapper">
+        <div className="spline-scroll-inner">
+           <BackgroundReveal />
+        </div>
       </section>
 
-      <section className="app-section initiatives-section" id="initiatives">
-        <Initiatives />
+      <section className="robot-section" id="robot-section">
+          <div className="robot-wrapper">
+            <Robot />
+            <CommitteesShowcase />
+         </div>
       </section>
+      
     </>
   );
 }
