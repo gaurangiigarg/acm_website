@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import useLenis from './useLenis';
 
-
+import Galaxy from '../GalaxyBackground/Galaxy/Galaxy';
 import Particles from '../Background1/Particles/Particles';
 import Home from './home';
 import Navbar from './Navbar';
@@ -122,8 +122,10 @@ function App() {
 
       <section className="robot-section" id="robot-section">
           <div className="robot-wrapper">
+
             <Robot />
             <CommitteesShowcase />
+
          </div>
       </section>
       
