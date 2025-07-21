@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import useLenis from './useLenis';
 
-import Galaxy from '../GalaxyBackground/Galaxy/Galaxy';
 import Particles from '../Background1/Particles/Particles';
 import Home from './home';
 import Navbar from './Navbar';
@@ -14,8 +13,10 @@ import Silk from '../Silk_background/Silk/Silk';
 import RevealSection1 from './RevealSection1';
 import BackgroundReveal from './BackgroundReveal';
 import Robot from './Robot'
-import CommitteesShowcase from './CommitteShowcase';
+import Initiatives from './Initiatives'
 import './App.css';
+import ChipsReveal from './ChipsReveal';
+import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,41 +24,63 @@ function App() {
   useLenis(); // enable smooth vertical scrolling
 
   useLayoutEffect(() => {
-    const sections = gsap.utils.toArray('.horizontal-scroll-section');
+  const aboutRevealSections = gsap.utils.toArray('.horizontal-scroll-section');
 
-    sections.forEach((section) => {
-      const inner = section.querySelector('.horizontal-inner');
-      const panels = gsap.utils.toArray('.horizontal-panel', inner);
+  // 💡 Animate other horizontal sections (like About + RevealSection1)
+  aboutRevealSections.forEach((section) => {
+    const inner = section.querySelector('.horizontal-inner');
+    const panels = gsap.utils.toArray('.horizontal-panel', inner);
+    if (!inner || panels.length === 0) return;
 
-      if (!inner || panels.length === 0) return;
+    const totalScroll = inner.scrollWidth - window.innerWidth;
 
-      const totalScroll = inner.scrollWidth - window.innerWidth;
-
-      gsap.set(inner, {
-        willChange: 'transform',
-        force3D: true,
-      });
-
-      gsap.to(inner, {
-        x: () => `-${totalScroll}px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${totalScroll}`,
-          scrub: 0.6,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          // markers: true,
-        },
-      });
+    gsap.to(inner, {
+      x: () => `-${totalScroll}px`,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => `+=${totalScroll}`,
+        scrub: 0.6,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
     });
+  });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  // 💡 Fix RobotInitiatives scroll starting too early
+  const bgReveal = document.querySelector('.spline-scroll-wrapper');
+  const robotSection = document.querySelector('#robot-initiatives');
+  const robotInner = robotSection?.querySelector('.horizontal-inner');
+
+  if (robotSection && robotInner && bgReveal) {
+    const totalScroll = robotInner.scrollWidth - window.innerWidth;
+
+    // Calculate how long BackgroundReveal is pinned
+    const bgHeight = bgReveal.offsetHeight;
+    const pinOffset = bgHeight + window.innerHeight; // total scroll used by pinned section
+
+    gsap.to(robotInner, {
+      x: -totalScroll,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: robotSection,
+        start: `top+=${pinOffset} top`, // ✅ waits for pinned section to finish
+        end: `+=${totalScroll}`,
+        scrub: 0.8,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        // markers: true,
+      },
+    });
+  }
+
+  return () => {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  };
+}, []);
 
   return (
     <>
@@ -101,14 +124,14 @@ function App() {
 
 
       <section className="app-section scroll-reveal-section" id="reveal-text">
-  <div className="scroll-reveal-content">
-    <ScrollReveal
-      baseOpacity={0.8}
-      enableBlur={true}
-      baseRotation={20}
-      blurStrength={50}
-    >
-      Want to know who makes it all happen?
+        <div className="scroll-reveal-content">
+          <ScrollReveal
+              baseOpacity={0.8}
+              enableBlur={true}
+              baseRotation={20}
+              blurStrength={50}
+            >
+      Want to know who makes all that happen?
     </ScrollReveal>
   </div>
 </section>
@@ -118,16 +141,29 @@ function App() {
         <div className="spline-scroll-inner">
            <BackgroundReveal />
         </div>
-      </section>
+      </section>  
 
-      <section className="robot-section" id="robot-section">
-          <div className="robot-wrapper">
 
-            <Robot />
-            <CommitteesShowcase />
+<div className="darkveil-shared-wrapper">
+  <DarkVeil />
 
-         </div>
-      </section>
+  <section className="app-section horizontal-scroll-section" id="chips-reveal">
+    <div className="horizontal-inner" style={{ display: 'flex', height: '100vh', willChange: 'transform' }}>
+      <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
+        <div className="robot-fade-container">
+          <Robot />
+        </div>
+      </div>
+      <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
+        <ChipsReveal />
+      </div>
+    </div>
+  </section>
+
+  <section className="app-section vertical-section" id="initiatives">
+    <Initiatives />
+  </section>
+</div>
       
     </>
   );

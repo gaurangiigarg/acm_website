@@ -6,7 +6,7 @@
   height: 100vh;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
-  background-color: black; /* Ensures full black bg under Spline */
+  background-color: rgba(0, 0, 0, 0); /* Ensures full black bg under Spline */
 }
 
 .spline-bg-wrapper {
@@ -30,15 +30,16 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(9, 5, 5);
   z-index: 1; /* Behind spline */
   text-align: center;
 }
 
 
 .reveal-text p {
-  font-size: 5rem; /* Slightly larger */
+  font-size: 2rem; /* Slightly larger */
   font-weight: 500;
   color: #ccc;
   text-align: center;
+  padding-top: 200px;
 }

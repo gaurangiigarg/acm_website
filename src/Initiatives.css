@@ -16,28 +16,6 @@
   justify-content: center;
 }
 
-/* ====== Video Background ====== */
-.initiatives-background-video {
-  position: fixed; /* ✅ Keep video fixed to viewport */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  transition: opacity 1.2s ease-in-out;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.initiatives-background-video.fade-in {
-  opacity: 0.5;
-}
-
-.initiatives-background-video.fade-out {
-  opacity: 0;
-  filter: blur(10px);
-}
 
 /* ====== Content on Top ====== */
 .initiatives-header,
@@ -110,4 +88,23 @@
   font-size: 0.95rem;
   color: #cccccc;
   line-height: 1.5;
+}
+
+
+.initiatives-section {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+  z-index: 1;
+}
+
+.darkveil-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.initiatives-content {
+  position: relative;
+  z-index: 1;
 }

@@ -15,7 +15,7 @@ function BackgroundReveal() {
     const trigger = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top top',
-      end: '+=400', // Keep the short scroll pinning
+      end: '+=0', // Keep the short scroll pinning
       scrub: true,
       pin: true,
       onEnter: () => {
@@ -43,7 +43,7 @@ function BackgroundReveal() {
 
       <div className="reveal-text">
         <BlurText
-          text="MEET OUR COMMITTEES"
+          text="who make it all happen."
           delay={400}
           animateBy="words"
           direction="top"

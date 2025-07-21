@@ -216,7 +216,7 @@ export default function DecryptedText({
     <motion.span
       className={parentClassName}
       ref={containerRef}
-      style={{ ...styles.wrapper, color: 'white' }}
+      style={styles.wrapper}
       {...hoverProps}
       {...props}
     >

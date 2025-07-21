@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import Silk from '../Silk_background/Silk/Silk';
+import CommitteesShowcase from './CommitteShowcase';
+
 function Robot() {
   const wrapperRef = useRef(null);
   const [showRobot, setShowRobot] = useState(false);
@@ -9,9 +11,7 @@ function Robot() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const inView = entry.isIntersecting;
-
-        if (inView && !hasPlayed) {
+        if (entry.isIntersecting && !hasPlayed) {
           setShowRobot(true);
           setHasPlayed(true);
 
@@ -36,25 +36,22 @@ function Robot() {
     );
 
     if (wrapperRef.current) observer.observe(wrapperRef.current);
-
-    return () => {
-      if (wrapperRef.current) observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, [hasPlayed]);
 
   return (
     <div className="robot-wrapper" ref={wrapperRef}>
-      {/* 🔵 Galaxy as the background */}
-      <div className="robot-background">
-        <Silk speed={5} scale={1} color="#2B2A2D" noiseIntensity={1.5} rotation={0} />
-      </div>
+      
 
-      {/* 🔴 Spline Robot on top */}
-      {showRobot && (
-        <div className="robot-spline">
-          <Spline scene="https://prod.spline.design/CxsNMqmHnwzkPn98/scene.splinecode" />
-        </div>
-      )}
+      {/* 🔴 Foreground Content */}
+      <div className="robot-content">
+        {showRobot && (
+          <div className="robot-spline">
+            <Spline scene="https://prod.spline.design/CxsNMqmHnwzkPn98/scene.splinecode" />
+          </div>
+        )}
+        <CommitteesShowcase />
+      </div>
     </div>
   );
 }

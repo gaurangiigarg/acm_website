@@ -70,22 +70,6 @@ section {
 }
 
 
-/* Robot Section */
-.robot-section {
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
-  overflow: hidden;
-  position: relative;
-}
-
-.robot-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
 /* Scrollbar Styling (fallback) */
 ::-webkit-scrollbar {
   width: 10px;
@@ -199,34 +183,44 @@ body.lenis {
   white-space: nowrap;
 }
 
-.robot-section {
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
-  overflow: hidden;
+.robot-section-wrapper {
   position: relative;
-}
-
-.robot-wrapper {
-  position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
-/* The background container */
-.robot-background {
+.robot-silk-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;            /* Lowest layer */
-  pointer-events: none; /* So it doesn't block interactions */
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* The robot (Spline) canvas */
-.robot-spline {
+.robot-content {
   position: relative;
-  z-index: 1; /* Above background */
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.darkveil-shared-wrapper {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+}
+
+.darkveil-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
