@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
-import Silk from '../Silk_background/Silk/Silk';
 import CommitteesShowcase from './CommitteShowcase';
 
 function Robot() {

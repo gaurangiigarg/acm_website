@@ -53,7 +53,7 @@ const About = () => {
         </ul>
       </div>
 
-      {/* Right Carousel */}
+      {/*  */}
 
       <div className="about-right">
         <AboutCarousel

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Initiatives.css';
 import ShinyText from '../ShinyText/ShinyText/ShinyText';
-import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil';
+
 
 const initiatives = [
   {

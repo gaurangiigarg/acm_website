@@ -1,6 +1,7 @@
-import { useLayoutEffect } from 'react';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { lazy, Suspense, useLayoutEffect } from 'react';
 
 import useLenis from './useLenis';
 
@@ -12,11 +13,85 @@ import ScrollReveal from '../ScrollReveal/ScrollReveal/ScrollReveal';
 import Silk from '../Silk_background/Silk/Silk';
 import RevealSection1 from './RevealSection1';
 import BackgroundReveal from './BackgroundReveal';
-import Robot from './Robot'
+
 import Initiatives from './Initiatives'
 import './App.css';
-import ChipsReveal from './ChipsReveal';
-import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil'; 
+
+import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil';
+
+const Robot = lazy(() => import('./Robot'));
+const ChipsReveal = lazy(() => import('./ChipsReveal'));
+const Masonary = lazy(() => import('../Masonary/Masonry/Masonry'));
+
+const items = [
+    {
+      id: "1",
+      img: "https://picsum.photos/id/1015/600/900?grayscale",
+      url: "https://example.com/one",
+      height: 400,
+    },
+    {
+      id: "2",
+      img: "https://picsum.photos/id/1011/600/750?grayscale",
+      url: "https://example.com/two",
+      height: 250,
+    },
+    {
+      id: "3",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_0356.JPG",
+      url: "https://example.com/three",
+      height: 600,
+    },
+
+    {
+      id: "4",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/executives%20ACM/Chairperson_ACMW_Devanshi.jpeg",
+      url: "https://example.com/three",
+      height: 500,
+    },
+    {
+      id: "5",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/executives%20ACM/Stuti%20Jain.jpg",
+      url: "https://example.com/three",
+      height: 600,
+    },
+    {
+      id: "6",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/executives%20ACM/Vice_Chairperson_ACMW_Hritvik%20Garg.jpeg",
+      url: "https://example.com/three",
+      height: 700,
+    },
+    {
+      id: "7",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Board%20of%20Executives/Jahnavi%20Saxena.png",
+      url: "https://example.com/three",
+      height: 700,
+    },
+    
+    {
+      id: "8",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Board%20of%20Executives/Amrit%20Raj%20Garg.jpg",
+      url: "https://example.com/three",
+      height: 400,
+    },
+
+
+    {
+      id: "9",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Board%20of%20Executives/Aarohi%20Sharma.jpg",
+      url: "https://example.com/three",
+      height: 800,
+    },
+
+    {
+      id: "10",
+      img: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Board%20of%20Executives/Hiral%20Mittal.jpg",
+      url: "https://example.com/three",
+      height: 500,
+    },
+
+    
+];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,33 +124,7 @@ function App() {
     });
   });
 
-  // 💡 Fix RobotInitiatives scroll starting too early
-  const bgReveal = document.querySelector('.spline-scroll-wrapper');
-  const robotSection = document.querySelector('#robot-initiatives');
-  const robotInner = robotSection?.querySelector('.horizontal-inner');
 
-  if (robotSection && robotInner && bgReveal) {
-    const totalScroll = robotInner.scrollWidth - window.innerWidth;
-
-    // Calculate how long BackgroundReveal is pinned
-    const bgHeight = bgReveal.offsetHeight;
-    const pinOffset = bgHeight + window.innerHeight; // total scroll used by pinned section
-
-    gsap.to(robotInner, {
-      x: -totalScroll,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: robotSection,
-        start: `top+=${pinOffset} top`, // ✅ waits for pinned section to finish
-        end: `+=${totalScroll}`,
-        scrub: 0.8,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        // markers: true,
-      },
-    });
-  }
 
   return () => {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -94,7 +143,7 @@ function App() {
         <Home />
         <Particles
           particleColors={['#0C1636']}
-          particleCount={100}
+          particleCount={50}
           particleSpread={10}
           speed={0.1}
           particleBaseSize={100}
@@ -144,8 +193,7 @@ function App() {
       </section>  
 
 
-<div className="darkveil-shared-wrapper">
-  <DarkVeil />
+
 
   <section className="app-section horizontal-scroll-section" id="chips-reveal">
     <div className="horizontal-inner" style={{ display: 'flex', height: '100vh', willChange: 'transform' }}>
@@ -163,7 +211,21 @@ function App() {
   <section className="app-section vertical-section" id="initiatives">
     <Initiatives />
   </section>
-</div>
+
+
+<section className="app-section vertical section" id="mason">
+  <Masonary
+  items={items}
+  ease="power3.out"
+  duration={0.6}
+  stagger={0.05}
+  animateFrom="bottom"
+  scaleOnHover={true}
+  hoverScale={0.95}
+  blurToFocus={true}
+  colorShiftOnHover={false}
+/>
+</section>
       
     </>
   );
