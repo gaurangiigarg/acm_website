@@ -1,68 +1,73 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Initiatives.css';
-import ShinyText from '../ShinyText/ShinyText/ShinyText';
+import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil';
+import TextType from '../TextType/TextType/TextType'; // Optional if you use a typewriter header
 
-
-const initiatives = [
+const slides = [
   {
-    title: '21 Days Of Code',
-    description:
-      'We launched 21 Days of Code to promote the environment for competitive programming and instil coding as second nature and a daily habit for 21 regular days. Every year, we witness active programmers come along with the spirit to learn, code and practice.',
-    icon: ' ',
+    title: '21 Days of Code',
+    description: 'We launched 21 Days of Code to promote the environment for competitive programming and instil coding as second nature and a daily habit for 21 regular days.',
+    image: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/img3.jpg',
   },
   {
     title: 'Code Anytime',
-    description:
-      'Code Anytime is our round-the-year initiative to encourage free-spirited coding among beginners to amplify their passion for programming.',
-    icon: ' ',
+    description: 'Code Anytime is our round-the-year initiative to encourage free-spirited coding among beginners to amplify their passion for programming.',
+    image: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/codeanytime24/20240902_184253.jpg',
   },
   {
-    title: 'SPY-C',
-    description:
-      'SPY-C is an initiative to build the core foundation of programming and aid students in overcoming their dread of programming by perfecting their knowledge of the C language through the help of their seniors.',
-    icon: ' ',
-  },
-  {
-    title: 'Hour Of Code',
-    description:
-      'The CSR team puts their words to action, and brings smiles across the faces of the underprivileged society. The team parts education in the most exciting manner and makes the activities as interactive and intriguing as possible.',
-    icon: ' ',
+    title: 'Hour of Code',
+    description: 'The CSR team puts their words to action, and brings smiles across the faces of the underprivileged society. The team makes the activities as interactive as possible..',
+    image: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/HOC/img5.jpeg',
   },
 ];
 
-export default function Initiatives() {
-  const sectionRef = useRef();
-  const [visible, setVisible] = useState(false);
+const Initiatives = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change every 5 seconds
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section ref={sectionRef} className="initiatives-section" id="initiatives">
-      
-      {/* Content */}
-      <div className="initiatives-content">
-        <div className="initiatives-header">
-          <ShinyText text="OUR INITIATIVES" speed={6} className="initiatives-title" />
-        </div>
+    <section className="initiatives-section">
+      <div className="darkveil-background">
+        <DarkVeil />
+      </div>
 
-        <div className="initiatives-grid">
-          {initiatives.map((item, idx) => (
-            <div key={idx} className="glass-card">
-              <span className="icon">{item.icon}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+      <h2 className="initiatives-header">
+        <TextType text="Our Initiatives" speed={100} />
+      </h2>
+
+      <div className="slideshow-wrapper">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`initiative-slide ${index === currentSlide ? 'active' : ''}`}
+          >
+            <img src={slide.image} alt={slide.title} className="slide-image" />
+            <div className="slide-text">
+              <h3>{slide.title}</h3>
+              <p>{slide.description}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="slide-indicators">
+        {slides.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${index === currentSlide ? 'active-dot' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+          ></span>
+        ))}
       </div>
     </section>
   );
-}
+};
+
+export default Initiatives;
