@@ -38,7 +38,6 @@ body {
 /* Section Styling */
 section {
   width: 100%;
-  min-height: 100vh;
   position: relative;
 }
 
@@ -205,6 +204,20 @@ body.lenis {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+
+.executives-heading {
+  text-align: center;
+  font-size: 2rem;
+  color: #64ffda;
+  margin-bottom: 1.5rem;
+}
+
+/* Add spacing below the section if needed */
+#executives {
+  padding: 4rem 1rem;
+  background-color: #000000; /* Or any contrast background */
 }
 
 

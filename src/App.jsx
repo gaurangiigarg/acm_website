@@ -1,4 +1,3 @@
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { lazy, Suspense, useLayoutEffect } from 'react';
@@ -13,11 +12,12 @@ import ScrollReveal from '../ScrollReveal/ScrollReveal/ScrollReveal';
 import Silk from '../Silk_background/Silk/Silk';
 import RevealSection1 from './RevealSection1';
 import BackgroundReveal from './BackgroundReveal';
+import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider'
+import ExecutivesIntro from './ExecutivesIntro';
 
 import Initiatives from './Initiatives'
 import './App.css';
 
-import DarkVeil from '../DarkVeil/DarkVeil/DarkVeil';
 
 const Robot = lazy(() => import('./Robot'));
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
@@ -92,6 +92,9 @@ const items = [
 
     
 ];
+
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,30 +183,34 @@ function App() {
               baseRotation={20}
               blurStrength={50}
             >
-      Want to know who makes all that happen?
-    </ScrollReveal>
-  </div>
-</section>
+            Want to know who makes all that happen?
+        </ScrollReveal>
+    </div>
+    </section>
 
 
       <section className="spline-scroll-wrapper">
         <div className="spline-scroll-inner">
-           <BackgroundReveal />
+            <BackgroundReveal />
         </div>
       </section>  
 
 
 
 
-  <section className="app-section horizontal-scroll-section" id="chips-reveal">
+    <section className="app-section horizontal-scroll-section" id="chips-reveal">
     <div className="horizontal-inner" style={{ display: 'flex', height: '100vh', willChange: 'transform' }}>
       <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
         <div className="robot-fade-container">
-          <Robot />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Robot />
+          </Suspense>
         </div>
       </div>
       <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
-        <ChipsReveal />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChipsReveal />
+        </Suspense>
       </div>
     </div>
   </section>
@@ -212,20 +219,17 @@ function App() {
     <Initiatives />
   </section>
 
-
-<section className="app-section vertical section" id="mason">
-  <Masonary
-  items={items}
-  ease="power3.out"
-  duration={0.6}
-  stagger={0.05}
-  animateFrom="bottom"
-  scaleOnHover={true}
-  hoverScale={0.95}
-  blurToFocus={true}
-  colorShiftOnHover={false}
-/>
+<section id="spline-section" style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
+        <ExecutivesIntro />
 </section>
+
+  <section className="app-section vertical-section" id="executives">
+
+  <ExecutiveSlider />
+</section>
+  
+
+
       
     </>
   );

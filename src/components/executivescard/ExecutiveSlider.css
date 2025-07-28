@@ -1,0 +1,247 @@
+/* Container Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  background: black;
+  color: #ccd6f6;
+  font-family: 'Poppins', monospace;
+  overflow: hidden;
+}
+
+.intro-header {
+  text-align: center;
+  margin-bottom: 0;
+  color: #1e0db3;
+  flex-shrink: 0;
+}
+
+/* Slider */
+.executives-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1300px; /* Wider to accommodate side alignments */
+  margin: 0 auto;
+  padding-top: 2rem; /* Add padding for the dots */
+}
+
+.slides-container {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Allow cards to align self */
+  gap: 4rem;
+  padding: 1rem 0;
+  min-height: 750px;
+}
+
+/* Dots */
+.dots-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  background: rgba(0, 4, 255, 0.107);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #1916d25f;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background-color: #1c16bb;
+  transform: scale(1.2);
+}
+
+/* Card Styles */
+.team-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 950px; /* Increased width */
+  transform: scale(0.85);
+}
+
+.card-0 {
+  align-self: flex-start; /* Align top card to the left */
+}
+.card-1 {
+  align-self: flex-end; /* Align bottom card to the right */
+  flex-direction: row-reverse; /* Flip layout for bottom card */
+}
+
+.image-container {
+  position: relative;
+  width: 300px;
+  height: 330px;
+  clip-path: polygon(0 15%, 15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  background: rgba(0, 4, 255, 0.107); /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  padding: 1.25rem;
+  border: 1px solid rgba(100, 110, 255, 0.2);
+  z-index: 2;
+  flex-shrink: 0;
+  transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1); /* Removed grayscale filter */
+  clip-path: inherit;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 2rem;
+  left: -0.75rem;
+  padding: 0.6rem 0.6rem;
+  font-size: 0.9rem;
+  background-color: #6480ff;
+  color: #0a192f;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: bold;
+  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 90%);
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 20px;
+  height: 20px;
+  color: #6473ff;
+}
+
+.description-container {
+  position: relative;
+  padding: 1.5rem 2.5rem;
+  background: rgba(0, 4, 255, 0.107); /* Semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+}
+
+/* --- Asymmetrical Layout Adjustments --- */
+.card-0 .description-container {
+    margin-left: 2rem; /* Add gap for the top card */
+}
+.card-1 .description-container {
+    margin-right: 2rem; /* Add gap for the bottom card */
+    clip-path: polygon(0 0, 90% 0, 100% 15%, 100% 100%, 0 100%);
+}
+.card-1 .image-overlay {
+    left: auto;
+    right: -0.75rem;
+}
+.card-1 .desc-header {
+    text-align: left;
+}
+
+/* --- Content Styling --- */
+.description-content {
+  position: relative;
+  z-index: 1;
+}
+
+.desc-header {
+  text-align: right;
+  margin-bottom: 2.5rem; /* Increased space */
+}
+
+.desc-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ccd6f6;
+  text-shadow: 0 0 8px #0037ff; /* Added glow effect */
+}
+
+.desc-title {
+  font-size: 0.8rem;
+  color: #6476ff;
+  margin: 0;
+}
+
+.desc-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #f2f2f3;
+}
+
+
+/* --- Asymmetrical Animation Effects --- */
+/* Initial State (Before Visible) */
+.card-0 .image-container {
+    transform: translateX(325px) translateY(-30px); /* Adjusted for new width */
+}
+.card-0 .description-container {
+    transform: translateX(50px);
+}
+
+.card-1 .image-container {
+    transform: translateX(-325px) translateY(-30px); /* Adjusted for new width */
+}
+.card-1 .description-container {
+    transform: translateX(-50px);
+}
+
+/* Visible State */
+.team-card.is-visible .image-container {
+    transform: translateX(0) translateY(-30px);
+}
+.team-card.is-visible .description-container {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mobile Fallback */
+@media (max-width: 768px) {
+    .team-card, .card-0, .card-1 {
+        flex-direction: column;
+        align-self: center;
+        gap: 1rem;
+        transform: scale(0.8);
+        max-width: 320px;
+    }
+
+    .image-container, .description-container {
+        opacity: 0;
+        transform: translateY(30px) !important; /* Override desktop transforms */
+    }
+
+    .team-card.is-visible .image-container,
+    .team-card.is-visible .description-container {
+        opacity: 1;
+        transform: translateY(0) !important;
+    }
+}

@@ -34,12 +34,10 @@ const Initiatives = () => {
 
   return (
     <section className="initiatives-section">
-      <div className="darkveil-background">
-        <DarkVeil />
-      </div>
+      
 
       <h2 className="initiatives-header">
-        <TextType text="Our Initiatives" speed={100} />
+        <TextType text="Our Initiatives" speed={100} showCursor={false} />
       </h2>
 
       <div className="slideshow-wrapper">

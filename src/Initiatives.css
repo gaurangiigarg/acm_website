@@ -11,15 +11,10 @@
   flex-direction: column;
   justify-content: center;
   padding: 4rem 2rem;
-  background: transparent;
+  background: black
 }
 
-.darkveil-background {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+
 
 .initiatives-header {
   font-size: 3rem;
