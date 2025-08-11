@@ -3,8 +3,12 @@ import Navbar from '../../Navbar'; // Assuming Navbar is in the parent directory
 import TeamGallery from './TeamsGallery'; // Import the new gallery component
 import './TeamsPage.css';
 import useLenis from '../../useLenis';
-import TeamGrid from './TeamGrid';
+import TeamGrid1 from './TeamGrid1';
+import TeamGrid2 from './TeamGrid2';
+import TeamGrid3 from './TeamGrid3';
 import BOExecutivesHero from './BOExecutivesHero'
+import ExecutivesHero from './ExecutivesHero';
+import OfficeBearersHero from './OfficeBearersHero'; 
 
 
 const TeamsPage = () => {
@@ -39,13 +43,18 @@ const TeamsPage = () => {
         <div className="bottom-divider"></div>
       </section>
 
-      
-      
-      
 
       <BOExecutivesHero />
 
-      <TeamGrid />
+      <TeamGrid1 />
+
+      <ExecutivesHero />
+
+      <TeamGrid2 />
+
+      <OfficeBearersHero />
+
+      <TeamGrid3 />
 
       <TeamGallery />
 

@@ -1,0 +1,92 @@
+/* Main wrapper for the team grid section */
+.team-grid-section {
+    width: 100%;
+    padding: 8rem 4%;
+    box-sizing: border-box;
+    background-color: var(--background-color, #0d1117);
+    color: var(--text-color, #c9d1d9);
+    overflow: hidden; /* Hide elements before they animate in */
+}
+
+/* The grid container */
+.team-grid-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: 4rem 2rem;
+}
+
+/* Individual team member card */
+.team-grid-card {
+    display: flex;
+    flex-direction: column;
+    /* Set initial state for the entrance animation */
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Wrapper for the image to handle overflow */
+.team-grid-card-image-wrapper {
+    width: 100%;
+    height: 450px; /* Explicit height for uniform size */
+    margin-bottom: 1.5rem;
+    overflow: hidden; /* This is crucial for the parallax effect */
+}
+
+.team-grid-card-image {
+    width: 100%;
+    height: 130%; /* Image is taller than its container to allow for movement */
+    object-fit: cover;
+}
+
+/* Info section below the image */
+.team-grid-card-info {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.info-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-color, #30363d);
+    margin-bottom: 1rem;
+}
+
+.info-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem; /* Increased gap for more space */
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color, #c9d1d9);
+    opacity: 0.7;
+    transition: opacity 0.3s, fill 0.3s;
+}
+
+.social-icon:hover svg {
+    opacity: 1;
+    fill: var(--accent-blue, #58a6ff);
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+    .team-grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-grid-container {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for desktops */
+    }
+}
