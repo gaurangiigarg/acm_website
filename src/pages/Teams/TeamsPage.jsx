@@ -2,7 +2,9 @@ import React from 'react';
 import Navbar from '../../Navbar'; // Assuming Navbar is in the parent directory
 import TeamGallery from './TeamsGallery'; // Import the new gallery component
 import './TeamsPage.css';
-import useLenis from '../../useLenis'; // Assuming useLenis is in the parent directory
+import useLenis from '../../useLenis';
+import TeamGrid from './TeamGrid';
+
 
 const TeamsPage = () => {
   useLenis(); 
@@ -38,6 +40,10 @@ const TeamsPage = () => {
 
       {/* --- Auto-Scrolling Gallery Section --- */}
       <TeamGallery />
+
+      <TeamGrid />
+
+
     </>
   );
 };
