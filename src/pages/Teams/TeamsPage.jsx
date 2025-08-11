@@ -41,11 +41,13 @@ const TeamsPage = () => {
 
       
       
-      <TeamGallery />
+      
 
       <BOExecutivesHero />
 
       <TeamGrid />
+
+      <TeamGallery />
 
 
     </>
