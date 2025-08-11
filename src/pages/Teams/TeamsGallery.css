@@ -1,0 +1,92 @@
+/* Main wrapper for the full-viewport gallery section */
+.gallery-section-wrapper {
+    width: 100%;
+    height: 100vh; /* Takes full viewport height */
+    padding: 2rem 0;
+    box-sizing: border-box;
+    background-color: var(--background-color, #0d1117);
+    color: var(--text-color, #c9d1d9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers the content */
+    align-items: center;
+    overflow: hidden;
+    gap: 2rem;
+}
+
+/* Styling for the large descriptive text block */
+.gallery-description {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 1rem;
+}
+
+.gallery-description h2 {
+    color: #fff;
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(0, 140, 255, 0.6),
+        0 0 16px rgba(0, 140, 255, 0.5);
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+}
+
+.gallery-description p {
+    color: #c9d1d9;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* The container that defines the visible area of the scroller */
+.scrolling-gallery-container {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+}
+
+/* The track that contains all the cards and moves with the animation */
+.scrolling-track {
+    display: flex;
+    gap: 2rem;
+    align-items: center; /* Vertically center the cards */
+    width: calc(324px * 7 * 2); /* (Average card width + gap) * num items * 2 */
+    animation: scrollAnimation 50s linear infinite;
+}
+
+/* Keyframe animation for the horizontal scroll */
+@keyframes scrollAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-324px * 7)); /* (Average card width + gap) * num items */
+    }
+}
+
+/* Individual card styling */
+.gallery-card {
+    flex-shrink: 0;
+}
+
+/* Removed hover scaling effect */
+.gallery-card img {
+    display: block;
+    object-fit: cover; /* Show the full image without cropping */
+    border-radius: 16px;
+    border: 1px solid var(--border-color, #30363d);
+    background-color: #000; /* Optional: background to fill empty space */
+}
+
+/* Size variations for the cards */
+.gallery-card.large img {
+    width: 350px;
+    height: 450px;
+}
+
+.gallery-card.small img {
+    width: 250px;
+    height: 320px;
+}

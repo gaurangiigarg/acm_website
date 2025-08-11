@@ -1,0 +1,148 @@
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+/* FONT USAGE:
+ * 'Anton' for the large heading "OUR TEAM".
+ * 'Inter' for all other body and UI text.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap');
+
+:root {
+    --background-color: #0d1117; /* A very dark blue, almost black */
+    --text-color: #c9d1d9; /* Off-white, easy on the eyes */
+    --accent-blue: #58a6ff; /* A bright, accessible blue for accents */
+    --border-color: #30363d; /* A subtle border color */
+}
+
+/* Main wrapper for the entire section */
+.team-section-wrapper {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2rem 4%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Top border line */
+.top-divider {
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 4rem;
+}
+
+/* Main content area with the two-column layout */
+.content-grid {
+    display: flex;
+    width: 100%;
+    flex-grow: 1; /* Allows this section to fill available space */
+}
+
+/* Left Column: Details and description */
+.left-column {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 2rem;
+}
+
+.left-column .gallery-button {
+    background-color: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    align-self: flex-start; /* Button doesn't stretch */
+}
+
+.left-column .gallery-button:hover {
+    background-color: var(--accent-blue);
+    color: var(--background-color);
+}
+
+.left-column .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 350px;
+}
+
+.left-column .team-member-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Right Column: The giant "OUR TEAM" heading */
+.right-column {
+    width: 65%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-heading {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(8rem, 25vw, 22rem); /* Responsive font size */
+    line-height: 0.85;
+    color: var(--text-color);
+    position: relative;
+}
+
+.heading-number {
+    position: absolute;
+    top: -0.1em;
+    right: -0.2em;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.1em; /* Relative to the main heading's font size */
+    font-weight: 500;
+    color: var(--accent-blue);
+}
+
+/* Bottom divider line */
+.bottom-divider {
+     width: 100%;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+    .content-grid {
+        flex-direction: column;
+    }
+    .left-column, .right-column {
+        width: 100%;
+        padding-right: 0;
+    }
+    .left-column {
+        justify-content: flex-start;
+        gap: 4rem; /* Add space between items on mobile */
+    }
+    .right-column {
+        padding-top: 4rem;
+        align-items: flex-start;
+    }
+    .main-heading {
+        text-align: left;
+    }
+}
+
+

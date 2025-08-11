@@ -16,7 +16,7 @@ import BackgroundReveal from './BackgroundReveal';
 import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
 import ExecutivesIntro from './ExecutivesIntro';
 import Initiatives from './Initiatives';
-import TeamsPage from './pages/TeamsPage'; 
+import TeamsPage from './pages/Teams/TeamsPage'; 
 import './App.css';
 
 const Robot = lazy(() => import('./Robot'));
