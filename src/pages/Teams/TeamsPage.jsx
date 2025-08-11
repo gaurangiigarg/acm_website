@@ -4,6 +4,7 @@ import TeamGallery from './TeamsGallery'; // Import the new gallery component
 import './TeamsPage.css';
 import useLenis from '../../useLenis';
 import TeamGrid from './TeamGrid';
+import BOExecutivesHero from './BOExecutivesHero'
 
 
 const TeamsPage = () => {
@@ -38,8 +39,11 @@ const TeamsPage = () => {
         <div className="bottom-divider"></div>
       </section>
 
-      {/* --- Auto-Scrolling Gallery Section --- */}
+      
+      
       <TeamGallery />
+
+      <BOExecutivesHero />
 
       <TeamGrid />
 
