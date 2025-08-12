@@ -15,7 +15,7 @@ import member8 from '../../assets/images/Ahad_Khan.jpg';
 import member9 from '../../assets/images/Arartik_Tyagi.jpg';
 import member10 from '../../assets/images/Dhaniksha.jpg';
 import member11 from '../../assets/images/Devaansh_Kushwaha.jpg';
-import member12 from '../../assets/images/Abhinav_Kumar.jpg';
+import member12 from '../../assets/images/Abhinav_Kumar.JPG';
 
 
 
