@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap');
 
 html, body {
   height: 100%;
@@ -7,13 +6,6 @@ html, body {
   padding: 0;
   background-color: black;
 }
-
-/* FONT USAGE:
- * 'Anton' for the large heading "OUR TEAM".
- * 'Inter' for all other body and UI text.
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap');
 
 :root {
     --background-color: #0d1117; /* A very dark blue, almost black */
@@ -64,7 +56,7 @@ html, body {
     color: var(--accent-blue);
     padding: 0.6rem 1.2rem;
     border-radius: 2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -100,7 +92,7 @@ html, body {
 }
 
 .main-heading {
-    font-family: 'Anton', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(8rem, 25vw, 22rem); /* Responsive font size */
     line-height: 0.85;
     color: var(--text-color);
@@ -111,7 +103,7 @@ html, body {
     position: absolute;
     top: -0.1em;
     right: -0.2em;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.1em; /* Relative to the main heading's font size */
     font-weight: 500;
     color: var(--accent-blue);
