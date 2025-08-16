@@ -47,8 +47,8 @@ function Navbar() {
         </Link>
         <ul className="navbar-links">
           <li><a href="#home" onClick={(e) => handleScrollToSection(e, "home")}>Home</a></li>
-          <li><a href="#about" onClick={(e) => handleScrollToSection(e, "about")}>About Us</a></li>
-          <li><Link to="/team">Team</Link></li> {/* ✅ Goes to team page */}
+          <li><Link to="/about">About Us</Link></li> {/* ✅ Separate About Page */}
+          <li><Link to="/team">Team</Link></li>
           <li><a href="#initiatives" onClick={(e) => handleScrollToSection(e, "initiatives")}>Our Initiatives</a></li>
           <li><a href="#contact" onClick={(e) => handleScrollToSection(e, "contact")}>Contact Us</a></li>
         </ul>

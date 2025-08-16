@@ -15,6 +15,7 @@ import BackgroundReveal from './BackgroundReveal';
 import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
 import ExecutivesIntro from './ExecutivesIntro';
 import Initiatives from './Initiatives';
+import AboutUs from './pages/About/AboutUsSection';   // ✅ Full About Page
 import TeamsPage from './pages/Teams/TeamsPage'; 
 import './App.css';
 
@@ -78,7 +79,7 @@ function MainLandingPage() {
       <section className="app-section vertical-section" id="about-reveal">
         <About />
       </section>
-      <section className="app-section vertical-section" id="about-reveal">
+      <section className="app-section vertical-section">
         <RevealSection1 />
       </section>
       <section className="app-section scroll-reveal-section" id="reveal-text">
@@ -88,7 +89,7 @@ function MainLandingPage() {
           </ScrollReveal>
         </div>
       </section>
-      <section className="app-section vertical-section" id="about-reveal">
+      <section className="app-section vertical-section">
         <BackgroundReveal />
       </section>
       <section className="app-section horizontal-scroll-section" id="chips-reveal">
@@ -128,6 +129,7 @@ export default function App() {
     <Router basename={basename}>
       <Routes>
         <Route path="/" element={<MainLandingPage />} />
+        <Route path="/about" element={<AboutUs />} />  
         <Route path="/team" element={<TeamsPage />} />
       </Routes>
     </Router>
