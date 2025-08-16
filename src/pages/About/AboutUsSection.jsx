@@ -12,8 +12,8 @@ const AboutUsSection = () => {
       {/* This div is now the fixed background */}
       <div className="liquid-chrome-background">
         <LiquidChrome
-          baseColor={[0, 0, 0.04]}
-          speed={0.3}
+          baseColor={[0, 0, 0.05]}
+          speed={0.15}
           amplitude={0.3}
           interactive={true}
         />
