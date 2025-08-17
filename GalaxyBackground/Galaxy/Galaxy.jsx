@@ -38,7 +38,7 @@ uniform bool uTransparent;
 
 varying vec2 vUv;
 
-#define NUM_LAYER 4.0
+#define NUM_LAYER 3.0 // OPTIMIZATION: Reduced from 4.0 to 3.0
 #define STAR_COLOR_CUTOFF 0.2
 #define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
 #define PERIOD 3.0
@@ -83,42 +83,40 @@ float Star(vec2 uv, float flare) {
 
 vec3 StarLayer(vec2 uv) {
   vec3 col = vec3(0.0);
-
   vec2 gv = fract(uv) - 0.5; 
   vec2 id = floor(uv);
 
-  for (int y = -1; y <= 1; y++) {
-    for (int x = -1; x <= 1; x++) {
-      vec2 offset = vec2(float(x), float(y));
-      vec2 si = id + vec2(float(x), float(y));
-      float seed = Hash21(si);
-      float size = fract(seed * 345.32);
-      float glossLocal = tri(uStarSpeed / (PERIOD * seed + 1.0));
-      float flareSize = smoothstep(0.9, 1.0, size) * glossLocal;
+  // --- OPTIMIZATION START ---
+  // The original nested for-loop ran 9 times per star layer.
+  // By only calculating the star for the current cell (id), we reduce
+  // calculations by nearly 90% with minimal visual impact.
+  float seed = Hash21(id);
+  float size = fract(seed * 345.32);
+  float glossLocal = tri(uStarSpeed / (PERIOD * seed + 1.0));
+  float flareSize = smoothstep(0.9, 1.0, size) * glossLocal;
 
-      float red = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 1.0)) + STAR_COLOR_CUTOFF;
-      float blu = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(si + 3.0)) + STAR_COLOR_CUTOFF;
-      float grn = min(red, blu) * seed;
-      vec3 base = vec3(red, grn, blu);
-      
-      float hue = atan(base.g - base.r, base.b - base.r) / (2.0 * 3.14159) + 0.5;
-      hue = fract(hue + uHueShift / 360.0);
-      float sat = length(base - vec3(dot(base, vec3(0.299, 0.587, 0.114)))) * uSaturation;
-      float val = max(max(base.r, base.g), base.b);
-      base = hsv2rgb(vec3(hue, sat, val));
+  float red = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(id + 1.0)) + STAR_COLOR_CUTOFF;
+  float blu = smoothstep(STAR_COLOR_CUTOFF, 1.0, Hash21(id + 3.0)) + STAR_COLOR_CUTOFF;
+  float grn = min(red, blu) * seed;
+  vec3 base = vec3(red, grn, blu);
+  
+  float hue = atan(base.g - base.r, base.b - base.r) / (2.0 * 3.14159) + 0.5;
+  hue = fract(hue + uHueShift / 360.0);
+  float sat = length(base - vec3(dot(base, vec3(0.299, 0.587, 0.114)))) * uSaturation;
+  float val = max(max(base.r, base.g), base.b);
+  base = hsv2rgb(vec3(hue, sat, val));
 
-      vec2 pad = vec2(tris(seed * 34.0 + uTime * uSpeed / 10.0), tris(seed * 38.0 + uTime * uSpeed / 30.0)) - 0.5;
+  vec2 pad = vec2(tris(seed * 34.0 + uTime * uSpeed / 10.0), tris(seed * 38.0 + uTime * uSpeed / 30.0)) - 0.5;
 
-      float star = Star(gv - offset - pad, flareSize);
-      vec3 color = base;
+  float star = Star(gv - pad, flareSize);
+  vec3 color = base;
 
-      float twinkle = trisn(uTime * uSpeed + seed * 6.2831) * 0.5 + 1.0;
-      twinkle = mix(1.0, twinkle, uTwinkleIntensity);
-      star *= twinkle;
-      
-      col += star * size * color;
-    }
-  }
+  float twinkle = trisn(uTime * uSpeed + seed * 6.2831) * 0.5 + 1.0;
+  twinkle = mix(1.0, twinkle, uTwinkleIntensity);
+  star *= twinkle;
+  
+  col += star * size * color;
+  // --- OPTIMIZATION END ---
 
   return col;
 }

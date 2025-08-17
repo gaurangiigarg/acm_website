@@ -1,0 +1,40 @@
+.robot-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Black background lowest */
+.robot-black-bg {
+  position: absolute;
+  inset: 0;
+  background: black;
+  z-index: 0;
+}
+
+/* Galaxy layer above black */
+.robot-galaxy {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Foreground content (Spline + Committees) */
+.robot-content {
+  position: relative;
+  z-index: 2;
+
+  
+}
+
+.watermark-patch {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;   /* adjust width */
+  height: 40px;   /* adjust height */
+  background: black;
+  z-index: 9999;  /* make sure it’s above everything */
+  pointer-events: none; /* let clicks pass through */
+}

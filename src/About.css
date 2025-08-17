@@ -37,7 +37,7 @@
 .about-right {
   flex: 1 1 40%;
   max-width: 550px;
-  margin-top: 6rem;          
+  margin-top: 1rem;          
   margin-right: 4rem;       
   display: flex;
   justify-content: flex-end;  

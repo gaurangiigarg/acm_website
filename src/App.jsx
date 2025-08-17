@@ -67,13 +67,8 @@ function MainLandingPage() {
         <Home />
         <Particles
           particleColors={['#0C1636']}
-          particleCount={50}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={true}
-          disableRotation={false}
+          particleCount={0}
+          
         />
       </section>
       <section className="app-section vertical-section" id="about-reveal">

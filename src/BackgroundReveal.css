@@ -6,7 +6,7 @@
   height: 100vh;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
-  background-color: rgba(0, 0, 0, 0); /* Ensures full black bg under Spline */
+  background: transparent; /* Ensures full black bg under Spline */
 }
 
 .spline-bg-wrapper {
@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(9, 5, 5);
+  background-color: rgba(9, 5, 5, 0);
   z-index: 1; /* Behind spline */
   text-align: center;
 }
@@ -42,4 +42,17 @@
   color: #ccc;
   text-align: center;
   padding-top: 200px;
+}
+
+.galaxy-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* Bottom layer */
+}
+
+.galaxy-black-bg {
+  position: absolute;
+  inset: 0;
+  background: black;
+  z-index: 0;
 }

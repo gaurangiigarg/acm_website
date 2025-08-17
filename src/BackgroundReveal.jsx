@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import BlurText from '../BlurText/BlurText/BlurText';
 import './BackgroundReveal.css';
+import Galaxy from '../GalaxyBackground/Galaxy/Galaxy';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,20 @@ function BackgroundReveal() {
 
   return (
     <section ref={sectionRef} className="reveal-local-container">
+
+      <div className="galaxy-black-bg"></div>
+
+      <div className="galaxy-bg-wrapper">
+        <Galaxy 
+            mouseRepulsion={false}
+          mouseInteraction={false}
+          density={0.3}
+          glowIntensity={0.1}
+          saturation={0}
+          hueShift={70}
+        />
+      </div>
+
       <div className="spline-bg-wrapper">
         <Spline
           scene="https://prod.spline.design/jWdQZ-tIJBY28t4r/scene.splinecode"

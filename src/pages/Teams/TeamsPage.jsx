@@ -56,8 +56,6 @@ const TeamsPage = () => {
 
       <TeamGrid3 />
 
-      <TeamGallery />
-
 
     </>
   );

@@ -5,7 +5,7 @@ const topRowCommittees = [
   {
     title: 'Operations',
     description:
-      'The Operations committee works behind the scenes to ensure the smooth functioning of every event or activity of the chapters. This team provides back-end support to every other committee by managing all the arrangements flawlessly.',
+      'The Operations committee works behind the scenes to ensure the smooth functioning of every event or activity of the chapters.',
   },
   {
     title: 'Corporate Social Responsibility',

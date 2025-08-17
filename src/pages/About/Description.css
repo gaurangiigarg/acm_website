@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 @import url('https://fonts.adobe.com/fonts/myriad-variable');
 
-/* Container for Description Section */
-.description-container {
+/* Container */
+.about-section {
   position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: row; /* changed from column to row */
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   background: transparent;
@@ -20,21 +20,21 @@
   flex-wrap: wrap;
 }
 
-.description-container.visible {
+.about-section.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Left side content wrapper */
-.description-left {
+/* Left content */
+.about-left {
   flex: 1 1 60%;
   max-width: 700px;
   display: flex;
   flex-direction: column;
 }
 
-/* Right side carousel wrapper */
-.description-right {
+/* Right content */
+.about-right {
   flex: 1 1 40%;
   max-width: 550px;
   margin-top: 12rem;       
@@ -45,53 +45,9 @@
   box-sizing: border-box;
 }
 
-/* Description Title (TOP LEFT) */
-.description-title-wrapper {
-  font-family: 'myriad-pro', sans-serif;
-  font-size: 7rem;
-  font-weight: 500;
-  position: absolute;
-  top: 1rem;
-  left: 2rem;
-  z-index: 2;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  padding-left: 30px;
-  padding-top: 25px;
-}
-
-.description-title-wrapper .text-2xl {
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Responsive font scaling */
-@media (max-width: 768px) {
-  .description-title-wrapper .text-2xl {
-    font-size: 2.5rem;
-  }
-
-  .description-container {
-    flex-direction: column;
-    padding: 5rem 1.5rem;
-  }
-
-  .description-right {
-    width: 100%;
-    margin-top: 3rem;
-    max-width: none;
-    margin-right: 0; /* Reset margin for mobile */
-  }
-
-  .description-left {
-    width: 100%;
-    max-width: none;
-  }
-}
-
 /* Main Heading */
-.description-heading {
-    margin-top: 7rem;
+.about-heading {
+  margin-top: 7rem;
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.3;
@@ -101,12 +57,12 @@
   font-family: 'myriad-pro';
 }
 
-.description-heading .highlight {
+.about-heading .about-highlight {
   color: #1f3fee;
 }
 
-/* Description Paragraph */
-.description-paragraph {
+/* Paragraph */
+.about-paragraph {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #ffffff;
@@ -116,7 +72,7 @@
 }
 
 /* Features List */
-.description-features {
+.about-features {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -124,7 +80,7 @@
   font-size: 1rem;
 }
 
-.description-features li {
+.about-features li {
   margin-bottom: 1.2rem;
   padding-left: 2.2rem;
   position: relative;
@@ -134,7 +90,7 @@
   font-family: 'Poppins';
 }
 
-.description-features li::before {
+.about-features li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -147,6 +103,27 @@
   background-position: center;
 }
 
-.description-right .carousel-container {
-  border-color: #0d2c94;
+/* Responsive */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    padding: 5rem 1.5rem;
+  }
+
+  .about-right {
+    width: 100%;
+    margin-top: 3rem;
+    max-width: none;
+    margin-right: 0;
+  }
+
+  .about-left {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
 }
