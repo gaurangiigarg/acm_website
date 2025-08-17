@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.adobe.com/fonts/myriad-variable');
+
+/* Container for Description Section */
+.description-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* changed from column to row */
+  align-items: flex-start;
+  justify-content: space-between;
+  background: transparent;
+  padding: 2rem 4rem;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  flex-wrap: wrap;
+}
+
+.description-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left side content wrapper */
+.description-left {
+  flex: 1 1 60%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right side carousel wrapper */
+.description-right {
+  flex: 1 1 40%;
+  max-width: 550px;
+  margin-top: 12rem;       
+  margin-right: 4rem;      
+  display: flex;
+  justify-content: flex-end;  
+  align-items: flex-start;  
+  box-sizing: border-box;
+}
+
+/* Description Title (TOP LEFT) */
+.description-title-wrapper {
+  font-family: 'myriad-pro', sans-serif;
+  font-size: 7rem;
+  font-weight: 500;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  z-index: 2;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  padding-left: 30px;
+  padding-top: 25px;
+}
+
+.description-title-wrapper .text-2xl {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Responsive font scaling */
+@media (max-width: 768px) {
+  .description-title-wrapper .text-2xl {
+    font-size: 2.5rem;
+  }
+
+  .description-container {
+    flex-direction: column;
+    padding: 5rem 1.5rem;
+  }
+
+  .description-right {
+    width: 100%;
+    margin-top: 3rem;
+    max-width: none;
+    margin-right: 0; /* Reset margin for mobile */
+  }
+
+  .description-left {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Main Heading */
+.description-heading {
+    margin-top: 7rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: white;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+  font-family: 'myriad-pro';
+}
+
+.description-heading .highlight {
+  color: #1f3fee;
+}
+
+/* Description Paragraph */
+.description-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ffffff;
+  max-width: 750px;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Features List */
+.description-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #dddddd;
+  font-size: 1rem;
+}
+
+.description-features li {
+  margin-bottom: 1.2rem;
+  padding-left: 2.2rem;
+  position: relative;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #ddd;
+  font-family: 'Poppins';
+}
+
+.description-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url('../src/assets/tick_symbol.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.description-right .carousel-container {
+  border-color: #0d2c94;
+}

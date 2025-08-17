@@ -4,6 +4,8 @@ import './AboutUsSection.css'; // Link to the new stylesheet
 import useLenis from '../../useLenis';
 import LiquidChrome from '../../../LiquidChrome/LiquidChrome/LiquidChrome';
 import Robot from '../../Robot'
+import Description from './Description';
+import Gallery from './Gallery'; 
 
 const AboutUsSection = () => {
   useLenis(); 
@@ -35,15 +37,19 @@ const AboutUsSection = () => {
             <p className="about-us-description">
               We are a community of innovators and problem solvers, united by a passion for technology and a drive to create impactful solutions.
             </p>
-            <div className="about-us-footer">
-              ACM Student Chapter
-            </div>
+            
         </div>
 
         <div className="about-us-bottom-divider"></div>
       </section>
 
+      <Gallery />
+
+      <Description />
+
       <Robot />
+
+      
     </>
   );
 };
