@@ -3,7 +3,11 @@ import React from 'react';
 import './Sponsors.css'; // Import the stylesheet
 import TiltedCard from '../../../TitledCard/TiltedCard/TiltedCard'
 
-import IBM from '../../assets/img/logos/IBM.png'; // ✅ use IBM image
+import Dell from '../../assets/img/logos/Dell.jpg'; 
+import IBM from '../../assets/img/logos/IBM.jpg';
+import Azure from '../../assets/img/logos/Azure.jpg';
+import PyNet from '../../assets/img/logos/PyNet.jpg';
+import AWS from '../../assets/img/logos/AWS.jpg';
 
 const Sponsors = () => {
   return (
@@ -14,60 +18,76 @@ const Sponsors = () => {
 
       <div className="sponsors-cards">
     <TiltedCard
-      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_website/main/src/assets/img/logos/Dell.jpg"
+      imageSrc={Dell}
       altText="Dell Logo"
       containerHeight="250px"
       containerWidth="250px"
       imageHeight="250px"
       imageWidth="250px"
-      rotateAmplitude={12}
-      scaleOnHover={1}
+      rotateAmplitude={20}
+      scaleOnHover={1.05}
       showMobileWarning={false}
-      showTooltip={true}
+      showTooltip={false}
       displayOverlayContent={true}
     />
 
     <TiltedCard
-      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/logos/IBM.png"
+      imageSrc={AWS}
+      altText="AWS Logo"
+      containerHeight="250px"
+      containerWidth="250px"
+      imageHeight="250px"
+      imageWidth="250px"
+      rotateAmplitude={20}
+      scaleOnHover={1.05}
+      showMobileWarning={false}
+      showTooltip={false}
+      displayOverlayContent={true}
+    />
+
+     <TiltedCard
+      imageSrc={IBM}
       altText="IBM Logo"
       containerHeight="250px"
       containerWidth="250px"
       imageHeight="250px"
       imageWidth="250px"
-      rotateAmplitude={12}
-      scaleOnHover={1}
+      rotateAmplitude={20}
+      scaleOnHover={1.05}
       showMobileWarning={false}
-      showTooltip={true}
+      showTooltip={false}
       displayOverlayContent={true}
     />
 
     <TiltedCard
-      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/logos/Dell.jpg"
-      altText="Dell Logo"
+      imageSrc={Azure}
+      altText="Microsoft Azure Logo"
       containerHeight="250px"
       containerWidth="250px"
       imageHeight="250px"
       imageWidth="250px"
-      rotateAmplitude={12}
-      scaleOnHover={1}
+      rotateAmplitude={20}
+      scaleOnHover={1.05}
       showMobileWarning={false}
-      showTooltip={true}
+      showTooltip={false}
       displayOverlayContent={true}
     />
 
     <TiltedCard
-      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/logos/Dell.jpg"
-      altText="Dell Logo"
+      imageSrc={PyNet}
+      altText="PyNet Logo"
       containerHeight="250px"
       containerWidth="250px"
       imageHeight="250px"
       imageWidth="250px"
-      rotateAmplitude={12}
-      scaleOnHover={1}
+      rotateAmplitude={20}
+      scaleOnHover={1.05}
       showMobileWarning={false}
-      showTooltip={true}
+      showTooltip={false}
       displayOverlayContent={true}
     />
+
+    
   </div>
   
 

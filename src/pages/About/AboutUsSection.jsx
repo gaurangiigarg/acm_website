@@ -46,9 +46,12 @@ const AboutUsSection = () => {
 
       <Sponsors />
 
-      <Gallery />
-
       <Description />
+
+      
+
+
+      <Gallery />
 
       <Robot />
 

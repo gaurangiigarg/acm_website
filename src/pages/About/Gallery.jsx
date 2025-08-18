@@ -13,6 +13,7 @@ const galleryData = [
   { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/sherlocked/img2.jpeg', size: 'small' }
 ];
 
+// Repeat gallery for infinite scroll effect
 const extendedGalleryData = [...galleryData, ...galleryData];
 
 const Gallery = () => {
@@ -22,9 +23,12 @@ const Gallery = () => {
     let loadedCount = 0;
     const total = extendedGalleryData.length;
 
+    // Preload all images
     extendedGalleryData.forEach((item) => {
       const img = new Image();
       img.src = item.imageUrl;
+      img.loading = "eager"; // ensures browser preloads it immediately
+      img.decoding = "async";
       img.onload = () => {
         loadedCount++;
         if (loadedCount === total) {
@@ -57,13 +61,18 @@ const Gallery = () => {
       </div>
 
       <div className="acm-gallery-container">
-        <div className="acm-gallery-track">
+        <div className={`acm-gallery-track ${loaded ? 'loaded' : ''}`}>
           {extendedGalleryData.map((item, index) => (
             <div
               className={`acm-gallery-card ${item.size} ${!loaded ? 'skeleton' : ''}`}
               key={index}
             >
-              {loaded && <img src={item.imageUrl} alt={`Team gallery item ${index + 1}`} />}
+              <img
+                src={item.imageUrl}
+                alt={`Team gallery item ${index + 1}`}
+                loading="eager"
+                decoding="async"
+              />
             </div>
           ))}
         </div>

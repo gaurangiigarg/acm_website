@@ -18,7 +18,7 @@
     background-color: transparent;
     display: flex;
     flex-direction: column; /* Heading stays above */
-    gap: 4rem; /* Space between heading and cards */
+    gap: 6rem; /* Space between heading and cards */
 }
 /* Heading styles */
 .sponsors-heading {
@@ -39,6 +39,6 @@
     display: flex;
     flex-direction: row;   /* align cards horizontally */
     justify-content: center; /* center the group */
-    gap: 2rem;             /* spacing between cards */
+    gap: 2.3rem;             /* spacing between cards */
     flex-wrap: wrap;       /* optional: allow wrapping on smaller screens */
 }
