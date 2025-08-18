@@ -4,7 +4,6 @@
 :root {
     --text-color: #c9d1d9;
     --heading-color: #ffffff;
-    --card-background: #0a2540; /* Dark blue background for cards */
     --highlight-color: #58a6ff;
     --logo-color: #ffffff; /* White logos look better on dark blue */
 }
@@ -18,10 +17,9 @@
     color: var(--text-color);
     background-color: transparent;
     display: flex;
-    flex-direction: column; /* Stack heading on top of cards */
-    gap: 8rem;          /* Space between heading and cards */
+    flex-direction: column; /* Heading stays above */
+    gap: 4rem; /* Space between heading and cards */
 }
-
 /* Heading styles */
 .sponsors-heading {
     font-size: clamp(2rem, 5vw, 3rem);
@@ -37,44 +35,10 @@
     color: var(--highlight-color);
 }
 
-/* Grid container for the logos */
-.logo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* was 220px → now slimmer */
-    gap: 6rem;
-    justify-content: start;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0;
-}
-/* Individual logo card styles */
-.logo-card {
-    background-color: var(--card-background);
-    border-radius: 20px;
-    aspect-ratio: 4 / 3;
-    min-height: 180px;   /* ensures bigger card size */
+.sponsors-cards {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;     /* more padding inside */
-    box-sizing: border-box;
-    transition: background-color 0.3s, transform 0.3s ease;
-}
-
-.logo-card:hover {
-    background-color: #102a4f; /* Slightly lighter blue on hover */
-    transform: translateY(-5px);
-}
-
-.logo-card svg, .logo-card .text-logo {
-    height: 80%; /* Increased from 40% */
-    max-width: 85%; /* Increased from 80% */
-    fill: var(--logo-color); /* White logos on blue */
-    transition: fill 0.3s;
-}
-
-.text-logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--logo-color);
+    flex-direction: row;   /* align cards horizontally */
+    justify-content: center; /* center the group */
+    gap: 2rem;             /* spacing between cards */
+    flex-wrap: wrap;       /* optional: allow wrapping on smaller screens */
 }
