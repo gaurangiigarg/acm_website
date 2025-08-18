@@ -5,7 +5,8 @@ import useLenis from '../../useLenis';
 import LiquidChrome from '../../../LiquidChrome/LiquidChrome/LiquidChrome';
 import Robot from '../../Robot'
 import Description from './Description';
-import Gallery from './Gallery'; 
+import Gallery from './Gallery';
+import Sponsors from './Sponsors';
 
 const AboutUsSection = () => {
   useLenis(); 
@@ -42,6 +43,8 @@ const AboutUsSection = () => {
 
         <div className="about-us-bottom-divider"></div>
       </section>
+
+      <Sponsors />
 
       <Gallery />
 

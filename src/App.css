@@ -164,11 +164,18 @@ body.lenis {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000008;
   color: #fff;
   padding: 2rem;
   font-family: 'Poppins', sans-serif;
   overflow-x: auto;
+}
+
+.scroll-black-bg {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0; /* start hidden */
+  z-index: -1;
 }
 
 .scroll-reveal-content {
