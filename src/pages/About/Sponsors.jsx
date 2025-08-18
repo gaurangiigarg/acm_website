@@ -14,7 +14,7 @@ const Sponsors = () => {
 
       <div className="sponsors-cards">
     <TiltedCard
-      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/logos/Dell.jpg"
+      imageSrc="https://raw.githubusercontent.com/upesnavneet/acm_website/main/src/assets/img/logos/Dell.jpg"
       altText="Dell Logo"
       containerHeight="250px"
       containerWidth="250px"
