@@ -95,13 +95,7 @@ function MainLandingPage() {
       </section>
 
       {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
-      <section className="app-section vertical-section">
-        <div className="robot-fade-container">
-          <Suspense fallback={<div>Loading...</div>}>
-            <Robot />
-          </Suspense>
-        </div>
-      </section>
+      
 
       <section className="app-section vertical-section">
         <Suspense fallback={<div>Loading...</div>}>
