@@ -100,7 +100,9 @@ function MainLandingPage() {
           particleCount={0}
         />
       </section>
-      
+      <section className="app-section vertical-section" id="about-reveal">
+        <About />
+      </section>
       <section className="app-section vertical-section">
         <RevealSection1 />
       </section>
@@ -121,11 +123,7 @@ function MainLandingPage() {
       <section className="app-section horizontal-scroll-section" id="chips-reveal">
         <div className="horizontal-inner" style={{ display: 'flex', height: '100vh', willChange: 'transform' }}>
           <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
-            <div className="robot-fade-container">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Robot />
-              </Suspense>
-            </div>
+            
           </div>
           <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
             <Suspense fallback={<div>Loading...</div>}>
