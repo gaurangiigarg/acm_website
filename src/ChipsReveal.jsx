@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Spline from '@splinetool/react-spline';
 import './ChipsReveal.css';
 import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
-
+import chipsvideo from '../src/assets/Chipsvideo.mp4';
 
 const ChipsReveal = () => {
   const descRef = useRef(null);
@@ -32,15 +31,18 @@ const ChipsReveal = () => {
 
   return (
     <div className="chips-reveal-wrapper relative overflow-hidden">
-      
+      {/* ✅ Video Background (hidden on small screens via CSS) */}
+      <video
+        className="chips-video-bg"
+        src={chipsvideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
-      {/* ✅ Spline (z-index: 1 by default unless styled otherwise) */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-        <Spline scene="https://prod.spline.design/NRGRP5heIlo3WYFI/scene.splinecode" />
-      </div>
-
-      {/* ✅ Text on top (z-index: 10) */}
-      <div className="decrypted-chips-text" style={{ position: 'relative', zIndex: 10 }}>
+      {/* ✅ Text on top */}
+      <div className="decrypted-chips-text">
         <DecryptedText
           text="INNOVATE. INSPIRE."
           sequential={true}
