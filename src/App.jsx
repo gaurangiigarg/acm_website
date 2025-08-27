@@ -90,9 +90,7 @@ function MainLandingPage() {
         </div>
       </section>
 
-      <section className="app-section vertical-section">
-        <BackgroundReveal />
-      </section>
+      
 
       {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
       
