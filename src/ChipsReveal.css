@@ -26,8 +26,6 @@
   margin: 0.2rem 0;
 }
 
-
-/* Fade-in animation */
 /* Fade-in animation */
 @keyframes fadeInUp {
   0% {
@@ -57,6 +55,7 @@
 .fade-in-up {
   animation: fadeInUp 1.2s ease forwards;
 }
+
 .chips-reveal-link {
   font-size: 1.05rem;
   line-height: 1.6;
@@ -68,7 +67,6 @@
   transition: transform 0.4s ease, opacity 0.6s ease;
   opacity: 0;
 }
-
 
 /* Responsive styling */
 @media (max-width: 800px) {
@@ -84,5 +82,10 @@
   .decrypted-chips-text {
     top: 8%;
     left: 4%;
+  }
+
+  /* ✅ Hide the Spline background on small screens */
+  .chips-reveal-wrapper > div:first-child {
+    display: none !important;
   }
 }
