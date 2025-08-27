@@ -80,7 +80,7 @@ function MainLandingPage() {
         <RevealSection1 />
       </section>
 
-    
+      {/* ✅ Scroll reveal section with fading background */}
       <section className="app-section scroll-reveal-section" id="reveal-text">
         <div className="scroll-black-bg"></div>
         <div className="scroll-reveal-content">
@@ -90,7 +90,9 @@ function MainLandingPage() {
         </div>
       </section>
 
-      
+      <section className="app-section vertical-section">
+        <BackgroundReveal />
+      </section>
 
       {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
       <section className="app-section vertical-section">
