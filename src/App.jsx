@@ -107,9 +107,7 @@ function MainLandingPage() {
         <Initiatives />
       </section>
 
-      <section id="spline-section" style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
-        <ExecutivesIntro />
-      </section>
+      
 
       <section className="app-section vertical-section" id="executives">
         <ExecutiveSlider />
