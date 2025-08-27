@@ -80,7 +80,7 @@ function MainLandingPage() {
         <RevealSection1 />
       </section>
 
-      {/* ✅ Scroll reveal section with fading background */}
+    
       <section className="app-section scroll-reveal-section" id="reveal-text">
         <div className="scroll-black-bg"></div>
         <div className="scroll-reveal-content">
@@ -95,13 +95,7 @@ function MainLandingPage() {
       </section>
 
       {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
-      <section className="app-section vertical-section">
-        <div className="robot-fade-container">
-          <Suspense fallback={<div>Loading...</div>}>
-            <Robot />
-          </Suspense>
-        </div>
-      </section>
+      
 
       <section className="app-section vertical-section">
         <Suspense fallback={<div>Loading...</div>}>
@@ -113,9 +107,7 @@ function MainLandingPage() {
         <Initiatives />
       </section>
 
-      <section id="spline-section" style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
-        <ExecutivesIntro />
-      </section>
+      
 
       <section className="app-section vertical-section" id="executives">
         <ExecutiveSlider />
