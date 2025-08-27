@@ -4,7 +4,6 @@ import React, { lazy, Suspense, useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import useLenis from './useLenis';
-import Particles from '../Background1/Particles/Particles';
 import Home from './home';
 import Navbar from './Navbar';
 import About from './About';
@@ -64,7 +63,10 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-      
+      <section className="app-section particles-section" id="home">
+        <Home />
+        <div className="transparent-overlay"></div>
+      </section>
 
       <section className="app-section vertical-section" id="about-reveal">
         <About />

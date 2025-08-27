@@ -204,3 +204,13 @@ body.lenis {
 }
 
 
+.transparent-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent; /* fully transparent */
+  z-index: 10; /* higher than Home, adjust as needed */
+  pointer-events: none; /* makes it "click-through" so Home is still interactive */
+}
