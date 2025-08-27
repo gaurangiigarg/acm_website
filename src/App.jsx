@@ -64,13 +64,7 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-      <section className="app-section particles-section" id="home">
-        <Home />
-        <Particles
-          particleColors={['#0C1636']}
-          particleCount={0}
-        />
-      </section>
+      
 
       <section className="app-section vertical-section" id="about-reveal">
         <About />
