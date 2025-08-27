@@ -28,56 +28,26 @@ function MainLandingPage() {
   useLenis();
 
   useLayoutEffect(() => {
-    // Horizontal scroll logic...
-    const aboutRevealSections = gsap.utils.toArray('.horizontal-scroll-section');
-    aboutRevealSections.forEach((section) => {
-      const inner = section.querySelector('.horizontal-inner');
-      const panels = gsap.utils.toArray('.horizontal-panel', inner);
-      if (!inner || panels.length === 0) return;
-
-      const totalScroll = inner.scrollWidth - window.innerWidth;
-
-      gsap.to(inner, {
-        x: () => `-${totalScroll}px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: () => `+=${totalScroll}`,
-          scrub: 0.6,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-    });
-
-    // ✅ Improved fade in/out logic for ScrollReveal section
+    // ✅ Only fade in/out logic for ScrollReveal section (horizontal scroll removed)
     const section = document.querySelector('.scroll-reveal-section');
     const bg = document.querySelector('.scroll-black-bg');
 
     if (section && bg) {
-      // This animation handles the fade-in when scrolling down
-      // and the fade-out when scrolling back up.
       gsap.to(bg, {
         opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "40% top", // Fades in over the first 40% of the viewport height
+          end: "40% top",
           scrub: true,
         },
       });
 
-      // This trigger handles the state of the background AFTER the section.
-      // It prevents the fade-out when scrolling down past the section.
       ScrollTrigger.create({
         trigger: section,
-        start: "bottom top", // Activates when the bottom of the section hits the top of the viewport
-        // When scrolling DOWN past the section, snap the background off.
+        start: "bottom top",
         onEnter: () => gsap.set(bg, { opacity: 0 }),
-        // When scrolling UP into the section from below, snap it back on.
         onLeaveBack: () => gsap.set(bg, { opacity: 1 }),
       });
     }
@@ -93,6 +63,7 @@ function MainLandingPage() {
       <div className="global-silk-bg">
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
+
       <section className="app-section particles-section" id="home">
         <Home />
         <Particles
@@ -100,9 +71,11 @@ function MainLandingPage() {
           particleCount={0}
         />
       </section>
+
       <section className="app-section vertical-section" id="about-reveal">
         <About />
       </section>
+
       <section className="app-section vertical-section">
         <RevealSection1 />
       </section>
@@ -120,26 +93,30 @@ function MainLandingPage() {
       <section className="app-section vertical-section">
         <BackgroundReveal />
       </section>
-      <section className="app-section horizontal-scroll-section" id="chips-reveal">
-        <div className="horizontal-inner" style={{ display: 'flex', height: '100vh', willChange: 'transform' }}>
-          <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
-            <div className="robot-fade-container">
-              <Suspense fallback={<div>Loading...</div>}>
-                <Robot />
-              </Suspense>
-            </div>
-          </div>
-          <div className="horizontal-panel" style={{ flex: '0 0 100vw' }}>
-            <Suspense fallback={<div>Loading...</div>}>
-              <ChipsReveal />
-            </Suspense>
-          </div>
+
+      {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
+      <section className="app-section vertical-section">
+        <div className="robot-fade-container">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Robot />
+          </Suspense>
         </div>
       </section>
+
+      <section className="app-section vertical-section">
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChipsReveal />
+        </Suspense>
+      </section>
+
       <section className="app-section vertical-section" id="initiatives">
         <Initiatives />
       </section>
-      
+
+      <section id="spline-section" style={{ width: '100%', height: '100vh', overflow: 'hidden' }}>
+        <ExecutivesIntro />
+      </section>
+
       <section className="app-section vertical-section" id="executives">
         <ExecutiveSlider />
       </section>
@@ -148,7 +125,6 @@ function MainLandingPage() {
 }
 
 export default function App() {
-  // Detect base path depending on environment
   const basename = import.meta.env.BASE_URL || '/';
 
   return (
