@@ -100,9 +100,7 @@ function MainLandingPage() {
           particleCount={0}
         />
       </section>
-      <section className="app-section vertical-section" id="about-reveal">
-        <About />
-      </section>
+      
       <section className="app-section vertical-section">
         <RevealSection1 />
       </section>
