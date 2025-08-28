@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0); /* transparent by default */
 }
 
 /* ✅ Video background */
@@ -97,5 +97,10 @@
   /* ✅ Hide video background on small screens */
   .chips-video-bg {
     display: none !important;
+  }
+
+  /* ✅ Black background only on smaller screens */
+  .chips-reveal-wrapper {
+    background-color: black;
   }
 }

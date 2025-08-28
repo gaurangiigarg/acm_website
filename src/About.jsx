@@ -1,39 +1,47 @@
 import React, { useRef, useEffect, useState } from 'react';
 import BlurText from '../BlurText/BlurText/BlurText';
-import AboutCarousel from '../Carousel/Carousel/Carousel'; // 👈 Import carousel
+import AboutCarousel from '../Carousel/Carousel/Carousel'; 
 import './About.css';
 
+// This component is designed to be a self-contained section of your page.
 const About = () => {
-  const sectionRef = useRef();
+  const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
+  // Intersection Observer to trigger animations when the section is visible
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.3 }
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the element is visible
+      }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    // Cleanup observer on component unmount
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section
-      className={`about-container fade-section ${visible ? 'visible' : ''}`}
+    // ✅ Changed <section> to <div> as requested.
+    // This block-level element should appear below the preceding content.
+    <div
       ref={sectionRef}
       id="about"
+      className={`about-container fade-section ${visible ? 'visible' : ''}`}
     >
-      {/* Left content */}
+      {/* Left content column */}
       <div className="about-left">
-        <div className="about-title-wrapper">
-          <BlurText
-            text="ABOUT US"
-            delay={350}
-            animateBy="words"
-            direction="top"
-            className="about-label"
-            stepDuration={0.6}
-          />
-        </div>
+        
 
         <h2 className="about-heading">
           One of the Best <span className="highlight">Student Chapters</span><br />
@@ -53,19 +61,18 @@ const About = () => {
         </ul>
       </div>
 
-      {/*  */}
-
+      {/* Right content column */}
       <div className="about-right">
         <AboutCarousel
-        baseWidth={500}
-        autoplay={true}
-        autoplayDelay={6000}
-        pauseOnHover={true}
-        loop={true}
-        round={false} />
+          baseWidth={500}
+          autoplay={true}
+          autoplayDelay={6000}
+          pauseOnHover={true}
+          loop={true}
+          round={false} 
+        />
       </div>
-
-    </section>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { lazy, Suspense, useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Import your components
 import useLenis from './useLenis';
 import Home from './home';
 import Navbar from './Navbar';
@@ -12,48 +13,48 @@ import Silk from '../Silk_background/Silk/Silk';
 import RevealSection1 from './RevealSection1';
 import BackgroundReveal from './BackgroundReveal';
 import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
-import ExecutivesIntro from './ExecutivesIntro';
 import Initiatives from './Initiatives';
-import AboutUs from './pages/About/AboutUsSection';   // ✅ Full About Page
+import AboutUs from './pages/About/AboutUsSection';
 import TeamsPage from './pages/Teams/TeamsPage';
 import './App.css';
 
-const Robot = lazy(() => import('./Robot'));
+// Lazy load components for better performance
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
 
 gsap.registerPlugin(ScrollTrigger);
 
+// This is your main landing page content.
+// Each <section> tag acts as a separate block, stacking vertically.
 function MainLandingPage() {
   useLenis();
 
+  // Your GSAP animation logic for scroll triggers
   useLayoutEffect(() => {
-    // ✅ Only fade in/out logic for ScrollReveal section (horizontal scroll removed)
     const section = document.querySelector('.scroll-reveal-section');
     const bg = document.querySelector('.scroll-black-bg');
 
     if (section && bg) {
-      gsap.to(bg, {
-        opacity: 1,
-        ease: "none",
-        scrollTrigger: {
+      let ctx = gsap.context(() => {
+        gsap.to(bg, {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "40% top",
+            scrub: true,
+          },
+        });
+
+        ScrollTrigger.create({
           trigger: section,
-          start: "top top",
-          end: "40% top",
-          scrub: true,
-        },
+          start: "bottom top",
+          onEnter: () => gsap.set(bg, { opacity: 0 }),
+          onLeaveBack: () => gsap.set(bg, { opacity: 1 }),
+        });
       });
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: "bottom top",
-        onEnter: () => gsap.set(bg, { opacity: 0 }),
-        onLeaveBack: () => gsap.set(bg, { opacity: 1 }),
-      });
+      return () => ctx.revert(); // Cleanup GSAP context
     }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, []);
 
   return (
@@ -63,20 +64,22 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-      <section className="app-section particles-section" id="home">
+      {/* Section 1: Home Page */}
+      {/* This section should occupy the first screen view and push everything else down. */}
+      <section className="app-section" id="home">
         <Home />
-        <div className="transparent-overlay"></div>
       </section>
 
-      <section className="app-section vertical-section" id="about-reveal">
-        <About />
-      </section>
+      {/* Section 2: About Section */}
+      {/* This section should appear directly below the Home section. */}
+      
 
-      <section className="app-section vertical-section">
+      {/* Section 3: Reveal Section */}
+      <section className="app-section">
         <RevealSection1 />
       </section>
 
-      {/* ✅ Scroll reveal section with fading background */}
+      {/* Section 4: Scroll Reveal Text */}
       <section className="app-section scroll-reveal-section" id="reveal-text">
         <div className="scroll-black-bg"></div>
         <div className="scroll-reveal-content">
@@ -86,32 +89,29 @@ function MainLandingPage() {
         </div>
       </section>
 
-      <section className="app-section vertical-section">
+      {/* Other sections continue to stack vertically... */}
+      <section className="app-section">
         <BackgroundReveal />
       </section>
 
-      {/* ✅ Robot and ChipsReveal are now stacked vertically (no horizontal scroll) */}
-      
-
-      <section className="app-section vertical-section">
+      <section className="app-section">
         <Suspense fallback={<div>Loading...</div>}>
           <ChipsReveal />
         </Suspense>
       </section>
 
-      <section className="app-section vertical-section" id="initiatives">
+      <section className="app-section" id="initiatives">
         <Initiatives />
       </section>
 
-      
-
-      <section className="app-section vertical-section" id="executives">
+      <section className="app-section" id="executives">
         <ExecutiveSlider />
       </section>
     </>
   );
 }
 
+// Main App component with routing
 export default function App() {
   const basename = import.meta.env.BASE_URL || '/';
 
