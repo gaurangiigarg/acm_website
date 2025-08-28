@@ -90,9 +90,7 @@ function MainLandingPage() {
       </section>
 
       {/* Other sections continue to stack vertically... */}
-      <section className="app-section">
-        <BackgroundReveal />
-      </section>
+      
 
       <section className="app-section">
         <Suspense fallback={<div>Loading...</div>}>
