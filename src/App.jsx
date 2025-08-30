@@ -18,7 +18,6 @@ import AboutUs from './pages/About/AboutUsSection';
 import TeamsPage from './pages/Teams/TeamsPage';
 import './App.css';
 
-// Lazy load components for better performance
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
 
 gsap.registerPlugin(ScrollTrigger);
