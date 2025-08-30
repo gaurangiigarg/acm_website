@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import useLenis from './useLenis';   // ✅ custom hook
 import './About.css';
 import image1 from '../src/assets/img/HOC/img5.jpeg';
-import image2 from '../src/assets/img/Prodigy24/20240410_061802802_iOS.jpg';
+import image2 from '../src/assets/img/Prodigy24/umm.jpg';
 import image3 from '../src/assets/img/Prodigy24/HRK_0356.jpg';
 
 const About = () => {
