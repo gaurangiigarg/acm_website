@@ -73,7 +73,7 @@ function MainLandingPage() {
 
       
 
-      
+      <RevealSection1 />
     
       
 
@@ -85,14 +85,13 @@ function MainLandingPage() {
           </ScrollReveal>
         </div>
       </section>
-
-      {/* Other sections continue to stack vertically... */}
       
+      <BackgroundReveal />
 
       <section className="app-section">
-        <Suspense fallback={<div>Loading...</div>}>
+    
           <ChipsReveal />
-        </Suspense>
+
       </section>
 
       <section className="app-section" id="initiatives">

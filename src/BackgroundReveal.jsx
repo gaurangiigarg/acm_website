@@ -16,7 +16,7 @@ function BackgroundReveal() {
     const trigger = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top top',
-      end: '+=0', // Keep the short scroll pinning
+      end: '+=0', 
       scrub: true,
       pin: true,
       onEnter: () => {
@@ -35,16 +35,7 @@ function BackgroundReveal() {
 
       <div className="galaxy-black-bg"></div>
 
-      <div className="galaxy-bg-wrapper">
-        <Galaxy 
-            mouseRepulsion={false}
-          mouseInteraction={false}
-          density={0.3}
-          glowIntensity={0.1}
-          saturation={0}
-          hueShift={70}
-        />
-      </div>
+      
 
       <div className="spline-bg-wrapper">
         <Spline

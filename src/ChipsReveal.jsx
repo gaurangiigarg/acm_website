@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './ChipsReveal.css';
 import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
-import chipsvideo from '../src/assets/Chipsvideo.mp4';
+import chipsvideo from '../src/assets/Chipsvideo.webm';
 
 const ChipsReveal = () => {
   const descRef = useRef(null);
