@@ -3,7 +3,7 @@
 .home-container {
   position: relative;
   width: 100vw;
-  height: 100vh;              /* Full viewport */
+  height: 100vh;              
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -64,8 +64,10 @@
 /* 📱 Mobile fix */
 @media (max-width: 768px) {
   .home-container {
-    margin-top: 12rem;
-    margin-bottom: 20rem; /* smaller gap on mobile */
+    width: 100vw;
+    height: 100vh;  
+    
+    margin-bottom: 1rem; 
   }
 
   .acmw-button {

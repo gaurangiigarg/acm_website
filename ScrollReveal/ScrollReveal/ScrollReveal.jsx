@@ -25,7 +25,11 @@ const ScrollReveal = ({
     return text.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word;
       return (
-        <span className="word" key={index}>
+        <span
+          className="word"
+          key={index}
+          style={{ display: 'inline-block', willChange: 'opacity, transform' }}
+        >
           {word}
         </span>
       );
@@ -41,64 +45,59 @@ const ScrollReveal = ({
         ? scrollContainerRef.current
         : window;
 
-    gsap.fromTo(
-      el,
-      { transformOrigin: '0% 50%', rotate: baseRotation },
-      {
-        ease: 'none',
-        rotate: 0,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top bottom',
-          end: rotationEnd,
-          scrub: true,
-        },
-      }
-    );
+    // ✅ Pre-set initial state for smoother rendering
+    gsap.set(el, { transformOrigin: '0% 50%', rotate: baseRotation });
+    const words = gsap.utils.toArray(el.querySelectorAll('.word'));
 
-    const wordElements = el.querySelectorAll('.word');
+    gsap.set(words, {
+      autoAlpha: baseOpacity,
+      ...(enableBlur && {
+        textShadow: `0 0 ${blurStrength}px rgba(0,0,0,0.6)`,
+      }),
+    });
 
-    gsap.fromTo(
-      wordElements,
-      { opacity: baseOpacity, willChange: 'opacity' },
-      {
-        ease: 'none',
-        opacity: 1,
-        stagger: 0.05,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top bottom-=20%',
-          end: wordAnimationEnd,
-          scrub: true,
-        },
-      }
-    );
+    // Container rotation
+    gsap.to(el, {
+      rotate: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        scroller,
+        start: 'top bottom',
+        end: rotationEnd,
+        scrub: true,
+      },
+    });
 
-    if (enableBlur) {
-      gsap.fromTo(
-        wordElements,
-        { filter: `blur(${blurStrength}px)` },
-        {
-          ease: 'none',
-          filter: 'blur(0px)',
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: el,
-            scroller,
-            start: 'top bottom-=20%',
-            end: wordAnimationEnd,
-            scrub: true,
-          },
-        }
-      );
-    }
+    // Word fade + blur
+    gsap.to(words, {
+      autoAlpha: 1,
+      textShadow: enableBlur ? '0 0 0px rgba(0,0,0,0)' : 'none',
+      stagger: 0.05,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        scroller,
+        start: 'top bottom-=20%',
+        end: wordAnimationEnd,
+        scrub: true,
+      },
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.trigger === el) trigger.kill();
+      });
     };
-  }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
+  }, [
+    scrollContainerRef,
+    enableBlur,
+    baseRotation,
+    baseOpacity,
+    rotationEnd,
+    wordAnimationEnd,
+    blurStrength,
+  ]);
 
   return (
     <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>

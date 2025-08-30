@@ -23,8 +23,7 @@ const ChipsReveal = lazy(() => import('./ChipsReveal'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-// This is your main landing page content.
-// Each <section> tag acts as a separate block, stacking vertically.
+
 function MainLandingPage() {
   useLenis();
 
@@ -64,22 +63,20 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-      {/* Section 1: Home Page */}
-      {/* This section should occupy the first screen view and push everything else down. */}
-      <section className="app-section" id="home">
-        <Home />
-      </section>
 
-      {/* Section 2: About Section */}
-      {/* This section should appear directly below the Home section. */}
+ 
+  
+        <Home />
+
+
+      <About />
+
       
 
-      {/* Section 3: Reveal Section */}
-      <section className="app-section">
-        <RevealSection1 />
-      </section>
+      
+    
+      
 
-      {/* Section 4: Scroll Reveal Text */}
       <section className="app-section scroll-reveal-section" id="reveal-text">
         <div className="scroll-black-bg"></div>
         <div className="scroll-reveal-content">
@@ -105,6 +102,9 @@ function MainLandingPage() {
       <section className="app-section" id="executives">
         <ExecutiveSlider />
       </section>
+
+        
+
     </>
   );
 }

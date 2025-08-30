@@ -1,76 +1,130 @@
-import React, { useRef, useEffect, useState } from 'react';
-import BlurText from '../BlurText/BlurText/BlurText';
-import AboutCarousel from '../Carousel/Carousel/Carousel'; 
+import React, { useEffect } from 'react';
+import useLenis from './useLenis';   // ✅ custom hook
 import './About.css';
+import image1 from '../src/assets/img/HOC/img5.jpeg';
+import image2 from '../src/assets/img/Prodigy24/20240410_061802802_iOS.jpg';
+import image3 from '../src/assets/img/Prodigy24/HRK_0356.jpg';
 
-// This component is designed to be a self-contained section of your page.
 const About = () => {
-  const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false);
+  useLenis();
 
-  // Intersection Observer to trigger animations when the section is visible
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0.3, // Trigger when 30% of the element is visible
+    // --- DOM Elements ---
+    const scrollContainer = document.querySelector('.scroll-container');
+    const leftPanel = document.querySelector('.left-panel');
+    const rightPanel = document.querySelector('.right-panel');
+    const aboutText = document.querySelector('.about-text');
+
+    // --- Animation Constants ---
+    const startFontSize = 25;
+    const endFontSize = 8;
+    const startFlex = 55;
+    const endFlex = 25;
+
+    // --- Scroll Animation Handler ---
+    const handleScroll = () => {
+      if (!scrollContainer || !leftPanel || !rightPanel || !aboutText) return;
+
+      // ✅ Disable scroll animation on small screens
+      if (window.innerWidth <= 768) {
+        leftPanel.style.flexBasis = '';
+        rightPanel.style.flexBasis = '';
+        aboutText.style.fontSize = '';
+        return;
       }
-    );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+      const scrollableHeight = scrollContainer.scrollHeight - window.innerHeight;
+      const scrollTop = window.scrollY;
+      let scrollPercent = scrollTop / (scrollableHeight * 0.75);
+      if (scrollPercent > 1) scrollPercent = 1;
 
-    // Cleanup observer on component unmount
+      const currentFontSize =
+        startFontSize - (startFontSize - endFontSize) * scrollPercent;
+      const currentLeftFlex =
+        startFlex - (startFlex - endFlex) * scrollPercent;
+      const currentRightFlex = 100 - currentLeftFlex;
+
+      requestAnimationFrame(() => {
+        aboutText.style.fontSize = `${currentFontSize}vw`;
+        leftPanel.style.flexBasis = `${currentLeftFlex}%`;
+        rightPanel.style.flexBasis = `${currentRightFlex}%`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // --- Image Carousel ---
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    let currentSlideIndex = 0;
+    const slideInterval = 4000;
+
+    const showNextSlide = () => {
+      if (carouselSlides.length > 1) {
+        carouselSlides[currentSlideIndex].classList.remove('active');
+        currentSlideIndex = (currentSlideIndex + 1) % carouselSlides.length;
+        carouselSlides[currentSlideIndex].classList.add('active');
+      }
+    };
+    const carouselTimer = setInterval(showNextSlide, slideInterval);
+
+    // --- Cleanup ---
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(carouselTimer);
     };
   }, []);
 
   return (
-    // ✅ Changed <section> to <div> as requested.
-    // This block-level element should appear below the preceding content.
-    <div
-      ref={sectionRef}
-      id="about"
-      className={`about-container fade-section ${visible ? 'visible' : ''}`}
-    >
-      {/* Left content column */}
-      <div className="about-left">
-        
+    <div className="scroll-container">
+      <div className="sticky-container">
+        {/* Decorative Arrow (hidden on mobile via CSS) */}
+        <div className="decorative-arrow">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19.5 4.5l-15 15m0 0h11.25m-11.25 0V8.25"
+            />
+          </svg>
+        </div>
 
-        <h2 className="about-heading">
-          One of the Best <span className="highlight">Student Chapters</span><br />
-          since <span className="highlight">10 Years.</span>
-        </h2>
+        {/* Split Layout */}
+        <div className="split-layout">
+          {/* Left Panel */}
+          <div className="left-panel">
+            <h1 className="about-text">ABOUT</h1>
+          </div>
 
-        <p className="about-description">
-          We work round-the-clock to hone the adroit programmer in our members through many events,
-          workshops, fests, contests, and talks all year long. Our student body is headed by confident
-          and proficient members who work seamlessly for this cause. This holistic approach equips our members with the skills, confidence, and industry exposure necessary to excel in competitive career paths and future professional endeavors.
-        </p>
+          {/* Right Panel */}
+          <div className="right-panel">
+            {/* Carousel */}
+            <div className="right-panel-image-container">
+              <img src={image3} alt="Vision" className="carousel-slide active" />
+              <img src={image2} alt="Growth" className="carousel-slide" />
+              <img src={image1} alt="Community" className="carousel-slide" />
+            </div>
 
-        <ul className="about-features">
-          <li>Complete Holistic Development</li>
-          <li>Guided Mentorship from Seniors</li>
-          <li>Community Access, Coding classes, Projects etc.</li>
-        </ul>
-      </div>
+            {/* Text */}
+            <div className="right-panel-text-container">
+              <div className="content-wrapper">
+                <h2>
+                  One of the Best <span>Student Chapters</span> since 10 Years.
+                </h2>
+                <p>
+                  We work round-the-clock to hone the adroit programmer in our members through many events, workshops, fests, contests, and talks all year long. Our student body is headed by confident and proficient members who work seamlessly for this cause.
+                </p>
+              </div>
 
-      {/* Right content column */}
-      <div className="about-right">
-        <AboutCarousel
-          baseWidth={500}
-          autoplay={true}
-          autoplayDelay={6000}
-          pauseOnHover={true}
-          loop={true}
-          round={false} 
-        />
+             
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
