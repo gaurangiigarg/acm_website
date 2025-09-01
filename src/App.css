@@ -11,13 +11,13 @@ html, body {
   width: 100%;
   height: 100%;
   scroll-behavior: auto;
-  overflow-x: clip; /* Prevent horizontal overflow */
+  overflow-x: clip; 
 }
 
-/* Hide scrollbars (cross-browser) */
 body::-webkit-scrollbar {
   display: none;
 }
+
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -25,40 +25,31 @@ body {
   overscroll-behavior: none;
 }
 
-/* General Scrollable Content Helpers */
 .scroll-content {
   display: flex;
   flex-direction: column;
 }
 
-/* Section Styling */
+
 section {
   width: 100%;
   position: relative;
 }
 
 .app-section {
-  flex: 0 0 100vw;
+
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
 }
 
-/* Particle Fixes */
+
 .particles-section {
   position: relative;
 }
 
-/*
-  ✅ THE PROBLEMATIC CODE BLOCK BELOW HAS BEEN REMOVED.
-  This fixes the overlap by keeping the Home section in the normal document flow.
-  You may need to add component-specific styles inside your Home.css
-  to layer your particles and text correctly.
-*/
-
-/* Scrollbar Styling (fallback) */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -162,7 +153,7 @@ body.lenis {
 .scroll-black-bg {
   position: absolute;
   inset: 0;
-  background: black;
+  background: rgba(0, 0, 0, 0);
   opacity: 0; /* start hidden */
   z-index: -1;
 }

@@ -19,6 +19,7 @@ const ScrollReveal = ({
   wordAnimationEnd = "bottom bottom"
 }) => {
   const containerRef = useRef(null);
+  const bgRef = useRef(null);
 
   const splitText = useMemo(() => {
     const text = typeof children === 'string' ? children : '';
@@ -38,14 +39,32 @@ const ScrollReveal = ({
 
   useEffect(() => {
     const el = containerRef.current;
-    if (!el) return;
+    const bg = bgRef.current;
+    if (!el || !bg) return;
 
     const scroller =
       scrollContainerRef && scrollContainerRef.current
         ? scrollContainerRef.current
         : window;
 
-    // ✅ Pre-set initial state for smoother rendering
+    // ✅ Background fade in/out
+    gsap.fromTo(
+      bg,
+      { backgroundColor: 'rgba(0,0,0,0)' },
+      {
+        backgroundColor: 'rgba(0,0,0,1)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      }
+    );
+
+    // ✅ Text container rotation
     gsap.set(el, { transformOrigin: '0% 50%', rotate: baseRotation });
     const words = gsap.utils.toArray(el.querySelectorAll('.word'));
 
@@ -56,7 +75,6 @@ const ScrollReveal = ({
       }),
     });
 
-    // Container rotation
     gsap.to(el, {
       rotate: 0,
       ease: 'none',
@@ -69,7 +87,7 @@ const ScrollReveal = ({
       },
     });
 
-    // Word fade + blur
+    // ✅ Word fade
     gsap.to(words, {
       autoAlpha: 1,
       textShadow: enableBlur ? '0 0 0px rgba(0,0,0,0)' : 'none',
@@ -86,7 +104,7 @@ const ScrollReveal = ({
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.trigger === el) trigger.kill();
+        if (trigger.trigger === el || trigger.trigger === bg) trigger.kill();
       });
     };
   }, [
@@ -100,9 +118,27 @@ const ScrollReveal = ({
   ]);
 
   return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
+    <div className="scroll-reveal-wrapper" style={{ position: "relative" }}>
+      {/* Background overlay */}
+      <div
+        ref={bgRef}
+        className="scroll-reveal-bg"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+          backgroundColor: "rgba(0,0,0,0)",
+        }}
+      />
+
+      {/* Text */}
+      <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
+        <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
+      </h2>
+    </div>
   );
 };
 

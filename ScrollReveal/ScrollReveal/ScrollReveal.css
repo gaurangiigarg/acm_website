@@ -1,6 +1,4 @@
-.scroll-reveal {
-  margin: 20px 0;
-}
+
 
 .scroll-reveal-text {
   font-size: clamp(1.6rem, 4vw, 3rem);
@@ -8,6 +6,14 @@
   font-weight: 600;
 }
 
+.scroll-reveal {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;  
+}
 .word {
   display: inline-block;
 }

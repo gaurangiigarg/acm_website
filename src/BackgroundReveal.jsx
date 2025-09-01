@@ -3,13 +3,14 @@ import React, { useEffect, useRef } from 'react';
 
 // Data for the committees
 const committeesData = [
-    { name: 'Technical', description: 'Driving innovation through code, workshops, and cutting-edge tech projects.' },
-    { name: 'Events', description: 'Crafting memorable experiences and flagship events that bring our community together.' },
-    { name: 'Operations', description: 'The backbone of the chapter, ensuring everything runs smoothly behind the scenes.' },
-    { name: 'VFX', description: 'Bringing ideas to life with stunning visual effects, animation, and creative motion graphics.' },
-    { name: 'Design', description: 'Shaping our visual identity with beautiful graphics, UI/UX, and creative branding.' },
+    { name: 'Technical', description: "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES and works on projects that help students learn." },
+    { name: 'Events', description: 'The brain of the chapter, organizes a variety of events, our vivacious team. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
+    
+    { name: 'Design & VFX', description: 'This distinguished committee is the creative house of the chapters. This team always leads the forefront by making breathtaking videos and developing visually appealing graphic material.' },
+    { name: 'Editorial', description: "The Editorial Committee is the brainchild behind the Chapter's all formal communications, blogs, social media content and document all the daily proceedings." },
     { name: 'CSR', description: 'Making a positive impact on society through meaningful community service initiatives.' },
-    { name: 'PR', description: 'Managing our public image, outreach, and communications to the wider world.' }
+    { name: 'PR', description: 'Managing our public image, outreach, and communications to the wider world.' },
+    { name: 'Operations', description: 'The backbone of the chapter, ensuring everything runs smoothly behind the scenes.' },
 ];
 
 // ✅ All CSS is now embedded here to fix the import error

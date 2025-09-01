@@ -56,7 +56,7 @@ const About = () => {
     };
     const carouselTimer = setInterval(showNextSlide, slideInterval);
 
-    // --- Intersection Observer for Text Animation (repeats every scroll) ---
+
     const textSections = document.querySelectorAll('.text-section');
     const observerOptions = {
       root: null,
@@ -105,21 +105,19 @@ const About = () => {
             </h1>
           </div>
 
-          {/* Right Panel */}
           <div className="right-panel">
-            {/* Carousel */}
+    
             <div className="right-panel-image-container">
               <img src={image3} alt="Vision" className="carousel-slide active" />
               <img src={image2} alt="Growth" className="carousel-slide" />
               <img src={image1} alt="Community" className="carousel-slide" />
             </div>
-
-            {/* Text Container */}
+=
             <div className="right-panel-text-container">
               <div className="text-section">
                 <h2>One of the best <span>Student Chapters</span> since 10 years.</h2>
                 <p>
-                  Work with the industry's finest—an experienced senior team
+                  Work with the industry's finest, an network of professionals
                   that's grown together through years of collaboration, united
                   by one goal: making your project exceed every expectation.
                 </p>

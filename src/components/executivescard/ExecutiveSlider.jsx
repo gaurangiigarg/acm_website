@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './ExecutiveSlider.css';
+import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst/'
 
 const ArrowIcon = ({ className }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -56,7 +57,7 @@ const TeamMemberCard = ({ name, title, description, imageUrl, index }) => {
 
 const ExecutiveSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const timerRef = useRef(null); // Ref to hold the interval ID
+  const timerRef = useRef(null);
 
   const executivesData = [
     {
@@ -64,7 +65,6 @@ const ExecutiveSlider = () => {
       title: "Faculty Cooridnator",
       description: "Over the years with UPES ACM-W, we've achieved great success—winning national and international awards and making our annual event, Prodigy, a consistent hit. ACM has always supported impactful CSR initiatives and meaningful collaborations. Being part of ACM empowers everyone to grow, showcase their strengths, and contribute to a better community.",
       imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/coverphoto.jpg"
-      
     },
     {
       name: "Sangam Khanna",
@@ -107,41 +107,59 @@ const ExecutiveSlider = () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, [slides.length]);
   
-  // useEffect hook to manage the autoslide timer
   useEffect(() => {
     timerRef.current = setInterval(goToNextSlide, 5000);
     return () => clearInterval(timerRef.current);
-  }, [activeIndex, goToNextSlide]); // Reruns when activeIndex changes to reset timer
+  }, [activeIndex, goToNextSlide]);
 
   const handleDotClick = (index) => {
-    clearInterval(timerRef.current); // Stop the current timer
-    setActiveIndex(index); // Set the new slide
+    clearInterval(timerRef.current);
+    setActiveIndex(index);
   };
 
   return (
-    <div className="app-container">
-      <div className="executives-slider">
-        <div
-          className="slides-container"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {slides.map((slide, slideIndex) => (
-            <div className="slide" key={slideIndex}>
-              {slide.map((executive, cardIndex) => (
-                <TeamMemberCard key={executive.name} {...executive} index={cardIndex} />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="dots-container">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`dot ${activeIndex === index ? 'active' : ''}`}
-              onClick={() => handleDotClick(index)}
-            />
-          ))}
+    <div className="executive-slider-page">
+      {/* 🌈 Background PrismaticBurst */}
+      <div className="prismatic-background">
+        <PrismaticBurst
+    animationType="rotate3d"
+    intensity={2}
+    speed={0.5}
+    distort={0}
+    paused={false}
+    offset={{ x: 0, y: 0 }}
+    hoverDampness={0.25}
+    rayCount={0}
+    mixBlendMode="lighten"
+    colors={['#15186F', '#000000', '#000000']}
+  />
+      </div>
+
+      {/* Slider content */}
+      <div className="app-container">
+        <div className="executives-slider">
+          <div
+            className="slides-container"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {slides.map((slide, slideIndex) => (
+              <div className="slide" key={slideIndex}>
+                {slide.map((executive, cardIndex) => (
+                  <TeamMemberCard key={executive.name} {...executive} index={cardIndex} />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="dots-container">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                aria-label={`Go to slide ${index + 1}`}
+                className={`dot ${activeIndex === index ? 'active' : ''}`}
+                onClick={() => handleDotClick(index)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

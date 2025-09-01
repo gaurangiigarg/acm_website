@@ -16,6 +16,7 @@ import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
 import Initiatives from './Initiatives';
 import AboutUs from './pages/About/AboutUsSection';
 import TeamsPage from './pages/Teams/TeamsPage';
+import Leaders from './Leaders';
 import './App.css';
 
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
@@ -62,9 +63,6 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-
- 
-  
         <Home />
 
 
@@ -76,14 +74,13 @@ function MainLandingPage() {
     
       
 
-      <section className="app-section scroll-reveal-section" id="reveal-text">
-        <div className="scroll-black-bg"></div>
+       
         <div className="scroll-reveal-content">
           <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
             Want to know who makes all that happen?
           </ScrollReveal>
         </div>
-      </section>
+   
       
       <BackgroundReveal />
 
@@ -97,11 +94,12 @@ function MainLandingPage() {
         <Initiatives />
       </section>
 
-      <section className="app-section" id="executives">
-        <ExecutiveSlider />
-      </section>
+      <Leaders />
 
-        
+
+        <ExecutiveSlider />
+
+
 
     </>
   );
