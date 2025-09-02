@@ -67,6 +67,7 @@ const ExecutiveSlider = () => {
   const timerRef = useRef(null);
   const [isSliderVisible, setIsSliderVisible] = useState(false);
   const sliderPageRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const executivesData = [
     {
@@ -107,10 +108,20 @@ const ExecutiveSlider = () => {
     }
   ];
 
-  const slides = [];
-  for (let i = 0; i < executivesData.length; i += 2) {
-    slides.push(executivesData.slice(i, i + 2));
-  }
+  // 👇 Responsiveness: adjust slides based on screen size
+  const getSlides = () => {
+    if (isMobile) {
+      return executivesData.map((exec) => [exec]); // one per slide
+    } else {
+      const slides = [];
+      for (let i = 0; i < executivesData.length; i += 2) {
+        slides.push(executivesData.slice(i, i + 2));
+      }
+      return slides;
+    }
+  };
+
+  const slides = getSlides();
 
   const goToNextSlide = useCallback(() => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -121,13 +132,18 @@ const ExecutiveSlider = () => {
     return () => clearInterval(timerRef.current);
   }, [activeIndex, goToNextSlide]);
 
-  // This useEffect handles both fading in and fading out
+  // Update mobile state on resize
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // IntersectionObserver for background fade
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        // This boolean is true when the element is visible and false when it's not.
-        // It works for scrolling in either direction.
         setIsSliderVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
@@ -150,7 +166,6 @@ const ExecutiveSlider = () => {
       ref={sliderPageRef}
       style={{ position: 'relative', isolation: 'isolate' }}
     >
-      {/* Solid Black Background Layer */}
       <div
         style={{
           backgroundColor: '#000',
@@ -159,12 +174,10 @@ const ExecutiveSlider = () => {
           zIndex: -2,
         }}
       />
-
-      {/* Fading PrismaticBurst Layer */}
       <div
         className="prismatic-background"
         style={{
-          opacity: isSliderVisible ? 1 : 0, // Opacity is controlled by visibility state
+          opacity: isSliderVisible ? 1 : 0,
           transition: 'opacity 0.7s ease-in-out',
           position: 'absolute',
           inset: 0,
@@ -185,7 +198,6 @@ const ExecutiveSlider = () => {
         />
       </div>
 
-      {/* Slider content (remains on top) */}
       <div className="app-container">
         <div className="executives-slider">
           <div

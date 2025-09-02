@@ -4,6 +4,12 @@ import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import DOC from '../src/assets/img/codeanytime24/img1.jpg';
+import HOC from '../src/assets/img/HOC/img5.jpeg';
+import codeanytime from '../src/assets/img/codeanytime24/img2.jpg';
+import Spyc from '../src/assets/img/TTR/img1.jpg';
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,22 +18,22 @@ const cardData = [
     {
         category: 'Technical',
         title: '21 Days of Code',
-        imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/codeanytime24/20240902_184154.jpg'
+        imageUrl: DOC
     },
     {
         category: 'CSR',
         title: 'Hour Of Code',
-        imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/HOC/img5.jpeg'
+        imageUrl: HOC
     },
     {
         category: 'Technical',
         title: 'Code <br> Anytime',
-        imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/codeanytime24/20240902_184253.jpg'
+        imageUrl: codeanytime
     },
     {
         category: 'Technical',
         title: 'Spy-C',
-        imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/TTR/img1.jpg'
+        imageUrl: Spyc
     },
     {
         category: 'Photography',

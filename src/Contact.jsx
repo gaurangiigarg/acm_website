@@ -251,7 +251,7 @@ const IntroContact = () => {
                     target,
                     { backgroundColor: '#02030a' },
                     {
-                        backgroundColor: '#253A95',
+                        backgroundColor: '#233B90',
                         ease: 'none',
                         scrollTrigger: {
                             trigger: target,
