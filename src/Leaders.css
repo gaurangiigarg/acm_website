@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #02030a; /* Darkest blue background */
+    color: #E0E0E0;
+    margin: 0;
+    padding: 0;
+}
+
+.leaders-intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left for desktop */
+    min-height: 100vh;
+    padding: 2rem 5rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    background-color: #02030a; /* Match body background */
+}
+
+.leaders-intro-content {
+    max-width: 800px;
+    text-align: left;
+    z-index: 2;
+    position: relative;
+}
+
+.intro-eyebrow {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5a79ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.intro-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #5a79ff;
+    margin-right: 1rem;
+}
+
+.leaders-intro-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 1.5rem 0;
+    text-shadow: 0 0 10px #2A4BFF, 0 0 20px #0022FF, 0 0 40px #001C9C;
+}
+
+.leaders-intro-text {
+    font-size: 1.125rem;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: 0;
+    color: #A8B2D1;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .leaders-intro-container {
+        justify-content: center; /* Center content on mobile */
+        padding: 2rem;
+    }
+    .leaders-intro-content {
+        text-align: center; /* Center text on mobile */
+    }
+    .intro-eyebrow {
+        justify-content: center; /* Center eyebrow content */
+    }
+    .intro-eyebrow::before {
+        margin-right: 0.5rem;
+    }
+    .leaders-intro-title {
+        font-size: 2.5rem;
+    }
+    .leaders-intro-text {
+        font-size: 1rem;
+    }
+}

@@ -97,7 +97,7 @@ function MainLandingPage() {
       <Leaders />
 
 
-        <ExecutiveSlider />
+      <ExecutiveSlider />
 
 
 

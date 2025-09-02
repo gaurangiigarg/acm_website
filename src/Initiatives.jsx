@@ -1,6 +1,11 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './Initiatives.css';
 import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 // --- Data for the carousel cards ---
 const cardData = [
@@ -33,11 +38,39 @@ const cardData = [
 
 // --- The Initiatives Carousel Component ---
 function Initiatives() {
+    const containerRef = useRef(null);
     const carouselRef = useRef(null);
     const [isPrevDisabled, setPrevDisabled] = useState(true);
     const [isNextDisabled, setNextDisabled] = useState(false);
 
-    // useCallback to memoize the function for performance
+    // ✅ Background fade from black → blue (GSAP ScrollTrigger)
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        gsap.fromTo(
+            el,
+            { backgroundColor: "#000000" },
+            {
+                backgroundColor: "#02030a",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true,
+                },
+            }
+        );
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => {
+                if (trigger.trigger === el) trigger.kill();
+            });
+        };
+    }, []);
+
+    // ✅ Update navigation buttons
     const updateButtons = useCallback(() => {
         const carousel = carouselRef.current;
         if (!carousel) return;
@@ -47,28 +80,26 @@ function Initiatives() {
 
         setPrevDisabled(scrollLeft < tolerance);
         setNextDisabled(scrollLeft > scrollWidth - clientWidth - tolerance);
-    }, []); // No dependencies, as it only relies on the ref
+    }, []);
 
-    // useEffect to handle side effects: adding event listeners
+    // ✅ Attach event listeners
     useEffect(() => {
         const carouselElement = carouselRef.current;
         if (carouselElement) {
             carouselElement.addEventListener('scroll', updateButtons);
             window.addEventListener('resize', updateButtons);
-            
-            // Initial check
             updateButtons();
         }
 
-        // Cleanup function to remove event listeners
         return () => {
             if (carouselElement) {
                 carouselElement.removeEventListener('scroll', updateButtons);
             }
             window.removeEventListener('resize', updateButtons);
         };
-    }, [updateButtons]); // Rerun effect if updateButtons changes
+    }, [updateButtons]);
 
+    // ✅ Scroll amount per card
     const getScrollAmount = () => {
         const carousel = carouselRef.current;
         if (!carousel) return 0;
@@ -95,18 +126,25 @@ function Initiatives() {
     };
 
     return (
-        <div className="initiatives-container">
-
-                <DecryptedText 
-                text="Our Initiatives"
+        <div 
+            ref={containerRef} 
+            className="initiatives-container"
+            style={{
+                width: "100%",
+                minHeight: "100vh",
+                
+            }}
+        >
+            <DecryptedText 
+                text="INITIATIVES"
                 sequential={true}
                 useOriginalCharsOnly={false}
                 animateOn="view"
                 revealDirection="start"
                 speed={50}
                 maxIterations={40}
-                parentClassName="initiatives-main-title" />
-
+                parentClassName="initiatives-main-title" 
+            />
 
             <div className="initiatives-carousel-wrapper">
                 <div className="initiatives-carousel-container" ref={carouselRef}>
@@ -119,7 +157,6 @@ function Initiatives() {
                             <div className="card-overlay"></div>
                             <div className="card-content">
                                 <p className="card-category">{card.category}</p>
-                                {/* Use dangerouslySetInnerHTML for the <br> tag */}
                                 <h2 className="card-title" dangerouslySetInnerHTML={{ __html: card.title }}></h2>
                             </div>
                         </div>

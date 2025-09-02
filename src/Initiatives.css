@@ -1,11 +1,11 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 body{
-  background-color: #000000;
+  background-color: #00000000;
 }
 
 .initiatives-container {
-  background-color: #000000; /* Solid black background */
+  background-color: #00000000; /* Solid black background */
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -56,7 +56,7 @@ body{
 /* Cards */
 .carousel-card {
   flex-shrink: 0;
-  width: 80%;
+  width: 60%;
   border-radius: 1.5rem;
   height: 50vh;
   max-height: 650px;

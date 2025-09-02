@@ -58,7 +58,8 @@ const ScrollReveal = ({
           trigger: el,
           scroller,
           start: 'top bottom',
-          end: 'bottom top',
+          // 👇 This value was changed to complete the animation at the halfway point.
+          end: 'center center',
           scrub: true,
         },
       }

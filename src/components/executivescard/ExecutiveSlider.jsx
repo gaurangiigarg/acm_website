@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './ExecutiveSlider.css';
-import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst/'
+import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst/';
+
+import PankajBadoni from '../../../src/assets/img/coverphoto.jpg';
+import SangamKhanna from '../../../src/assets/images/Sangam_Khanna.jpg';
+import TanayPrabhakar from '../../../src/assets/images/TanayPrabhakar.jpg';
+import DakshMehrotra from '../../../src/assets/images/Daksh_Mehrotra.jpeg';
+import AdvikaKaushik from '../../../src/assets/images/Advika_Kaushik.jpg';
+import RudranshSogani from '../../../src/assets/images/Rudransh_Sogani.jpg';
 
 const ArrowIcon = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+  <svg className={className} xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
   </svg>
 );
@@ -58,43 +65,45 @@ const TeamMemberCard = ({ name, title, description, imageUrl, index }) => {
 const ExecutiveSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const timerRef = useRef(null);
+  const [isSliderVisible, setIsSliderVisible] = useState(false);
+  const sliderPageRef = useRef(null);
 
   const executivesData = [
     {
       name: "Pankaj Badoni",
       title: "Faculty Cooridnator",
       description: "Over the years with UPES ACM-W, we've achieved great success—winning national and international awards and making our annual event, Prodigy, a consistent hit. ACM has always supported impactful CSR initiatives and meaningful collaborations. Being part of ACM empowers everyone to grow, showcase their strengths, and contribute to a better community.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/coverphoto.jpg"
+      imageUrl: PankajBadoni
     },
     {
       name: "Sangam Khanna",
       title: "Chairperson",
       description: "When I was first introduced to ACM and ACM-W at UPES, I was still grasping the basics of coding. Initiatives like 21 Days of Code, Code Anytime, and Spy C helped boost my confidence and solidified my decision to continue with ACM. Being part of ACM has been rewarding—not just for improving my technical skills, but also for learning teamwork, public relations, and event management.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/Sangam%20Khanna.jpg"
+      imageUrl: SangamKhanna
     },
     {
       name: "Tanay Prabhakar",
       title: "Vice-Chairperson",
       description: "When I joined college, the UPES-ACM Student Chapter quickly became a supportive community that helped me grow. It introduced me to a culture of coding excellence and teamwork. Over time, I moved from core member to office bearer and now serve as vice chairperson. This journey has been incredible, and as a leader, I aim to take our chapter to even greater heights, building on the legacy I received.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/Tanay%20Prabhakar.jpg"
+      imageUrl: TanayPrabhakar
     },
     {
       name: "Daksh Mehrotra",
       title: "Secretary",
       description: "My journey with UPES ACM has been truly transformative. From attending a technical event in my first year to becoming a core member and now Secretary, it's been a remarkable experience. The chapter became a second home, helping me develop leadership skills, and grow as a coder through initiatives like Code Anytime.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/Daksh%20Mehrotra.jpeg"
+      imageUrl: DakshMehrotra
     },
     {
       name: "Advika Kaushik",
       title: "Joint Secretary",
       description: "Joining UPES ACM was a turning point in my journey. From leading the VFX team to now serving as chapter secretary, it's been a rewarding ride filled with learnings. The challenging environment pushed me to grow as a confident communicator and team player. I'm grateful for the experiences, the friendships, and the skills I've gained along the way.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/Advika%20Kaushik.jpg"
+      imageUrl: AdvikaKaushik
     },
     {
       name: "Rudransh Sogani",
       title: "Treasurer",
       description: "Joining ACM and ACM-W at UPES marked the start of my programming journey. Activities like 21 Days of Code, Code Anytime, and Spy C helped build my confidence and solidified my fundamentals. The experience inspired me to stay involved, and being part of ACM-W has taught me not just technical skills, but also public relations, teamwork, and event organization. I'm proud to be part of such a vibrant and enriching student chapter.",
-      imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/images/Rudransh%20Sogani.JPG"
+      imageUrl: RudranshSogani
     }
   ];
 
@@ -102,15 +111,33 @@ const ExecutiveSlider = () => {
   for (let i = 0; i < executivesData.length; i += 2) {
     slides.push(executivesData.slice(i, i + 2));
   }
-  
+
   const goToNextSlide = useCallback(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, [slides.length]);
-  
+
   useEffect(() => {
     timerRef.current = setInterval(goToNextSlide, 5000);
     return () => clearInterval(timerRef.current);
   }, [activeIndex, goToNextSlide]);
+
+  // This useEffect handles both fading in and fading out
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        // This boolean is true when the element is visible and false when it's not.
+        // It works for scrolling in either direction.
+        setIsSliderVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+    const currentSliderPageRef = sliderPageRef.current;
+    if (currentSliderPageRef) observer.observe(currentSliderPageRef);
+    return () => {
+      if (currentSliderPageRef) observer.unobserve(currentSliderPageRef);
+    };
+  }, []);
 
   const handleDotClick = (index) => {
     clearInterval(timerRef.current);
@@ -118,24 +145,47 @@ const ExecutiveSlider = () => {
   };
 
   return (
-    <div className="executive-slider-page">
-      {/* 🌈 Background PrismaticBurst */}
-      <div className="prismatic-background">
+    <div
+      className="executive-slider-page"
+      ref={sliderPageRef}
+      style={{ position: 'relative', isolation: 'isolate' }}
+    >
+      {/* Solid Black Background Layer */}
+      <div
+        style={{
+          backgroundColor: '#000',
+          position: 'absolute',
+          inset: 0,
+          zIndex: -2,
+        }}
+      />
+
+      {/* Fading PrismaticBurst Layer */}
+      <div
+        className="prismatic-background"
+        style={{
+          opacity: isSliderVisible ? 1 : 0, // Opacity is controlled by visibility state
+          transition: 'opacity 0.7s ease-in-out',
+          position: 'absolute',
+          inset: 0,
+          zIndex: -1,
+        }}
+      >
         <PrismaticBurst
-    animationType="rotate3d"
-    intensity={2}
-    speed={0.5}
-    distort={0}
-    paused={false}
-    offset={{ x: 0, y: 0 }}
-    hoverDampness={0.25}
-    rayCount={0}
-    mixBlendMode="lighten"
-    colors={['#15186F', '#000000', '#000000']}
-  />
+          animationType="rotate3d"
+          intensity={2}
+          speed={0.5}
+          distort={0}
+          paused={false}
+          offset={{ x: 0, y: 0 }}
+          hoverDampness={0.25}
+          rayCount={0}
+          mixBlendMode="lighten"
+          colors={['#15186F', '#000000', '#000000']}
+        />
       </div>
 
-      {/* Slider content */}
+      {/* Slider content (remains on top) */}
       <div className="app-container">
         <div className="executives-slider">
           <div

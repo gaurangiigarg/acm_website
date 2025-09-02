@@ -1,67 +1,20 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
+import './Leaders.css'; // Import the new stylesheet
 
-import '../ScrollReveal/ScrollReveal/ScrollReveal.css';
-
-gsap.registerPlugin(ScrollTrigger);
-
-const ScrollReveal = ({
-  scrollContainerRef,
-  containerClassName = "",
-  start = "top bottom",
-  end = "bottom top"
-}) => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
-
-    // ✅ Background fade from black → blue
-    gsap.fromTo(
-      el,
-      { backgroundColor: "#000000" },
-      {
-        backgroundColor: "#15186F",
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start,
-          end,
-          scrub: true,
-        },
-      }
+const HearFromLeaders = () => {
+    // The component is now cleaner, with styling handled by the imported CSS file.
+    return (
+        <section className="leaders-intro-container">
+            <div className="leaders-intro-content">
+                <p className="intro-eyebrow">Insight & Vision</p>
+                <h1 className="leaders-intro-title">Hear From Our Leaders</h1>
+                <p className="leaders-intro-text">
+                    Discover the vision, passion, and dedication that drive our success. In the following section, our executive team shares their personal journeys and insights, offering a glimpse into the heart of our community.
+                </p>
+            </div>
+        </section>
     );
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.trigger === el) trigger.kill();
-      });
-    };
-  }, [scrollContainerRef, start, end]);
-
-  return (
-    <div
-      ref={containerRef}
-      className={`scroll-reveal ${containerClassName}`}
-      style={{
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-
-    </div>
-  );
 };
 
-export default ScrollReveal;
+export default HearFromLeaders;
+
