@@ -135,6 +135,29 @@ body{
   height: 1.25rem;
 }
 
+/* ✅ Mobile responsiveness */
+@media (max-width: 480px) {
+  .initiatives-main-title {
+    font-size: 1.8rem;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .initiatives-carousel-wrapper {
+    padding-left: 0;
+  }
+
+  .carousel-card {
+    width: 90%;
+    height: 40vh;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+}
+
 @media (min-width: 480px) {
   .carousel-card {
     width: 80%;

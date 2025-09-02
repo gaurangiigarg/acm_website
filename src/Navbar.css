@@ -9,7 +9,7 @@
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(14px);
   font-family: 'myriad-pro', sans-serif;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out; /* ✅ Corrected */
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 
 .navbar.hide {
@@ -50,4 +50,55 @@
 
 .navbar-links li a:hover {
   color: #4627f3;
+}
+
+/* ✅ Hamburger icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* ✅ Show hamburger only on smaller screens */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ✅ Animate hamburger to cross when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }

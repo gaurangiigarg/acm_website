@@ -276,46 +276,42 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    min-height: auto; /* let it adapt instead of forcing desktop min-height */
+    min-height: auto;
   }
 
-  /* Shrink the image container */
+  /* Slightly larger image container */
   .image-container {
-    width: 220px;
-    height: 250px;
-    padding: 0.75rem;
+    width: 260px;
+    height: 300px;
+    padding: 1rem;
   }
 
   .image-container img {
     object-fit: cover;
   }
 
-  /* Shrink the description box */
+  /* Slightly larger description */
   .description-container {
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    max-width: 280px;
+    padding: 1.25rem 1.5rem;
+    font-size: 1rem;
+    max-width: 320px;
   }
 
   .desc-name {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .desc-title {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .desc-text {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
-  /* Dots closer to bottom for mobile */
+  /* Hide dots on mobile */
   .dots-container {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-top: 1rem;
+    display: none;
   }
 }

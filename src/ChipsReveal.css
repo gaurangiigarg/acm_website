@@ -1,7 +1,7 @@
 .chips-reveal-wrapper {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh; /* ✅ Prevents forced overflow gap */
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0); /* transparent by default */
 }
@@ -102,5 +102,8 @@
   /* ✅ Black background only on smaller screens */
   .chips-reveal-wrapper {
     background-color: black;
+    min-height: 100dvh; /* ✅ Use dynamic viewport height */
+    height: auto;       /* ✅ Prevent forced extra gap */
+    overflow: hidden;   /* ✅ Avoid scroll-gap issues */
   }
 }

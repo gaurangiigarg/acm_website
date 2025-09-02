@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
-
 // Data for the committees
 const committeesData = [
     { name: 'Technical', description: "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES and works on projects that help students learn." },
     { name: 'Events', description: 'The brain of the chapter, organizes a variety of events, our vivacious team. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
-    
     { name: 'Design & VFX', description: 'This distinguished committee is the creative house of the chapters. This team always leads the forefront by making breathtaking videos and developing visually appealing graphic material.' },
     { name: 'Editorial', description: "The Editorial Committee is the brainchild behind the Chapter's all formal communications, blogs, social media content and document all the daily proceedings." },
     { name: 'CSR', description: 'Making a positive impact on society through meaningful community service initiatives.' },
@@ -25,9 +23,9 @@ const cssStyles = `
     }
     
     .CommitteesSection {
-    background-color: #000; /* ensures black background at root */
-    min-height: 100vh;
-}
+        background-color: #000; /* ensures black background at root */
+        min-height: 100vh;
+    }
     
     .CommitteesSection .committees-scroll-area {
         height: 500vh;
@@ -99,6 +97,16 @@ const cssStyles = `
         color: #374151;
     }
 
+    .CommitteesSection .committees-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 2rem; 
+    margin-left: 1rem;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+    /* 📱 Mobile responsiveness */
     @media (max-width: 768px) {
         .CommitteesSection .committees-scroll-area,
         .CommitteesSection .committees-sticky-content {
@@ -131,28 +139,43 @@ const cssStyles = `
         }
 
         .CommitteesSection .committee-card-item {
-            position: relative;
-            width: auto;
-            height: auto;
-            opacity: 1;
-            transform: none;
-        }
-    }
-`;
+    position: relative;
+    width: 80%;        /* ⬅️ narrower cards */
+    max-width: 260px;  /* ⬅️ smaller max width */
+    height: auto;      
+    padding: 1rem;     /* ⬅️ tighter padding */
+    opacity: 1;
+    transform: none;
+}
 
+.CommitteesSection .committee-card-item h3 {
+    font-size: 1.2rem; /* ⬅️ smaller heading */
+}
+
+.CommitteesSection .committee-card-item p {
+    font-size: 0.8rem; /* ⬅️ smaller text */
+    line-height: 1.4;  
+}
+    }
+
+    @media (max-width: 768px) {
+    .CommitteesSection .committees-subtitle {
+        font-size: 0.9rem;
+        margin-top: 1rem; /* ⬅️ slightly bigger gap */
+    }
+}
+`;
 
 const Committees = () => {
     const scrollContainerRef = useRef(null);
     const cardsRef = useRef([]);
 
     useEffect(() => {
+        const styleElement = document.createElement('style');
+        styleElement.innerHTML = cssStyles;
+        document.head.appendChild(styleElement);
+        document.body.classList.add('committees-body-style');
         
-         const styleElement = document.createElement('style');
-    styleElement.innerHTML = cssStyles;
-    document.head.appendChild(styleElement);
-    document.body.classList.add('committees-body-style');
-        
-
         const scrollContainer = scrollContainerRef.current;
         const cards = cardsRef.current;
 
@@ -195,7 +218,6 @@ const Committees = () => {
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        // Cleanup function
         return () => {
             window.removeEventListener('scroll', handleScroll);
             document.head.removeChild(styleElement);
@@ -205,13 +227,14 @@ const Committees = () => {
 
     return (
         <div className="CommitteesSection">
-            
-
             <div className="committees-scroll-area" ref={scrollContainerRef}>
                 <div className="committees-sticky-content">
                     <div className="committees-layout">
                         <div className="committees-title-wrapper">
                             <h2>Our Committees</h2>
+                            <p className="committees-subtitle">
+    Who make it all happen, our committees.
+  </p>
                         </div>
                         <div className="committees-cards-wrapper">
                             {committeesData.map((committee, index) => (
@@ -233,4 +256,3 @@ const Committees = () => {
 };
 
 export default Committees;
-
