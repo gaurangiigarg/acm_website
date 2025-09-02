@@ -85,16 +85,16 @@ function MainLandingPage() {
         </div>
    
       
+      <BackgroundReveal />
 
-      <section className="app-section">
     
-          <ChipsReveal />
 
-      </section>
 
-      <section className="app-section" id="initiatives">
+
+
+
         <Initiatives />
-      </section>
+
 
       <Leaders />
 
