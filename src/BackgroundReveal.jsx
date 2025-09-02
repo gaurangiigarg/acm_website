@@ -169,6 +169,7 @@ const cssStyles = `
 const Committees = () => {
     const scrollContainerRef = useRef(null);
     const cardsRef = useRef([]);
+    const ticking = useRef(false); // <-- to prevent multiple calls per frame
 
     useEffect(() => {
         const styleElement = document.createElement('style');
@@ -181,7 +182,9 @@ const Committees = () => {
 
         if (!scrollContainer || cards.length === 0) return;
 
-        const handleScroll = () => {
+        const updateCards = () => {
+            ticking.current = false; // reset frame flag
+
             if (window.innerWidth <= 768) {
                 cards.forEach(card => {
                     if (card) card.style.transform = 'none';
@@ -215,7 +218,14 @@ const Committees = () => {
             });
         };
 
-        handleScroll();
+        const handleScroll = () => {
+            if (!ticking.current) {
+                window.requestAnimationFrame(updateCards);
+                ticking.current = true;
+            }
+        };
+
+        updateCards();
         window.addEventListener('scroll', handleScroll, { passive: true });
 
         return () => {
@@ -233,8 +243,8 @@ const Committees = () => {
                         <div className="committees-title-wrapper">
                             <h2>Our Committees</h2>
                             <p className="committees-subtitle">
-    Who make it all happen, our committees.
-  </p>
+                                Who make it all happen, our committees.
+                            </p>
                         </div>
                         <div className="committees-cards-wrapper">
                             {committeesData.map((committee, index) => (

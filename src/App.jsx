@@ -93,12 +93,13 @@ function MainLandingPage() {
 
 
 
-
+        <Initiatives />
 
 
       <Leaders />
 
 
+      <ExecutiveSlider />
 
       <Contact />
 
