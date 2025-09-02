@@ -277,18 +277,27 @@ const IntroContact = () => {
             <div className="contact-reveal-container">
                 <DecryptedText
                     text="Get In Touch"
-                    speed={30}
+                    speed={50}
                     maxIterations={10}
                     parentClassName="contact-reveal-title"
                 />
 
-                <ScrollRevealText containerClassName="contact-reveal-subtitle">
-                    We're here to help and answer any question you might have. We look forward to hearing from you!
-                </ScrollRevealText>
 
-                <ScrollRevealText containerClassName="contact-reveal-main">
-                    Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions.
-                </ScrollRevealText>
+                <DecryptedText
+                    text="We're here to help and answer any question you might have. We look forward to hearing from you!"
+                    speed={20}
+                    maxIterations={10}
+                    parentClassName="contact-reveal-subtitle"
+                />
+
+                
+                <DecryptedText
+                    text="Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions."
+                    speed={20}
+                    maxIterations={10}
+                    parentClassName="contact-reveal-main"
+                />
+                
             </div>
         </div>
     );
