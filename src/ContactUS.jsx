@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // Assuming your video is located at this path relative to the component
-import bgvideo from '../src/assets/Chipsvideo_Contactus.mp4';
+import bgvideo from '../src/assets/Chipsvideo_Contactus.webm';
 
 // Firebase SDK imports
 import { initializeApp } from "firebase/app";
