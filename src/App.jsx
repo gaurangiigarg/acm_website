@@ -16,7 +16,10 @@ import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
 import Initiatives from './Initiatives';
 import AboutUs from './pages/About/AboutUsSection';
 import TeamsPage from './pages/Teams/TeamsPage';
+import Contact from './Contact';
+import ContactForm from './ContactUS';
 import Leaders from './Leaders';
+
 import './App.css';
 
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
@@ -98,6 +101,13 @@ function MainLandingPage() {
 
 
       <ExecutiveSlider />
+
+      <Contact />
+
+      <ContactForm />
+
+
+
 
 
 
