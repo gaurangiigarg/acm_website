@@ -85,7 +85,6 @@ function MainLandingPage() {
         </div>
    
       
-      <BackgroundReveal />
 
       <section className="app-section">
     
@@ -100,7 +99,7 @@ function MainLandingPage() {
       <Leaders />
 
 
-
+      <ExecutiveSlider />
 
       <Contact />
 
