@@ -88,12 +88,12 @@ function MainLandingPage() {
       <BackgroundReveal />
 
     
+          <ChipsReveal />
 
 
 
 
 
-        <Initiatives />
 
 
       <Leaders />
