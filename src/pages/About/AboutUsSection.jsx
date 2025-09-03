@@ -1,15 +1,29 @@
-import React from 'react';
-import Navbar from '../../Navbar'; // Assuming Navbar is in the parent directory
-import './AboutUsSection.css'; // Link to the new stylesheet
+import React, { useEffect, useState } from 'react';
+import Navbar from '../../Navbar'; 
+import './AboutUsSection.css'; 
 import useLenis from '../../useLenis';
 import LiquidChrome from '../../../LiquidChrome/LiquidChrome/LiquidChrome';
-import Robot from '../../Robot'
+import Robot from '../../Robot';
 import Description from './Description';
 import Gallery from './Gallery';
 import Sponsors from './Sponsors';
 
 const AboutUsSection = () => {
   useLenis(); 
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // 📱 You can adjust breakpoint here
+    };
+
+    checkScreenSize(); // run on mount
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   return (
     <>
       {/* This div is now the fixed background */}
@@ -35,10 +49,9 @@ const AboutUsSection = () => {
 
         {/* Footer container */}
         <div className="about-us-footer-container">
-            <p className="about-us-description">
-              We are a community of innovators and problem solvers, united by a passion for technology and a drive to create impactful solutions.
-            </p>
-            
+          <p className="about-us-description">
+            We are a community of innovators and problem solvers, united by a passion for technology and a drive to create impactful solutions.
+          </p>
         </div>
 
         <div className="about-us-bottom-divider"></div>
@@ -48,14 +61,10 @@ const AboutUsSection = () => {
 
       <Description />
 
-      
-
-
       <Gallery />
 
-      <Robot />
-
-      
+      {/* 🟢 Only load Robot on medium/large screens */}
+      {!isSmallScreen && <Robot />}
     </>
   );
 };

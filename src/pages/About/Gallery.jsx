@@ -2,15 +2,26 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import DecryptedText from '../../../Decrypted_Reveal/DecryptedText/DecryptedText';
 
+import img1 from '../../assets/img/Prodigy24/HRK_0014.JPG';
+import img2 from '../../assets/img/Prodigy24/HRK_0356.JPG';
+import img3 from '../../assets/img/Prodigy24/HRK_7147.JPG';
+import img4 from '../../assets/img/Prodigy24/umm.jpg';
+import img5 from '../../assets/img/sherlocked/img1.jpg';
+import img6 from '../../assets/img/HOC/img1.jpg';
+import img7 from '../../assets/img/HOC/img2.jpg';
+import img8 from '../../assets/img/sherlocked/img2.jpeg';
+
+
+
 const galleryData = [
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_0014.JPG', size: 'large' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_0356.JPG', size: 'small' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_7147.JPG', size: 'large' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/20240410_061802802_iOS.jpg', size: 'small' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/sherlocked/img1.jpg', size: 'large' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/HOC/img1.jpg', size: 'small' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/HOC/img2.jpg', size: 'large' },
-  { imageUrl: 'https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/sherlocked/img2.jpeg', size: 'small' }
+  { imageUrl: img1, size: 'large' },
+  { imageUrl: img2, size: 'small' },
+  { imageUrl: img3, size: 'large' },
+  { imageUrl: img4, size: 'small' },
+  { imageUrl: img5, size: 'large' },
+  { imageUrl: img6, size: 'small' },
+  { imageUrl: img7, size: 'large' },
+  { imageUrl: img8, size: 'small' }
 ];
 
 // Repeat gallery for infinite scroll effect

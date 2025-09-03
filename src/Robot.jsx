@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import CommitteesShowcase from './CommitteShowcase';
 import './Robot.css'; 
-import Galaxy from '../GalaxyBackground/Galaxy/Galaxy';
+
 
 function Robot() {
   const wrapperRef = useRef(null);
@@ -45,17 +45,7 @@ function Robot() {
       {/* 🔴 Black Background Layer */}
       <div className="robot-black-bg"></div>
 
-      {/* 🔵 Galaxy Layer */}
-      <div className="robot-galaxy">
-        <Galaxy 
-          mouseRepulsion={false}
-          mouseInteraction={false}
-          density={0.4}
-          glowIntensity={0.1}
-          saturation={0}
-          hueShift={70}
-        />
-      </div>
+      
 
       {/* 🟢 Foreground Content */}
       <div className="robot-content">

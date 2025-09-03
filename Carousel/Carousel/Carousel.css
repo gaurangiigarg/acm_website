@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto; /* Center horizontally */
 }
 
 .carousel-track {
@@ -64,4 +65,46 @@
 
 .carousel-indicator.inactive {
   background-color: #555;
+}
+
+/* Default desktop styles */
+.carousel-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 📱 Small screens */
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 320px; /* shrink carousel */
+    height: 200px !important; /* reduce height */
+    margin: 0 auto; /* center */
+  }
+
+  .carousel-item {
+    max-width: 320px;
+    height: 200px !important;
+  }
+
+  .carousel-indicators-container {
+    justify-content: center; /* center indicators */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    max-width: 260px;
+    height: 180px !important;
+    margin: 0 auto; /* center */
+  }
+
+  .carousel-item {
+    max-width: 260px;
+    height: 180px !important;
+  }
+
+  .carousel-indicators-container {
+    justify-content: center; /* center indicators */
+  }
 }

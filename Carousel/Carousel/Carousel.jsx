@@ -2,26 +2,32 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Carousel.css";
 
+import img1 from '../../src/assets/img/Prodigy24/umm.jpg';
+import img2 from '../../src/assets/img/Prodigy24/grp.jpg';
+import img3 from '../../src/assets/img/Prodigy24/HRK_6866.JPG';
+import img4 from '../../src/assets/img/HOC/img5.jpeg';
+import img5 from '../../src/assets/img/Prodigy24/HRK_6866.JPG';
+
 const DEFAULT_ITEMS = [
   {
     id: 1,
-    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/20240410_061802802_iOS.jpg",
+    imageUrl: img1,
   },
   {
     id: 2,
-    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/group.jpeg",
+    imageUrl: img2,
   },
   {
     id: 3,
-    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_0014.JPG",
+    imageUrl: img3,
   },
   {
     id: 4,
-    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/HOC/img5.jpeg",
+    imageUrl: img4,
   },
   {
     id: 5,
-    imageUrl: "https://raw.githubusercontent.com/upesnavneet/acm_assets/main/img/Prodigy24/HRK_6866.JPG",
+    imageUrl: img5,
   },
 ];
 

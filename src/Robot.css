@@ -9,7 +9,7 @@
 .robot-black-bg {
   position: absolute;
   inset: 0;
-  background: black;
+  background: rgba(0, 0, 0, 0);
   z-index: 0;
 }
 
