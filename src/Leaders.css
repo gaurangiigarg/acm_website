@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    background-color: #02030a; /* Match body background */
+    background-color: #000000; /* Match body background */
 }
 
 .leaders-intro-content {
