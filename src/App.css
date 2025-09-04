@@ -31,24 +31,7 @@ body {
 }
 
 
-section {
-  width: 100%;
-  position: relative;
-}
 
-.app-section {
-
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-
-.particles-section {
-  position: relative;
-}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -87,30 +70,8 @@ body {
   pointer-events: none; /* ensures user can scroll/interact with everything */
 }
 
-.horizontal-scroll-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
 
 
-.horizontal-panel {
-  flex: 0 0 100vw;
-  height: 100vh;
-  overflow: hidden;
-  will-change: transform;
-}
-
-
-.horizontal-inner {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  transform: translateZ(0); /* trigger GPU */
-  backface-visibility: hidden;
-  will-change: transform; /* Boosts performance */
-}
 
 html, body {
   height: 100%;
