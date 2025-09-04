@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './ExecutiveSlider.css';
 import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst/';
 
@@ -12,13 +12,17 @@ import RudranshSogani from '../../../src/assets/images/Rudransh_Sogani.jpg';
 const ArrowIcon = ({ className }) => (
   <svg
     className={className}
-    xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.w.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+    />
   </svg>
 );
 
@@ -29,20 +33,23 @@ const TeamMemberCard = ({ name, title, description, imageUrl, index }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) setIsVisible(true);
+        const entry = entries[0];
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.4 }
     );
 
-    const current = cardRef.current;
-    if (current) observer.observe(current);
-    return () => {
-      if (current) observer.unobserve(current);
-    };
+    const currentCardRef = cardRef.current;
+    if (currentCardRef) observer.observe(currentCardRef);
+
+    return () => currentCardRef && observer.unobserve(currentCardRef);
   }, []);
 
   return (
-    <div className={`team-card card-${index} ${isVisible ? 'is-visible' : ''}`} ref={cardRef}>
+    <div
+      className={`team-card card-${index} ${isVisible ? 'is-visible' : ''}`}
+      ref={cardRef}
+    >
       <div className="image-container">
         <div className="image-overlay">
           <span>{title}</span>
@@ -51,10 +58,10 @@ const TeamMemberCard = ({ name, title, description, imageUrl, index }) => {
         <img
           src={imageUrl}
           alt={name}
-          loading="lazy"
           onError={(e) => {
-            e.currentTarget.onerror = null;
-            e.currentTarget.src = 'https://placehold.co/300x350/0a192f/64ffda?text=Image';
+            e.target.onerror = null;
+            e.target.src =
+              'https://placehold.co/300x350/0a192f/64ffda?text=Image';
           }}
         />
       </div>
@@ -73,11 +80,10 @@ const TeamMemberCard = ({ name, title, description, imageUrl, index }) => {
 
 const ExecutiveSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const requestRef = useRef(null);
-  const lastTimeRef = useRef(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const sliderPageRef = useRef(null);
+  const timerRef = useRef(null);
   const [isSliderVisible, setIsSliderVisible] = useState(false);
+  const sliderPageRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const executivesData = [
     {
@@ -119,76 +125,70 @@ const ExecutiveSlider = () => {
       name: 'Rudransh Sogani',
       title: 'Treasurer',
       description:
-        "Joining ACM and ACM-W at UPES marked the start of my programming journey. Activities like 21 Days of Code, Code Anytime, and Spy C helped build my confidence and solidified my fundamentals. The experience inspired me to stay involved, and being part of ACM-W has taught me not just technical skills, but also public relations, teamwork, and event organization. I'm proud to be part of such a vibrant and enriching student chapter.",
+        'Joining ACM and ACM-W at UPES marked the start of my programming journey. Activities like 21 Days of Code, Code Anytime, and Spy C helped build my confidence and solidified my fundamentals. The experience inspired me to stay involved, and being part of ACM-W has taught me not just technical skills, but also public relations, teamwork, and event organization. I\'m proud to be part of such a vibrant and enriching student chapter.',
       imageUrl: RudranshSogani,
     },
   ];
 
-  // Memoize slides so they don't recalc unnecessarily
-  const slides = useMemo(() => {
+  const getSlides = () => {
     if (isMobile) {
       return executivesData.map((exec) => [exec]); // one per slide
     } else {
-      const grouped = [];
+      const slides = [];
       for (let i = 0; i < executivesData.length; i += 2) {
-        grouped.push(executivesData.slice(i, i + 2));
+        slides.push(executivesData.slice(i, i + 2));
       }
-      return grouped;
+      return slides;
     }
-  }, [isMobile]);
+  };
 
-  // Auto slide using requestAnimationFrame
-  const animate = useCallback(
-    (time) => {
-      if (time - lastTimeRef.current > 5000) {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
-        lastTimeRef.current = time;
-      }
-      requestRef.current = requestAnimationFrame(animate);
-    },
-    [slides.length]
-  );
+  const slides = getSlides();
+
+  const goToNextSlide = useCallback(() => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+  }, [slides.length]);
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
-  }, [animate]);
+    timerRef.current = setInterval(goToNextSlide, 5000);
+    return () => clearInterval(timerRef.current);
+  }, [activeIndex, goToNextSlide]);
 
-  // Resize handler (debounced)
+  // Update mobile state on resize
   useEffect(() => {
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => setIsMobile(window.innerWidth <= 768), 200);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
-    return () => {
-      clearTimeout(resizeTimer);
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Background visibility
+  // IntersectionObserver for background fade
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        setIsSliderVisible(entries[0].isIntersecting);
+        const entry = entries[0];
+        setIsSliderVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
-    const current = sliderPageRef.current;
-    if (current) observer.observe(current);
+
+    const currentSliderPageRef = sliderPageRef.current;
+    if (currentSliderPageRef) observer.observe(currentSliderPageRef);
+
     return () => {
-      if (current) observer.unobserve(current);
+      if (currentSliderPageRef) observer.unobserve(currentSliderPageRef);
     };
   }, []);
 
   const handleDotClick = (index) => {
+    clearInterval(timerRef.current);
     setActiveIndex(index);
   };
 
   return (
-    <div className="executive-slider-page" ref={sliderPageRef} style={{ position: 'relative', isolation: 'isolate' }}>
+    <div
+      className="executive-slider-page"
+      ref={sliderPageRef}
+      style={{ position: 'relative', isolation: 'isolate' }}
+    >
       <div
         style={{
           backgroundColor: '#000',
@@ -197,14 +197,20 @@ const ExecutiveSlider = () => {
           zIndex: -2,
         }}
       />
-
       <div className="app-container">
         <div className="executives-slider">
-          <div className="slides-container" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
+          <div
+            className="slides-container"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
             {slides.map((slide, slideIndex) => (
               <div className="slide" key={slideIndex}>
                 {slide.map((executive, cardIndex) => (
-                  <TeamMemberCard key={executive.name} {...executive} index={cardIndex} />
+                  <TeamMemberCard
+                    key={executive.name}
+                    {...executive}
+                    index={cardIndex}
+                  />
                 ))}
               </div>
             ))}
