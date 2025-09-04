@@ -87,6 +87,14 @@ function MainLandingPage() {
       
       <BackgroundReveal />
 
+    
+          <ChipsReveal />
+
+
+
+
+        <Initiatives />
+
 
       <Leaders />
 
@@ -106,7 +114,6 @@ function MainLandingPage() {
   );
 }
 
-// Main App component with routing
 export default function App() {
   const basename = import.meta.env.BASE_URL || '/';
 

@@ -107,6 +107,8 @@
   width: 100%;
   max-width: 950px; /* Increased width */
   transform: scale(0.85);
+  will-change: transform, opacity; /* Tell browser to optimize */
+  backface-visibility: hidden;
 }
 
 .card-0 {
@@ -247,6 +249,11 @@
 .team-card.is-visible .description-container {
     opacity: 1;
     transform: translateX(0);
+}
+
+.image-container img {
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 /* Mobile Fallback */
