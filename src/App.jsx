@@ -88,7 +88,7 @@ function MainLandingPage() {
       <BackgroundReveal />
 
     
-          <ChipsReveal />
+
 
 
 
