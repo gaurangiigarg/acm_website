@@ -174,30 +174,7 @@ const ExecutiveSlider = () => {
           zIndex: -2,
         }}
       />
-      <div
-        className="prismatic-background"
-        style={{
-          opacity: isSliderVisible ? 1 : 0,
-          transition: 'opacity 0.7s ease-in-out',
-          position: 'absolute',
-          inset: 0,
-          zIndex: -1,
-        }}
-      >
-        <PrismaticBurst
-          animationType="rotate3d"
-          intensity={2}
-          speed={0.5}
-          distort={0}
-          paused={false}
-          offset={{ x: 0, y: 0 }}
-          hoverDampness={0.25}
-          rayCount={0}
-          mixBlendMode="lighten"
-          colors={['#15186F', '#000000', '#000000']}
-        />
-      </div>
-
+      
       <div className="app-container">
         <div className="executives-slider">
           <div
