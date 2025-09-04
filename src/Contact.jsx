@@ -78,6 +78,7 @@ const cssStyles = `
         font-size: clamp(1rem, 3vw, 1.125rem);
         color: #BFDBFE;
         font-weight: 300;
+        margin-top: 0.5rem;
     }
 
     /* --- Desktop Alignment Overrides --- */
@@ -283,21 +284,18 @@ const IntroContact = () => {
                 />
 
 
-                <DecryptedText
-                    text="We're here to help and answer any question you might have. We look forward to hearing from you!"
-                    speed={20}
-                    maxIterations={10}
-                    parentClassName="contact-reveal-subtitle"
-                />
+                <div className="contact-reveal-subtitle">
+                    <p className="contact-reveal-p">
+                        We're here to help and answer any question you might have. We look forward to hearing from you!
+                    </p>
+                </div>
 
-                
-                <DecryptedText
-                    text="Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions."
-                    speed={20}
-                    maxIterations={10}
-                    parentClassName="contact-reveal-main"
-                />
-                
+                {/* Main text as plain text */}
+                <div className="contact-reveal-main">
+                    <p className="contact-reveal-p">
+                        Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions.
+                    </p>
+                </div>
             </div>
         </div>
     );
