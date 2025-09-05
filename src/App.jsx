@@ -93,7 +93,6 @@ function MainLandingPage() {
 
 
 
-        <Initiatives />
 
 
       <Leaders />
