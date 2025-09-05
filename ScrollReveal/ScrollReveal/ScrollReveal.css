@@ -4,6 +4,8 @@
   font-size: clamp(1.6rem, 4vw, 3rem);
   line-height: 1.5;
   font-weight: 600;
+
+  
 }
 
 .scroll-reveal {
@@ -16,4 +18,14 @@
 }
 .word {
   display: inline-block;
+}
+
+/* ✅ On smaller screens: center align */
+@media (max-width: 768px) {
+  .scroll-reveal-text {
+    text-align: center;
+    font-size: 1.3rem; /* optional: slightly smaller for mobile */
+    margin: 0 auto;
+    max-width: 90%;
+  }
 }
