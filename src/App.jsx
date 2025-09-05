@@ -82,10 +82,10 @@ function MainLandingPage() {
           <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
             Want to know who makes all that happen?
           </ScrollReveal>
- 
-   
-      
-      <BackgroundReveal />
+
+
+    
+          <ChipsReveal />
 
 
 
@@ -96,7 +96,11 @@ function MainLandingPage() {
       <Leaders />
 
 
+      <ExecutiveSlider />
 
+      <Contact />
+
+      <ContactForm />
 
 
 
