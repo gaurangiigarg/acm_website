@@ -99,11 +99,7 @@ function MainLandingPage() {
       <Leaders />
 
 
-      <ExecutiveSlider />
 
-      <Contact />
-
-      <ContactForm />
 
 
 
