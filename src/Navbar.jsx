@@ -73,7 +73,7 @@ function Navbar() {
           </li>
           <li>
             <a href="#initiatives" onClick={(e) => handleScrollToSection(e, "initiatives")}>
-              Our Initiatives
+              Gallery
             </a>
           </li>
           <li>

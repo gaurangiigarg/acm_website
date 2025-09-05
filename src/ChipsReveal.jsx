@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './ChipsReveal.css';
-import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
 import chipsvideo from '../src/assets/Chipsvideo.webm';
 
 const ChipsReveal = () => {
@@ -39,20 +38,13 @@ const ChipsReveal = () => {
         muted
         loop
         playsInline
+        aria-hidden="true"
+        tabIndex={-1}
       />
 
       {/* ✅ Text on top */}
       <div className="decrypted-chips-text">
-        <DecryptedText
-          text="INNOVATE. INSPIRE."
-          sequential={true}
-          useOriginalCharsOnly={false}
-          animateOn="view"
-          revealDirection="start"
-          speed={80}
-          maxIterations={40}
-          parentClassName="decrypted-chips-text-inner"
-        />
+        <h1 className="decrypted-chips-text-inner">INNOVATE. INSPIRE.</h1>
 
         <p
           ref={descRef}
