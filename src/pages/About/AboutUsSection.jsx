@@ -7,6 +7,7 @@ import Robot from '../../Robot';
 import Description from './Description';
 import Gallery from './Gallery';
 import Sponsors from './Sponsors';
+import Committees from '../../BackgroundReveal'
 
 const AboutUsSection = () => {
   useLenis(); 
@@ -62,6 +63,8 @@ const AboutUsSection = () => {
       <Description />
 
       <Gallery />
+
+      <Committees />
 
       {/* 🟢 Only load Robot on medium/large screens */}
       {!isSmallScreen && <Robot />}
