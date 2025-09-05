@@ -64,7 +64,7 @@ const AboutUsSection = () => {
 
       <Gallery />
 
-      <Committees />
+      {!isSmallScreen && <Committees />}
 
       {/* 🟢 Only load Robot on medium/large screens */}
       {!isSmallScreen && <Robot />}
