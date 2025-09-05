@@ -4,10 +4,10 @@ import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import DOC from '../src/assets/img/codeanytime24/img1.jpg';
-import HOC from '../src/assets/img/HOC/img5.jpeg';
-import codeanytime from '../src/assets/img/codeanytime24/img2.jpg';
-import Spyc from '../src/assets/img/TTR/img1.jpg';
+import DOC from '../src/assets/img/webp_images/img1.webp';
+import HOC from '../src/assets/img/webp_images/img2.webp';
+import codeanytime from '../src/assets/img/webp_images/img3.webp';
+import Spyc from '../src/assets/img/webp_images/img4.webp';
 
 
 
