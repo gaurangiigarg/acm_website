@@ -148,10 +148,9 @@ body{
     padding-left: 0;
   }
 
-  /* ⬇️ Reduced height more for mobile */
   .carousel-card {
     width: 90%;
-    height: 30vh; /* was 40vh */
+    height: 40vh;
   }
 
   .card-title {
@@ -162,7 +161,7 @@ body{
 @media (min-width: 480px) {
   .carousel-card {
     width: 80%;
-    height: 35vh; /* was 45vh */
+    height: 45vh;
   }
   .card-title {
     font-size: 1.75rem;
@@ -175,7 +174,6 @@ body{
   }
   .carousel-card {
     width: 70%;
-    height: 45vh; /* keep balanced */
   }
 }
 

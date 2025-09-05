@@ -79,6 +79,7 @@
 }
 
 /* Responsive styling */
+/* ✅ Responsive styling */
 @media (max-width: 800px) {
   .decrypted-chips-text-inner {
     font-size: 1.5rem;
@@ -87,10 +88,11 @@
 
   .chips-reveal-description {
     font-size: 0.95rem;
+    margin-top: 2rem; /* reduced spacing so section height shrinks */
   }
 
   .decrypted-chips-text {
-    top: 8%;
+    top: 6%; /* pull text up slightly */
     left: 4%;
   }
 
@@ -102,8 +104,8 @@
   /* ✅ Black background only on smaller screens */
   .chips-reveal-wrapper {
     background-color: black;
-    min-height: 100dvh; /* ✅ Use dynamic viewport height */
-    height: auto;       /* ✅ Prevent forced extra gap */
-    overflow: hidden;   /* ✅ Avoid scroll-gap issues */
+    min-height: 70dvh; /* ⬇️ smaller height (was 100dvh) */
+    height: auto;
+    overflow: hidden;
   }
 }
