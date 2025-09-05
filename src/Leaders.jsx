@@ -2,7 +2,7 @@ import React from 'react';
 import './Leaders.css'; // Import the new stylesheet
 
 const HearFromLeaders = () => {
-    // The component is now cleaner, with styling handled by the imported CSS file.
+
     return (
         <section className="leaders-intro-container">
             <div className="leaders-intro-content">
