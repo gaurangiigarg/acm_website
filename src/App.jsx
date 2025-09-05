@@ -93,6 +93,7 @@ function MainLandingPage() {
 
 
 
+        <Initiatives />
 
 
       <Leaders />
@@ -102,7 +103,7 @@ function MainLandingPage() {
 
       <Contact />
 
-      <ContactForm />
+  
 
 
 
