@@ -198,7 +198,7 @@ const ExecutiveSlider = () => {
     >
       <div
         style={{
-          backgroundColor: '#000',
+          backgroundColor: '#00000000',
           position: 'absolute',
           inset: 0,
           zIndex: -2,

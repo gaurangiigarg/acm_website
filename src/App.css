@@ -138,10 +138,9 @@ body.lenis {
   margin-bottom: 1.5rem;
 }
 
-/* Add spacing below the section if needed */
 #executives {
   padding: 4rem 1rem;
-  background-color: #000000; /* Or any contrast background */
+  background-color: #00000000; /* Or any contrast background */
 }
 
 
@@ -156,3 +155,23 @@ body.lenis {
   pointer-events: none; /* makes it "click-through" so Home is still interactive */
 }
 
+.leaders-executives-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* at least full screen height */
+  overflow: hidden;
+}
+
+.prismatic-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* push behind everything */
+}
+
+.leaders-executives-content {
+  position: relative;
+  z-index: 1; /* keep Leaders + ExecutiveSlider above background */
+}

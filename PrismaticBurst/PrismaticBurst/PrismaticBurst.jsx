@@ -179,9 +179,7 @@ const hexToRgb01 = (hex) => {
   let h = hex.trim();
   if (h.startsWith("#")) h = h.slice(1);
   if (h.length === 3) {
-    const r = h[0],
-      g = h[1],
-      b = h[2];
+    const r = h[0], g = h[1], b = h[2];
     h = r + r + g + g + b + b;
   }
   const intVal = parseInt(h, 16);
@@ -224,22 +222,31 @@ const PrismaticBurst = ({
   const meshRef = useRef(null);
   const triRef = useRef(null);
 
-  useEffect(() => {
-    pausedRef.current = paused;
-  }, [paused]);
-  useEffect(() => {
-    hoverDampRef.current = hoverDampness;
-  }, [hoverDampness]);
+  // --- NEW: adaptive DPR state ---
+  const dprRef = useRef(Math.min(window.devicePixelRatio || 1, 1.5));
+  const perfEMARef = useRef(16.7); // ms/frame EMA
+
+  useEffect(() => { pausedRef.current = paused; }, [paused]);
+  useEffect(() => { hoverDampRef.current = hoverDampness; }, [hoverDampness]);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Ensure layout isolation (you can also keep this in CSS)
+    container.style.contain = "strict";
+
+    // Renderer with GPU-friendly attributes
     const renderer = new Renderer({
-      dpr,
+      dpr: dprRef.current,
       alpha: false,
       antialias: false,
+      depth: false,
+      stencil: false,
+      powerPreference: "high-performance",
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: false,
+      // webgl: 2  // (optional) force WebGL2 if desired
     });
     rendererRef.current = renderer;
 
@@ -248,10 +255,12 @@ const PrismaticBurst = ({
     gl.canvas.style.inset = "0";
     gl.canvas.style.width = "100%";
     gl.canvas.style.height = "100%";
+    gl.canvas.style.pointerEvents = "none"; // cheaper hit-testing
     gl.canvas.style.mixBlendMode =
       mixBlendMode && mixBlendMode !== "none" ? mixBlendMode : "";
     container.appendChild(gl.canvas);
 
+    // Gradient texture bootstrap
     const white = new Uint8Array([255, 255, 255, 255]);
     const gradientTex = new Texture(gl, {
       image: white,
@@ -260,20 +269,19 @@ const PrismaticBurst = ({
       generateMipmaps: false,
       flipY: false,
     });
-
     gradientTex.minFilter = gl.LINEAR;
     gradientTex.magFilter = gl.LINEAR;
     gradientTex.wrapS = gl.CLAMP_TO_EDGE;
     gradientTex.wrapT = gl.CLAMP_TO_EDGE;
     gradTexRef.current = gradientTex;
 
+    // Program
     const program = new Program(gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
       uniforms: {
         uResolution: { value: [1, 1] },
         uTime: { value: 0 },
-
         uIntensity: { value: 1 },
         uSpeed: { value: 1 },
         uAnimType: { value: 0 },
@@ -286,7 +294,6 @@ const PrismaticBurst = ({
         uRayCount: { value: 0 },
       },
     });
-
     programRef.current = program;
 
     const triangle = new Triangle(gl);
@@ -294,7 +301,10 @@ const PrismaticBurst = ({
     triRef.current = triangle;
     meshRef.current = mesh;
 
-    const resize = () => {
+    // Debounced resize (1 per frame)
+    let resizeQueued = false;
+    const doResize = () => {
+      resizeQueued = false;
       const w = container.clientWidth || 1;
       const h = container.clientHeight || 1;
       renderer.setSize(w, h);
@@ -303,27 +313,35 @@ const PrismaticBurst = ({
         gl.drawingBufferHeight,
       ];
     };
+    const queueResize = () => {
+      if (!resizeQueued) {
+        resizeQueued = true;
+        requestAnimationFrame(doResize);
+      }
+    };
 
     let ro = null;
     if ("ResizeObserver" in window) {
-      ro = new ResizeObserver(resize);
+      ro = new ResizeObserver(queueResize);
       ro.observe(container);
     } else {
-      window.addEventListener("resize", resize);
+      window.addEventListener("resize", queueResize);
     }
-    resize();
+    doResize();
 
+    // Pointer tracking (only when visible)
     const onPointer = (e) => {
+      if (!isVisibleRef.current) return;
       const rect = container.getBoundingClientRect();
       const x = (e.clientX - rect.left) / Math.max(rect.width, 1);
       const y = (e.clientY - rect.top) / Math.max(rect.height, 1);
-      mouseTargetRef.current = [
-        Math.min(Math.max(x, 0), 1),
-        Math.min(Math.max(y, 0), 1),
-      ];
+      mouseTargetRef.current[0] = x < 0 ? 0 : x > 1 ? 1 : x;
+      mouseTargetRef.current[1] = y < 0 ? 0 : y > 1 ? 1 : y;
     };
-    container.addEventListener("pointermove", onPointer, { passive: true });
+    // Attach to document to avoid layout thrash inside container
+    document.addEventListener("pointermove", onPointer, { passive: true });
 
+    // Visibility/Intersection
     let io = null;
     if ("IntersectionObserver" in window) {
       io = new IntersectionObserver(
@@ -332,65 +350,88 @@ const PrismaticBurst = ({
             isVisibleRef.current = entries[0].isIntersecting;
           }
         },
-        { root: null, threshold: 0.01 }
+        { root: null, threshold: 0.15 }
       );
       io.observe(container);
     }
 
-    const onVis = () => { };
+    const onVis = () => { /* handled in loop via document.hidden */ };
     document.addEventListener("visibilitychange", onVis);
 
+    // RAF loop with adaptive DPR
     let raf = 0;
     let last = performance.now();
     let accumTime = 0;
 
     const update = (now) => {
-      const dt = Math.max(0, now - last) * 0.001;
+      const dt = Math.max(0, now - last);
       last = now;
-      const visible = isVisibleRef.current && !document.hidden;
-      if (!pausedRef.current) accumTime += dt;
 
-      if (!visible) {
-        raf = requestAnimationFrame(update);
-        return;
+      // EMA for frame time
+      const ema = perfEMARef.current * 0.9 + dt * 0.1;
+      perfEMARef.current = ema;
+
+      const visible = isVisibleRef.current && !document.hidden;
+
+      // Adaptive DPR (keep visuals same; just scale pixels slightly)
+      // Target ~60fps (16.7ms). If slower than 22ms for a while, scale down;
+      // if faster than 14ms, scale up — clamped between 0.85 and 1.5.
+      const targetLow = 14.0, targetHigh = 22.0;
+      let dpr = dprRef.current;
+      if (ema > targetHigh && dpr > 0.85) {
+        dpr = Math.max(0.85, dpr * 0.97);
+      } else if (ema < targetLow && dpr < 1.5) {
+        dpr = Math.min(1.5, dpr * 1.02);
+      }
+      if (Math.abs(dpr - dprRef.current) > 0.02) {
+        dprRef.current = dpr;
+        renderer.dpr = dpr; // OGL will update drawingBuffer size
+        queueResize();
       }
 
-      const tau = 0.02 + Math.max(0, Math.min(1, hoverDampRef.current)) * 0.5;
-      const alpha = 1 - Math.exp(-dt / tau);
-      const tgt = mouseTargetRef.current;
-      const sm = mouseSmoothRef.current;
-      sm[0] += (tgt[0] - sm[0]) * alpha;
-      sm[1] += (tgt[1] - sm[1]) * alpha;
+      if (!pausedRef.current) accumTime += dt * 0.001;
 
-      program.uniforms.uMouse.value = sm;
-      program.uniforms.uTime.value = accumTime;
+      if (visible) {
+        // Smooth mouse
+        const tau = 0.02 + Math.max(0, Math.min(1, hoverDampRef.current)) * 0.5;
+        const alpha = 1 - Math.exp(-(dt * 0.001) / tau);
+        const tgt = mouseTargetRef.current;
+        const sm = mouseSmoothRef.current;
+        sm[0] += (tgt[0] - sm[0]) * alpha;
+        sm[1] += (tgt[1] - sm[1]) * alpha;
 
-      renderer.render({ scene: meshRef.current });
+        program.uniforms.uMouse.value = sm;
+        program.uniforms.uTime.value = accumTime;
+
+        renderer.render({ scene: meshRef.current });
+      }
+
       raf = requestAnimationFrame(update);
     };
     raf = requestAnimationFrame(update);
 
     return () => {
       cancelAnimationFrame(raf);
-      container.removeEventListener("pointermove", onPointer);
+      document.removeEventListener("pointermove", onPointer);
       ro?.disconnect();
-      if (!ro) window.removeEventListener("resize", resize);
+      if (!ro) window.removeEventListener("resize", queueResize);
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVis);
+
       try {
         container.removeChild(gl.canvas);
-      } catch {
-        console.warn("Canvas already removed");
-      }
-      try { meshRef.current?.remove?.(); } catch (e) { /* ignore dispose errors */ }
-      try { triRef.current?.remove?.(); } catch (e) { /* ignore dispose errors */ }
-      try { programRef.current?.remove?.(); } catch (e) { /* ignore dispose errors */ }
+      } catch { /* ignore */ }
+
+      try { meshRef.current?.remove?.(); } catch { }
+      try { triRef.current?.remove?.(); } catch { }
+      try { programRef.current?.remove?.(); } catch { }
       try {
         const glCtx = rendererRef.current?.gl;
         if (glCtx && gradTexRef.current?.texture) {
           glCtx.deleteTexture(gradTexRef.current.texture);
         }
-      } catch (e) { /* ignore texture delete errors */ }
+      } catch { }
+
       programRef.current = null;
       rendererRef.current = null;
       gradTexRef.current = null;
@@ -402,7 +443,6 @@ const PrismaticBurst = ({
 
   useEffect(() => {
     const canvas = rendererRef.current?.gl?.canvas;
-
     if (canvas) {
       canvas.style.mixBlendMode =
         mixBlendMode && mixBlendMode !== "none" ? mixBlendMode : "";
@@ -418,11 +458,7 @@ const PrismaticBurst = ({
     program.uniforms.uIntensity.value = intensity ?? 1;
     program.uniforms.uSpeed.value = speed ?? 1;
 
-    const animTypeMap = {
-      rotate: 0,
-      rotate3d: 1,
-      hover: 2,
-    };
+    const animTypeMap = { rotate: 0, rotate3d: 1, hover: 2 };
     program.uniforms.uAnimType.value = animTypeMap[animationType ?? "rotate"];
 
     program.uniforms.uDistort.value = typeof distort === "number" ? distort : 0;
@@ -463,9 +499,7 @@ const PrismaticBurst = ({
     program.uniforms.uColorCount.value = count;
   }, [intensity, speed, animationType, colors, distort, offset, rayCount]);
 
-  return (
-    <div className="prismatic-burst-container" ref={containerRef} />
-  );
+  return <div className="prismatic-burst-container" ref={containerRef} />;
 };
 
 export default PrismaticBurst;
