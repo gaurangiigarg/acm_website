@@ -64,6 +64,36 @@ body {
     color: #A8B2D1;
 }
 
+@media (max-width: 768px) {
+
+  /* This is the most direct way to reduce the component's height.
+    We are significantly decreasing the vertical padding (top and bottom) 
+    that is likely much larger on desktop views.
+  */
+  .leaders-intro-container {
+    /* Adjust padding: (top/bottom) (left/right) */
+    padding: 4rem 1.5rem;
+    
+    /* This ensures that if you set a large "min-height" (like 50vh) on desktop, 
+      it gets disabled on mobile, allowing the component to be only as tall 
+      as its content needs.
+    */
+    min-height: auto; 
+  }
+
+  /* Reducing font sizes also makes the component shorter and 
+    helps the text fit better on a narrow screen.
+  */
+  .leaders-intro-title {
+    font-size: 2.5rem; /* Example: smaller than a desktop size */
+  }
+
+  .leaders-intro-text {
+    font-size: 1rem;   /* Ensure text remains legible */
+  }
+
+}
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     .leaders-intro-container {

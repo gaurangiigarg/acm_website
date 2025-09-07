@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './ExecutiveSlider.css';
-import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst/';
 
 import PankajBadoni from '../../../src/assets/img/coverphoto.jpg';
 import SangamKhanna from '../../../src/assets/images/Sangam_Khanna.jpg';
@@ -125,7 +124,7 @@ const ExecutiveSlider = () => {
       name: 'Rudransh Sogani',
       title: 'Treasurer',
       description:
-        'Joining ACM and ACM-W at UPES marked the start of my programming journey. Activities like 21 Days of Code, Code Anytime, and Spy C helped build my confidence and solidified my fundamentals. The experience inspired me to stay involved, and being part of ACM-W has taught me not just technical skills, but also public relations, teamwork, and event organization. I\'m proud to be part of such a vibrant and enriching student chapter.',
+        "Joining ACM and ACM-W at UPES marked the start of my programming journey. Activities like 21 Days of Code, Code Anytime, and Spy C helped build my confidence and solidified my fundamentals. The experience inspired me to stay involved, and being part of ACM-W has taught me not just technical skills, but also public relations, teamwork, and event organization. I'm proud to be part of such a vibrant and enriching student chapter.",
       imageUrl: RudranshSogani,
     },
   ];
@@ -223,7 +222,7 @@ const ExecutiveSlider = () => {
 
           {/* Navigation Buttons */}
           <button
-            className="nav-button prev-button"
+            className="exec-slider-nav-btn exec-slider-prev-btn"
             onClick={() =>
               setActiveIndex((prevIndex) =>
                 prevIndex === 0 ? slides.length - 1 : prevIndex - 1
@@ -234,7 +233,7 @@ const ExecutiveSlider = () => {
           </button>
 
           <button
-            className="nav-button next-button"
+            className="exec-slider-nav-btn exec-slider-next-btn"
             onClick={() =>
               setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length)
             }
