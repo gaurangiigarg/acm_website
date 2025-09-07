@@ -11,7 +11,7 @@ const committeesData = [
     { name: 'Operations', description: 'The backbone of the chapter, ensuring everything runs smoothly behind the scenes.' },
 ];
 
-// ✅ All CSS is now embedded here to fix the import error
+// CSS with added transition for smoother animations
 const cssStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -28,7 +28,7 @@ const cssStyles = `
     }
     
     .CommitteesSection .committees-scroll-area {
-        height: 500vh;
+        height: 500vh; /* This creates the scroll length needed for the effect */
         position: relative;
     }
 
@@ -82,6 +82,9 @@ const cssStyles = `
         color: #fff;
         will-change: transform;
         box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+        
+        /* ✅ ADDED: CSS transition for smoother animations */
+        transition: transform 0.3s ease-out;
     }
 
     .CommitteesSection .committee-card-item h3 {
@@ -98,15 +101,15 @@ const cssStyles = `
     }
 
     .CommitteesSection .committees-subtitle {
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-top: 2rem; 
-    margin-left: 1rem;
-    color: #9ca3af;
-    line-height: 1.4;
-}
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-top: 2rem; 
+      margin-left: 1rem;
+      color: #9ca3af;
+      line-height: 1.4;
+    }
 
-    /* 📱 Mobile responsiveness */
+    /* Mobile responsiveness */
     @media (max-width: 768px) {
         .CommitteesSection .committees-scroll-area,
         .CommitteesSection .committees-sticky-content {
@@ -139,37 +142,29 @@ const cssStyles = `
         }
 
         .CommitteesSection .committee-card-item {
-    position: relative;
-    width: 80%;        /* ⬅️ narrower cards */
-    max-width: 260px;  /* ⬅️ smaller max width */
-    height: auto;      
-    padding: 1rem;     /* ⬅️ tighter padding */
-    opacity: 1;
-    transform: none;
-}
+          position: relative;
+          width: 80%;
+          max-width: 260px;
+          height: auto; 
+          padding: 1rem;
+          opacity: 1;
+          transform: none;
+          transition: none; /* Disable transition on mobile */
+        }
 
-.CommitteesSection .committee-card-item h3 {
-    font-size: 1.2rem; /* ⬅️ smaller heading */
-}
-
-.CommitteesSection .committee-card-item p {
-    font-size: 0.8rem; /* ⬅️ smaller text */
-    line-height: 1.4;  
-}
+        .CommitteesSection .committee-card-item h3 { font-size: 1.2rem; }
+        .CommitteesSection .committee-card-item p { font-size: 0.8rem; line-height: 1.4; }
     }
-
+    
     @media (max-width: 768px) {
-    .CommitteesSection .committees-subtitle {
-        font-size: 0.9rem;
-        margin-top: 1rem; /* ⬅️ slightly bigger gap */
+      .CommitteesSection .committees-subtitle { font-size: 0.9rem; margin-top: 1rem; }
     }
-}
 `;
 
 const Committees = () => {
     const scrollContainerRef = useRef(null);
     const cardsRef = useRef([]);
-    const ticking = useRef(false); // <-- to prevent multiple calls per frame
+    const ticking = useRef(false);
 
     useEffect(() => {
         const styleElement = document.createElement('style');
@@ -183,13 +178,15 @@ const Committees = () => {
         if (!scrollContainer || cards.length === 0) return;
 
         const updateCards = () => {
-            ticking.current = false; // reset frame flag
+            ticking.current = false; 
 
-            if (window.innerWidth <= 768) {
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile) {
                 cards.forEach(card => {
                     if (card) card.style.transform = 'none';
                 });
-                return;
+                return; 
             }
 
             const scrollContainerTop = scrollContainer.offsetTop;
@@ -204,32 +201,44 @@ const Committees = () => {
 
             cards.forEach((card, i) => {
                 if (!card) return;
-                card.style.zIndex = i;
+                card.style.zIndex = i; 
 
                 if (i <= activeCardIndex) {
                     card.style.transform = 'translateX(0%)';
                 } else if (i === activeCardIndex + 1) {
                     const slideProgress = cardProgress - activeCardIndex;
-                    const translateX = 120 * (1 - slideProgress);
+                    // ✅ UPDATED: Increased translate value to ensure cards are off-screen
+                    const translateX = 150 * (1 - slideProgress);
                     card.style.transform = `translateX(${translateX}%)`;
                 } else {
-                    card.style.transform = 'translateX(120%)';
+                    // ✅ UPDATED: Increased translate value here as well
+                    card.style.transform = 'translateX(150%)';
                 }
             });
         };
 
         const handleScroll = () => {
+            if (window.innerWidth <= 768) {
+                return;
+            }
+
             if (!ticking.current) {
                 window.requestAnimationFrame(updateCards);
                 ticking.current = true;
             }
         };
+        
+        const handleResize = () => {
+            updateCards();
+        };
 
-        updateCards();
+        updateCards(); 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleResize, { passive: true });
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
             document.head.removeChild(styleElement);
             document.body.classList.remove('committees-body-style');
         };
@@ -266,3 +275,4 @@ const Committees = () => {
 };
 
 export default Committees;
+

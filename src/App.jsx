@@ -84,6 +84,8 @@ function MainLandingPage() {
           </ScrollReveal>
  
    
+      
+      <BackgroundReveal />
 
     
           <ChipsReveal />
