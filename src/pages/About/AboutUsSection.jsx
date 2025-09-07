@@ -8,6 +8,7 @@ import Description from './Description';
 import Gallery from './Gallery';
 import Sponsors from './Sponsors';
 import Committees from '../../BackgroundReveal'
+import About from '../../About'
 
 const AboutUsSection = () => {
   useLenis(); 

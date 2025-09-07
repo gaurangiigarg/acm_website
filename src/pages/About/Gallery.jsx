@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import DecryptedText from '../../../Decrypted_Reveal/DecryptedText/DecryptedText';
 
-import img1 from '../../assets/img/Prodigy24/HRK_0014.JPG';
-import img2 from '../../assets/img/Prodigy24/HRK_0356.JPG';
-import img3 from '../../assets/img/Prodigy24/HRK_7147.JPG';
-import img4 from '../../assets/img/Prodigy24/umm.jpg';
-import img5 from '../../assets/img/sherlocked/img1.jpg';
-import img6 from '../../assets/img/HOC/img1.jpg';
-import img7 from '../../assets/img/HOC/img2.jpg';
-import img8 from '../../assets/img/sherlocked/img2.jpeg';
-
-
+import img1 from '../../assets/img/Gallery_Webp/HRK_0014.webp';
+import img2 from '../../assets/img/Gallery_Webp/HRK_0356.webp';
+import img3 from '../../assets/img/Gallery_Webp/HRK_7147.webp';
+import img4 from '../../assets/img/Gallery_Webp/umm.webp';
+import img5 from '../../assets/img/Gallery_Webp/img1.webp';
+import img6 from '../../assets/img/Gallery_Webp/img3.webp';
+import img7 from '../../assets/img/Gallery_Webp/img4.webp';
+import img8 from '../../assets/img/Gallery_Webp/img2.webp';
 
 const galleryData = [
   { imageUrl: img1, size: 'large' },
@@ -30,24 +28,11 @@ const extendedGalleryData = [...galleryData, ...galleryData];
 const Gallery = () => {
   const [loaded, setLoaded] = useState(false);
 
+  
   useEffect(() => {
-    let loadedCount = 0;
-    const total = extendedGalleryData.length;
 
-    // Preload all images
-    extendedGalleryData.forEach((item) => {
-      const img = new Image();
-      img.src = item.imageUrl;
-      img.loading = "eager"; // ensures browser preloads it immediately
-      img.decoding = "async";
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === total) {
-          setLoaded(true);
-        }
-      };
-    });
-  }, []);
+    setLoaded(true);
+  }, []); // Empty dependency array runs this only once on mount.
 
   return (
     <section className="acm-gallery-wrapper">
@@ -72,6 +57,7 @@ const Gallery = () => {
       </div>
 
       <div className="acm-gallery-container">
+        {/* The 'loaded' class (which starts the animation) is now added almost instantly */}
         <div className={`acm-gallery-track ${loaded ? 'loaded' : ''}`}>
           {extendedGalleryData.map((item, index) => (
             <div
@@ -81,8 +67,8 @@ const Gallery = () => {
               <img
                 src={item.imageUrl}
                 alt={`Team gallery item ${index + 1}`}
-                loading="eager"
-                decoding="async"
+                loading="eager"  // Keep eager loading since it's part of an animation
+                decoding="async" // Keep async decoding to prevent jank
               />
             </div>
           ))}
