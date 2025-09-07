@@ -67,9 +67,9 @@ body {
 @media (max-width: 768px) {
     .leaders-intro-container {
         justify-content: center; /* Center content horizontally */
-        padding: 2rem;
-        min-height: auto; /* <-- UPDATED: Remove 100vh to let content define height */
-        align-items: flex-start; /* <-- UPDATED: Align content to the top */
+        padding: 2rem 2rem 0; /* <-- UPDATED: Keeps 2rem top/sides, sets 0 bottom padding */
+        min-height: auto; /* Remove 100vh to let content define height */
+        align-items: flex-start; /* Align content to the top */
     }
     .leaders-intro-content {
         text-align: center; /* Center text on mobile */

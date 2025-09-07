@@ -1,5 +1,5 @@
 import React from 'react';
-import './Leaders.css'; // Import the new stylesheet
+import './Leaders.css'; 
 
 const HearFromLeaders = () => {
 
