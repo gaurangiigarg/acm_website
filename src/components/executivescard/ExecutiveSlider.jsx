@@ -12,7 +12,7 @@ import RudranshSogani from '../../../src/assets/images/Rudransh_Sogani.jpg';
 const ArrowIcon = ({ className }) => (
   <svg
     className={className}
-    xmlns="http://www.w.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
@@ -148,10 +148,17 @@ const ExecutiveSlider = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, [slides.length]);
 
+  // ✅ UPDATED: This effect now uses the isMobile state to disable the auto-slide timer
   useEffect(() => {
-    timerRef.current = setInterval(goToNextSlide, 5000);
+    // Only run the auto-slide timer on desktop views
+    if (!isMobile) {
+      timerRef.current = setInterval(goToNextSlide, 5000);
+    }
+    
+    // The cleanup function will run regardless, clearing the timer
+    // if the user resizes from desktop (where it's running) to mobile.
     return () => clearInterval(timerRef.current);
-  }, [activeIndex, goToNextSlide]);
+  }, [activeIndex, goToNextSlide, isMobile]); // ✅ Added isMobile dependency
 
   // Update mobile state on resize
   useEffect(() => {
