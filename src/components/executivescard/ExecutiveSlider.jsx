@@ -132,7 +132,7 @@ const ExecutiveSlider = () => {
 
   const getSlides = () => {
     if (isMobile) {
-      return executivesData.map((exec) => [exec]); // one per slide
+      return executivesData.map((exec) => [exec]); // one exec per slide
     } else {
       const slides = [];
       for (let i = 0; i < executivesData.length; i += 2) {
@@ -148,17 +148,13 @@ const ExecutiveSlider = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, [slides.length]);
 
-  // ✅ UPDATED: This effect now uses the isMobile state to disable the auto-slide timer
+  // ✅ Only run auto-slide on desktop
   useEffect(() => {
-    // Only run the auto-slide timer on desktop views
     if (!isMobile) {
       timerRef.current = setInterval(goToNextSlide, 5000);
     }
-    
-    // The cleanup function will run regardless, clearing the timer
-    // if the user resizes from desktop (where it's running) to mobile.
     return () => clearInterval(timerRef.current);
-  }, [activeIndex, goToNextSlide, isMobile]); // ✅ Added isMobile dependency
+  }, [activeIndex, goToNextSlide, isMobile]);
 
   // Update mobile state on resize
   useEffect(() => {
@@ -167,23 +163,25 @@ const ExecutiveSlider = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // IntersectionObserver for background fade
+  // ✅ Only attach IntersectionObserver on desktop
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsSliderVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
+    if (!isMobile) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          setIsSliderVisible(entry.isIntersecting);
+        },
+        { threshold: 0.2 }
+      );
 
-    const currentSliderPageRef = sliderPageRef.current;
-    if (currentSliderPageRef) observer.observe(currentSliderPageRef);
+      const currentSliderPageRef = sliderPageRef.current;
+      if (currentSliderPageRef) observer.observe(currentSliderPageRef);
 
-    return () => {
-      if (currentSliderPageRef) observer.unobserve(currentSliderPageRef);
-    };
-  }, []);
+      return () => {
+        if (currentSliderPageRef) observer.unobserve(currentSliderPageRef);
+      };
+    }
+  }, [isMobile]);
 
   const handleDotClick = (index) => {
     clearInterval(timerRef.current);
@@ -222,16 +220,27 @@ const ExecutiveSlider = () => {
               </div>
             ))}
           </div>
-          <div className="dots-container">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                aria-label={`Go to slide ${index + 1}`}
-                className={`dot ${activeIndex === index ? 'active' : ''}`}
-                onClick={() => handleDotClick(index)}
-              />
-            ))}
-          </div>
+
+          {/* Navigation Buttons */}
+          <button
+            className="nav-button prev-button"
+            onClick={() =>
+              setActiveIndex((prevIndex) =>
+                prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+              )
+            }
+          >
+            &#10094;
+          </button>
+
+          <button
+            className="nav-button next-button"
+            onClick={() =>
+              setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length)
+            }
+          >
+            &#10095;
+          </button>
         </div>
       </div>
     </div>
