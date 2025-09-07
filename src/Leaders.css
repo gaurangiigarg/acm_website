@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: flex-start; /* Align content to the left for desktop */
     min-height: 100vh;
-    padding: 2rem 5rem 0 5rem; /* ⬅ removed almost all bottom padding */
+    padding: 2rem 5rem;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -66,8 +66,10 @@ body {
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     .leaders-intro-container {
-        justify-content: center; /* Center content on mobile */
-        padding: 2rem 2rem 0 2rem; /* ⬅ removed bottom padding for mobile too */
+        justify-content: center; /* Center content horizontally */
+        padding: 2rem;
+        min-height: auto; /* <-- UPDATED: Remove 100vh to let content define height */
+        align-items: flex-start; /* <-- UPDATED: Align content to the top */
     }
     .leaders-intro-content {
         text-align: center; /* Center text on mobile */
