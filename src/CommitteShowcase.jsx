@@ -28,7 +28,7 @@ const otherCommittees = [
   {
     title: 'Public Relations & Sponsorship',
     description:
-      'This committee is the face of the chapter. The PR and Sponsorship team puts in immeasurable efforts to secure sponsorships for the events, responds to inquiries, and tries to increase the chapter’s.',
+      "The PR and Sponsorship team puts in immeasurable efforts to secure sponsorships for the events, responds to inquiries, and tries to increase the chapter's.",
   },
   {
     title: 'Design & VFX',
@@ -47,18 +47,24 @@ const CommitteesShowcase = () => {
     <div className="committees-overlay">
       <div className="committees-grid">
         {otherCommittees.map((committee, index) => (
-          <div className="committee-card" key={`other-${index}`}>
-            <div className="committee-title">{committee.title}</div>
-            <div className="committee-description">{committee.description}</div>
+          // ✅ WRAP your card in this new placeholder div
+          <div className="committee-placeholder" key={`other-${index}`}>
+            <div className="committee-card">
+              <div className="committee-title">{committee.title}</div>
+              <div className="committee-description">{committee.description}</div>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="committees-top-row">
         {topRowCommittees.map((committee, index) => (
-          <div className="committee-card" key={`top-${index}`}>
-            <div className="committee-title">{committee.title}</div>
-            <div className="committee-description">{committee.description}</div>
+          // ✅ WRAP this card too
+          <div className="committee-placeholder" key={`top-${index}`}>
+            <div className="committee-card">
+              <div className="committee-title">{committee.title}</div>
+              <div className="committee-description">{committee.description}</div>
+            </div>
           </div>
         ))}
       </div>

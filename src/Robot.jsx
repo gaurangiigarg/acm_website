@@ -1,18 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import CommitteesShowcase from './CommitteShowcase';
-import './Robot.css'; 
-
+import './Robot.css';
 
 function Robot() {
   const wrapperRef = useRef(null);
   const [showRobot, setShowRobot] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+  const [isFullyVisible, setIsFullyVisible] = useState(false); // Renamed for clarity, was isFullyVisible
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasPlayed) {
+        const ratio = entry.intersectionRatio;
+
+        // --- Logic to load robot (triggers >= 0.3, only ONCE) ---
+        if (ratio >= 0.3 && !hasPlayed) {
           setShowRobot(true);
           setHasPlayed(true);
 
@@ -32,20 +35,26 @@ function Robot() {
             }
           }, 300);
         }
+
+        // ✅ 1. UPDATED LOGIC: Trigger fade at 75% view (or higher)
+        setIsFullyVisible(ratio >= 0.75);
       },
-      { threshold: 0.3 }
+      {
+        // ✅ 2. UPDATED THRESHOLD: Watch for 30% (robot) and 75% (background)
+        threshold: [0.3, 0.75],
+      }
     );
 
     if (wrapperRef.current) observer.observe(wrapperRef.current);
     return () => observer.disconnect();
-  }, [hasPlayed]);
+  }, [hasPlayed]); // Dependency array remains correct
 
   return (
     <div className="robot-wrapper" ref={wrapperRef}>
       {/* 🔴 Black Background Layer */}
-      <div className="robot-black-bg"></div>
-
-      
+      <div
+        className={`robot-black-bg ${isFullyVisible ? 'is-visible' : ''}`}
+      ></div>
 
       {/* 🟢 Foreground Content */}
       <div className="robot-content">
@@ -58,8 +67,7 @@ function Robot() {
       </div>
 
       <div className="watermark-patch"></div>
-</div>
-
+    </div>
   );
 }
 
