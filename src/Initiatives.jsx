@@ -1,15 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import './Initiatives.css';
 import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// Removed GSAP imports as they are no longer needed for this component
 
 import DOC from '../src/assets/img/webp_images/img1.webp';
 import HOC from '../src/assets/img/webp_images/img2.webp';
 import codeanytime from '../src/assets/img/webp_images/img3.webp';
 import Spyc from '../src/assets/img/webp_images/img4.webp';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // --- Data for the carousel cards ---
 const cardData = [
@@ -37,63 +34,21 @@ const cardData = [
     category: 'Photography',
     title: 'Shutter-Saga',
     imageUrl:
-      'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3',
+      'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?q=80&w=1200&auto=format&fit=crop&ixlib-rb-4.0.3',
   },
 ];
 
 // --- The Initiatives Carousel Component ---
 function Initiatives() {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null); // containerRef can still be used if needed elsewhere, or removed if not.
   const carouselRef = useRef(null);
   const [isPrevDisabled, setPrevDisabled] = useState(true);
   const [isNextDisabled, setNextDisabled] = useState(false);
 
-  // ✅ Background fade runs ONLY on screens wider than 768px
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+  // ✅ GSAP Background Fade useEffect has been completely REMOVED.
+  // The component will now use the solid black background from Initiatives.css
 
-    // Use GSAP's matchMedia for responsive ScrollTriggers
-    let mm = gsap.matchMedia();
-
-    // Add animation for "desktop" screens
-    mm.add('(min-width: 769px)', () => {
-      // This GSAP animation will only run on screens 769px and wider
-      const bgFade = gsap.fromTo(
-        el,
-        { backgroundColor: '#000000' },
-        {
-          backgroundColor: '#02030a',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-
-      // Return a cleanup function for this specific media query
-      return () => {
-        bgFade.kill(); // Kill the animation
-        ScrollTrigger.getAll().forEach((trigger) => {
-          if (trigger.trigger === el) trigger.kill();
-        });
-      };
-    });
-
-    // On mobile (768px and smaller), no GSAP animation is created.
-    // We just set the final background color immediately.
-    mm.add('(max-width: 768px)', () => {
-      gsap.set(el, { backgroundColor: '#02030a' });
-    });
-
-    // General cleanup for the matchMedia instance
-    return () => mm.revert();
-  }, []);
-
-  // ✅ Update navigation buttons (no change needed)
+  // ✅ Update navigation buttons
   const updateButtons = useCallback(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -105,7 +60,7 @@ function Initiatives() {
     setNextDisabled(scrollLeft > scrollWidth - clientWidth - tolerance);
   }, []);
 
-  // ✅ Attach event listeners (no change needed)
+  // ✅ Attach event listeners
   useEffect(() => {
     const carouselElement = carouselRef.current;
     if (carouselElement) {
@@ -122,7 +77,7 @@ function Initiatives() {
     };
   }, [updateButtons]);
 
-  // ✅ Scroll logic (no change needed)
+  // ✅ Scroll amount per card
   const getScrollAmount = () => {
     const carousel = carouselRef.current;
     if (!carousel) return 0;
