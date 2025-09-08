@@ -171,6 +171,15 @@ const cssStyles = `
             margin-right: 6rem;
         }
     }
+
+    /* --- MOBILE HEIGHT REDUCTION --- */
+    @media (max-width: 767px) {
+      .futuristic-contact-wrapper {
+        min-height: auto; /* Let content define the height */
+        display: block;     /* Disable flexbox vertical centering */
+        padding: 5rem 1rem; /* Add vertical padding for spacing */
+      }
+    }
 `;
 
 
@@ -290,7 +299,8 @@ const ContactForm = () => {
     return (
         <div className="futuristic-contact-wrapper">
             <video autoPlay loop muted className="futuristic-contact-bg-video">
-                <source src={bgvideo} type="video/mp4" />
+                {/* ✅ CORRECTED: Type changed from video/mp4 to video/webm to match the import */}
+                <source src={bgvideo} type="video/webm" />
                 {/* Fallback for browsers that don't support the video tag */}
                 Your browser does not support the video tag.
             </video>
@@ -339,4 +349,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-
