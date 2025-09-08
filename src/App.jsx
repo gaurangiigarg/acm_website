@@ -1,7 +1,8 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { lazy, Suspense, useLayoutEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { lazy, Suspense, useLayoutEffect, useEffect } from 'react';
+// Import 'useLocation' which is needed for the ScrollToTop component
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 // Import your components
 import useLenis from './useLenis';
@@ -19,13 +20,25 @@ import TeamsPage from './pages/Teams/TeamsPage';
 import Contact from './Contact';
 import ContactForm from './ContactUS';
 import Leaders from './Leaders';
-import PrismaticBurst from '../PrismaticBurst/PrismaticBurst/PrismaticBurst'
+import PrismaticBurst from '../PrismaticBurst/PrismaticBurst/PrismaticBurst';
+import Footer from './Footer';
 
 import './App.css';
 
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ✅ NEW COMPONENT: Resets scroll position to the top on route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]); // This effect runs every time the pathname changes
+
+  return null; // This component doesn't render any visible UI
+}
 
 
 function MainLandingPage() {
@@ -69,67 +82,53 @@ function MainLandingPage() {
 
         <Home />
 
-
       <About />
 
-      
-
       <RevealSection1 />
-    
-      
 
-       
-
+        <Suspense fallback={<div>Loading...</div>}>
           <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
             Want to know who makes all that happen?
           </ScrollReveal>
- 
-   
-      
-      <BackgroundReveal />
-
+        </Suspense>
     
-          <ChipsReveal />
+      <BackgroundReveal />
+  
+      <Suspense fallback={<div>Loading...</div>}>
+        <ChipsReveal />
+      </Suspense>
 
-
-
-
-        <Initiatives />
-
+      <Initiatives />
 
       <section className="leaders-executives-section">
-  {/* Background Layer */}
-  <div className="prismatic-bg">
-    <PrismaticBurst
-      animationType="rotate3d"
-      intensity={2}
-      speed={0.5}
-      distort={1.0}
-      paused={false}
-      offset={{ x: 0, y: 0 }}
-      hoverDampness={0.25}
-      rayCount={24}
-      mixBlendMode="lighten"
-      colors={['#172DD9', '#000000', '#000000']}
-    />
-  </div>
+        {/* Background Layer */}
+        <div className="prismatic-bg">
+          <PrismaticBurst
+            animationType="rotate3d"
+            intensity={2}
+            speed={0.5}
+            distort={1.0}
+            paused={false}
+            offset={{ x: 0, y: 0 }}
+            hoverDampness={0.25}
+            rayCount={24}
+            mixBlendMode="lighten"
+            colors={['#172DD9', '#000000', '#000000']}
+          />
+        </div>
 
-  {/* Foreground Content */}
-  <div className="leaders-executives-content">
-    <Leaders />
-    <ExecutiveSlider />
-  </div>
-</section>
-
+        {/* Foreground Content */}
+        <div className="leaders-executives-content">
+          <Leaders />
+          <ExecutiveSlider />
+        </div>
+      </section>
 
       <Contact />
 
       <ContactForm />
 
-
-
-
-
+      <Footer />
 
     </>
   );
@@ -140,6 +139,7 @@ export default function App() {
 
   return (
     <Router basename={basename}>
+      <ScrollToTop /> {/* ✅ ADDED: This component fixes the scroll issue */}
       <Routes>
         <Route path="/" element={<MainLandingPage />} />
         <Route path="/about" element={<AboutUs />} />
