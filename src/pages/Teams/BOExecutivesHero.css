@@ -68,6 +68,11 @@
         justify-content: center;
         text-align: center;
     }
+    
+    /* ✅ This adds the requested gap on small screens */
+    .bo-main-heading {
+        margin-bottom: 2rem; 
+    }
 
     .bo-description {
         max-width: 90%;
