@@ -153,7 +153,7 @@ body {
   }
 
   .carousel-card {
-    width: 90%;
+    width: 85%;
     height: 35vh;
   }
 
@@ -202,10 +202,36 @@ body {
 /* Desktop */
 @media (min-width: 1024px) {
   .carousel-card {
-    width: 30%; /* <-- REDUCED from 33.3333% */
-    height: 50vh; 
+    width: 30%;
+    height: 50vh;
   }
   .initiatives-main-title {
     font-size: 3rem;
+  }
+}
+
+/* --- ✅ NEW: Mobile Height Reduction --- */
+@media (max-width: 767px) {
+  .initiatives-container {
+    display: block; /* Disable flex centering */
+    height: auto; /* Let content define height */
+    padding-top: 5rem; /* Add spacing at the top */
+    padding-bottom: 5rem; /* Add spacing at the bottom */
+  }
+
+  .initiatives-main-title {
+    /* Ensure title is centered on mobile if flex is disabled */
+    text-align: center;
+    padding-left: 0;
+  }
+  
+  .initiatives-carousel-wrapper {
+    /* Ensure carousel padding is removed on mobile */
+    padding-left: 0;
+  }
+
+  .initiatives-navigation-controls {
+    /* Center nav buttons when flex is disabled */
+    justify-content: center;
   }
 }
