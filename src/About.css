@@ -1,4 +1,5 @@
-/* --- CSS Variables --- */
+/* --- Global Styles & Resets --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
 :root {
     --primary-font: 'Poppins', sans-serif;
     --background-color: #0f0f1a; /* A slightly softer black */
@@ -12,8 +13,7 @@
     --scrollbar-thumb-color: rgba(255, 255, 255, 0.2);
 }
 
-/* --- Global Styles & Resets --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
 
 * {
     box-sizing: border-box; /* Universal box-sizing for predictable layouts */
