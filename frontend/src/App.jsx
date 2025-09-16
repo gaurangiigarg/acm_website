@@ -91,7 +91,8 @@ function MainLandingPage() {
             Want to know who makes all that happen?
           </ScrollReveal>
         </Suspense>
-
+    
+      <BackgroundReveal />
   
 
         <ChipsReveal />
@@ -106,11 +107,11 @@ function MainLandingPage() {
      
         <div className="leaders-executives-content">
           <Leaders />
-          <ExecutiveSlider />
+
         </div>
       </section>
 
-
+      <Contact />
 
       <ContactForm />
 

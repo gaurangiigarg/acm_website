@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-// Data for the committees
+// Data for the committees (no changes)
 const committeesData = [
     { name: 'Technical', description: "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES and works on projects that help students learn." },
     { name: 'Events', description: 'The brain of the chapter, organizes a variety of events, our vivacious team. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
@@ -11,7 +11,7 @@ const committeesData = [
     { name: 'Operations', description: 'The backbone of the chapter, ensuring everything runs smoothly behind the scenes.' },
 ];
 
-// CSS with added transition for smoother animations
+// CSS (no changes)
 const cssStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -23,12 +23,12 @@ const cssStyles = `
     }
     
     .CommitteesSection {
-        background-color: #000; /* ensures black background at root */
+        background-color: #000;
         min-height: 100vh;
     }
     
     .CommitteesSection .committees-scroll-area {
-        height: 500vh; /* This creates the scroll length needed for the effect */
+        height: 500vh;
         position: relative;
     }
 
@@ -82,8 +82,6 @@ const cssStyles = `
         color: #fff;
         will-change: transform;
         box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
-        
-        /* ✅ ADDED: CSS transition for smoother animations */
         transition: transform 0.3s ease-out;
     }
 
@@ -109,7 +107,7 @@ const cssStyles = `
       line-height: 1.4;
     }
 
-    /* Mobile responsiveness */
+    /* Mobile responsiveness (no changes) */
     @media (max-width: 768px) {
         .CommitteesSection .committees-scroll-area,
         .CommitteesSection .committees-sticky-content {
@@ -148,47 +146,32 @@ const cssStyles = `
           height: auto; 
           padding: 1rem;
           opacity: 1;
-          transform: none;
-          transition: none; /* Disable transition on mobile */
+          transform: none !important;
+          transition: none;
         }
 
         .CommitteesSection .committee-card-item h3 { font-size: 1.2rem; }
         .CommitteesSection .committee-card-item p { font-size: 0.8rem; line-height: 1.4; }
-    }
-    
-    @media (max-width: 768px) {
-      .CommitteesSection .committees-subtitle { font-size: 0.9rem; margin-top: 1rem; }
+        .CommitteesSection .committees-subtitle { font-size: 0.9rem; margin-top: 1rem; }
     }
 `;
 
 const Committees = () => {
     const scrollContainerRef = useRef(null);
     const cardsRef = useRef([]);
-    const ticking = useRef(false);
 
     useEffect(() => {
         const styleElement = document.createElement('style');
         styleElement.innerHTML = cssStyles;
         document.head.appendChild(styleElement);
         document.body.classList.add('committees-body-style');
-        
+
         const scrollContainer = scrollContainerRef.current;
         const cards = cardsRef.current;
-
         if (!scrollContainer || cards.length === 0) return;
 
+        let ticking = false;
         const updateCards = () => {
-            ticking.current = false; 
-
-            const isMobile = window.innerWidth <= 768;
-
-            if (isMobile) {
-                cards.forEach(card => {
-                    if (card) card.style.transform = 'none';
-                });
-                return; 
-            }
-
             const scrollContainerTop = scrollContainer.offsetTop;
             const scrollContainerHeight = scrollContainer.offsetHeight;
             const viewportHeight = window.innerHeight;
@@ -201,45 +184,53 @@ const Committees = () => {
 
             cards.forEach((card, i) => {
                 if (!card) return;
-                card.style.zIndex = i; 
+                // ✅ REVERTED: Restored original z-index logic for "stack on top" effect
+                card.style.zIndex = i;
 
                 if (i <= activeCardIndex) {
                     card.style.transform = 'translateX(0%)';
                 } else if (i === activeCardIndex + 1) {
                     const slideProgress = cardProgress - activeCardIndex;
-                    // ✅ UPDATED: Increased translate value to ensure cards are off-screen
                     const translateX = 150 * (1 - slideProgress);
                     card.style.transform = `translateX(${translateX}%)`;
                 } else {
-                    // ✅ UPDATED: Increased translate value here as well
                     card.style.transform = 'translateX(150%)';
                 }
             });
-        };
-
-        const handleScroll = () => {
-            if (window.innerWidth <= 768) {
-                return;
-            }
-
-            if (!ticking.current) {
-                window.requestAnimationFrame(updateCards);
-                ticking.current = true;
-            }
+            ticking = false;
         };
         
-        const handleResize = () => {
-            updateCards();
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateCards);
+                ticking = true;
+            }
         };
 
-        updateCards(); 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', handleResize, { passive: true });
+        let resizeTimeout;
+        const setupEventListeners = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const isMobile = window.innerWidth <= 768;
+                
+                window.removeEventListener('scroll', handleScroll);
+
+                if (!isMobile) {
+                    window.addEventListener('scroll', handleScroll, { passive: true });
+                    updateCards();
+                }
+            }, 100);
+        };
+
+        setupEventListeners();
+        window.addEventListener('resize', setupEventListeners);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-            document.head.removeChild(styleElement);
+            window.removeEventListener('resize', setupEventListeners);
+            if (document.head.contains(styleElement)) {
+                document.head.removeChild(styleElement);
+            }
             document.body.classList.remove('committees-body-style');
         };
     }, []);
@@ -275,4 +266,3 @@ const Committees = () => {
 };
 
 export default Committees;
-
