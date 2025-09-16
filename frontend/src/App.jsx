@@ -94,17 +94,17 @@ function MainLandingPage() {
     
       <BackgroundReveal />
   
-      <Suspense fallback={<div>Loading...</div>}>
-        <ChipsReveal />
-      </Suspense>
+
+
+
 
       <Initiatives />
 
       <section className="leaders-executives-section">
-        {/* Background Layer */}
+   
         
 
-        {/* Foreground Content */}
+     
         <div className="leaders-executives-content">
           <Leaders />
           <ExecutiveSlider />
