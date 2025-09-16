@@ -110,7 +110,7 @@ function MainLandingPage() {
         </div>
       </section>
 
-      <Contact />
+
 
       <ContactForm />
 
