@@ -91,11 +91,10 @@ function MainLandingPage() {
             Want to know who makes all that happen?
           </ScrollReveal>
         </Suspense>
-    
-      <BackgroundReveal />
+
   
 
-
+        <ChipsReveal />
 
 
       <Initiatives />
