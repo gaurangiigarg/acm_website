@@ -94,7 +94,7 @@ function MainLandingPage() {
       {isLargeScreen && <BackgroundReveal />}
 
       <ChipsReveal />
-      <Initiatives />
+
 
       <section className="leaders-executives-section">
         <ExecutiveSlider />
