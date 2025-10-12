@@ -1,18 +1,16 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { lazy, Suspense, useLayoutEffect, useEffect } from 'react';
-// Import 'useLocation' which is needed for the ScrollToTop component
+import React, { lazy, Suspense, useLayoutEffect, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
-// Import your components
 import useLenis from './useLenis';
 import Home from './home';
 import Navbar from './Navbar';
 import About from './About';
+import BackgroundReveal from './BackgroundReveal';
 import ScrollReveal from '../ScrollReveal/ScrollReveal/ScrollReveal';
 import Silk from '../Silk_background/Silk/Silk';
 import RevealSection1 from './RevealSection1';
-import BackgroundReveal from './BackgroundReveal';
 import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
 import Initiatives from './Initiatives';
 import AboutUs from './pages/About/AboutUsSection';
@@ -20,7 +18,6 @@ import TeamsPage from './pages/Teams/TeamsPage';
 import Contact from './Contact';
 import ContactForm from './ContactUS';
 import Leaders from './Leaders';
-import PrismaticBurst from '../PrismaticBurst/PrismaticBurst/PrismaticBurst';
 import Footer from './Footer';
 
 import './App.css';
@@ -29,22 +26,27 @@ const ChipsReveal = lazy(() => import('./ChipsReveal'));
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ✅ NEW COMPONENT: Resets scroll position to the top on route changes
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]); // This effect runs every time the pathname changes
+  }, [pathname]);
 
-  return null; // This component doesn't render any visible UI
+  return null;
 }
-
 
 function MainLandingPage() {
   useLenis();
 
-  // Your GSAP animation logic for scroll triggers
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth > 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useLayoutEffect(() => {
     const section = document.querySelector('.scroll-reveal-section');
     const bg = document.querySelector('.scroll-black-bg');
@@ -69,7 +71,7 @@ function MainLandingPage() {
           onLeaveBack: () => gsap.set(bg, { opacity: 1 }),
         });
       });
-      return () => ctx.revert(); // Cleanup GSAP context
+      return () => ctx.revert();
     }
   }, []);
 
@@ -80,43 +82,27 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-        <Home />
-
+      <Home />
       <About />
-
       <RevealSection1 />
 
-        <Suspense fallback={<div>Loading...</div>}>
-          <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
-            Want to know who makes all that happen?
-          </ScrollReveal>
-        </Suspense>
-    
-      <BackgroundReveal />
-  
+      <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
+        Want to know who makes all that happen?
+      </ScrollReveal>
 
-        <ChipsReveal />
+      {/* ✅ BackgroundReveal is only rendered on larger screens */}
+      {isLargeScreen && <BackgroundReveal />}
 
-
+      <ChipsReveal />
       <Initiatives />
 
       <section className="leaders-executives-section">
-   
-        
-
-     
-        <div className="leaders-executives-content">
-          <Leaders />
-
-        </div>
+        <ExecutiveSlider />
       </section>
 
       <Contact />
-
       <ContactForm />
-
       <Footer />
-
     </>
   );
 }
@@ -126,7 +112,7 @@ export default function App() {
 
   return (
     <Router basename={basename}>
-      <ScrollToTop /> {/* ✅ ADDED: This component fixes the scroll issue */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLandingPage />} />
         <Route path="/about" element={<AboutUs />} />

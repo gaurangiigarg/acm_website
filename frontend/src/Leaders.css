@@ -1,89 +1,98 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #00000000; /* Darkest blue background */
-    color: #E0E0E0;
-    margin: 0;
-    padding: 0;
-}
-
-.leaders-intro-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Align content to the left for desktop */
-    min-height: 100vh;
-    padding: 2rem 5rem;
+/* Main wrapper for the full-viewport gallery section */
+.acm-gallery-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 6rem 0;
     box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    background-color: #00000000; /* Match body background */
-}
-
-.leaders-intro-content {
-    max-width: 800px;
-    text-align: left;
-    z-index: 2;
-    position: relative;
-}
-
-.intro-eyebrow {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #5a79ff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+    background-color: black;
+    color: var(--text-color, #c9d1d9);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
+    gap: 10rem;
 }
 
-.intro-eyebrow::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 2px;
-    background-color: #5a79ff;
-    margin-right: 1rem;
+/* Text block */
+.acm-gallery-description {
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    max-width: 700px;
+    padding: 0 1rem;
 }
 
-.leaders-intro-title {
+.acm-gallery-description h2 {
+    color: #fff;
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(0, 140, 255, 0.6),
+        0 0 16px rgba(0, 140, 255, 0.5);
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin: 0 0 1.5rem 0;
-    text-shadow: 0 0 10px #2A4BFF, 0 0 20px #0022FF, 0 0 40px #001C9C;
+    font-size: 2.5rem;
 }
 
-.leaders-intro-text {
-    font-size: 1.125rem;
-    font-weight: 300;
-    line-height: 1.8;
-    max-width: 650px;
-    margin: 0;
-    color: #A8B2D1;
+.acm-gallery-description p {
+    color: #c9d1d9;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
 }
 
-/* Responsive styles for smaller screens */
-@media (max-width: 768px) {
-    .leaders-intro-container {
-        justify-content: center; /* Center content horizontally */
-        padding: 2rem 2rem 0; /* <-- UPDATED: Keeps 2rem top/sides, sets 0 bottom padding */
-        min-height: auto; /* Remove 100vh to let content define height */
-        align-items: flex-start; /* Align content to the top */
+/* Container for the scrolling gallery */
+.acm-gallery-container {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    overflow: hidden;
+}
+
+/* Track that moves */
+.acm-gallery-track {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    width: calc(324px * 7 * 2);
+    animation: scrollAnimation 50s linear infinite;
+}
+
+@keyframes scrollAnimation {
+    0% {
+        transform: translateX(0);
     }
-    .leaders-intro-content {
-        text-align: center; /* Center text on mobile */
+    100% {
+        transform: translateX(calc(-324px * 7));
     }
-    .intro-eyebrow {
-        justify-content: center; /* Center eyebrow content */
-    }
-    .intro-eyebrow::before {
-        margin-right: 0.5rem;
-    }
-    .leaders-intro-title {
-        font-size: 2.5rem;
-    }
-    .leaders-intro-text {
-        font-size: 1rem;
-    }
+}
+
+/* Individual cards */
+.acm-gallery-card {
+    flex-shrink: 0;
+}
+
+.acm-gallery-card img {
+    display: block;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--border-color, #30363d);
+    background-color: transparent;
+}
+
+/* Size variations */
+.acm-gallery-card.large img {
+    width: 350px;
+    height: 450px;
+}
+
+.acm-gallery-card.small img {
+    width: 250px;
+    height: 320px;
+}
+
+/* Skeleton loader */
+.acm-gallery-card.skeleton {
+    background: #1a1a1a;
+    border-radius: 16px;
+    border: 1px solid #30363d;
 }
