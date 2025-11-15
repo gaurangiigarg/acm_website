@@ -4,7 +4,7 @@ import React, { lazy, Suspense, useLayoutEffect, useEffect, useState } from 'rea
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import useLenis from './useLenis';
-import Home from './home';
+// import Home from './home'; // --- REMOVED
 import Navbar from './Navbar';
 import About from './About';
 import BackgroundReveal from './BackgroundReveal';
@@ -23,6 +23,7 @@ import Footer from './Footer';
 import './App.css';
 
 const ChipsReveal = lazy(() => import('./ChipsReveal'));
+const Home = lazy(() => import('./home')); // --- ADDED
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,7 +83,11 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-      <Home />
+      {/* --- UPDATED: Added Suspense wrapper --- */}
+      <Suspense fallback={null}>
+        <Home />
+      </Suspense>
+
       <About />
       <RevealSection1 />
 
@@ -93,10 +98,13 @@ function MainLandingPage() {
       {/* ✅ BackgroundReveal is only rendered on larger screens */}
       {isLargeScreen && <BackgroundReveal />}
 
-      <ChipsReveal />
+      {/* This Suspense wrapper was already here */}
+      <Suspense fallback={null}>
+        <ChipsReveal />
+      </Suspense>
 
 
-   
+    
         <Leaders />
 
         <Initiatives />
