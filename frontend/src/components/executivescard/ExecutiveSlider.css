@@ -1,24 +1,9 @@
 /* --- Header / Navigation --- */
-.tp-main-header {
-    display: flex;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    border-bottom: 1px solid #374151; /* Dark Gray Border */
-    background-color: #181e2d; /* Match body */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.tp-main-header .tp-logo {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
+/* (Header styles removed as it was not in your final JSX) */
 
 /* --- Main Page Layout (Sidebar + Content) --- */
 .tp-page-content {
     display: grid;
-    /* Adjust grid for smaller screens */
     grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1rem 1.5rem;
@@ -26,7 +11,6 @@
     margin: 0 auto; /* Center content */
 }
 
-/* Use media query for larger screens */
 @media (min-width: 1024px) {
     .tp-page-content {
         padding: 2rem 3rem;
@@ -42,22 +26,15 @@
     width: 100%;
 }
 
-@media (min-width: 768px) {
-    .tp-team-container {
-        grid-template-columns: 1fr 1fr; /* 50/50 split for image and list */
-        gap: 4rem;
-    }
-}
-
-/* --- 1. Sticky Image Container --- */
+/* --- 1. Sticky Image Container (Desktop Only) --- */
 .tp-team-image-container {
-    /* On mobile, it's not sticky, just a block */
+    /* UPDATED: Hidden by default on mobile */
+    display: none; 
+    
     position: relative;
     width: 100%;
-    /* Reduced max-width */
     max-width: 360px;
     margin: 0 auto; /* Center it on mobile */
-    /* Use aspect-ratio for responsive height */
     aspect-ratio: 4 / 5; 
     height: auto;
     
@@ -66,30 +43,16 @@
     overflow: hidden; /* Ensures rounded corners on images */
     background-color: #374151; /* Dark Gray BG */
 
-    /* UPDATED: Hide by default */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s;
 }
 
-/* ADDED: Show when active */
 .tp-team-image-container.tp-visible {
     opacity: 1;
     visibility: visible;
 }
 
-
-@media (min-width: 768px) {
- .tp-team-image-container {
- position: sticky;
- top: 150px; 
-height: 400px;
- aspect-ratio: auto;
-
-        /* UPDATED: Revert back to this to center the image */
-margin: 0 auto; 
- }
-}
 .tp-team-photo {
     position: absolute;
     top: 0;
@@ -97,8 +60,6 @@ margin: 0 auto;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
-    /* The Fade Effect */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s;
@@ -114,19 +75,13 @@ margin: 0 auto;
     padding-top: 0;
 }
 
-@media (min-width: 768px) {
-     .tp-team-list {
-        padding-top: 2rem;
-    }
-}
-
 .tp-team-member-intro {
     border-bottom: 1px solid #374151; /* Dark Gray Border */
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
 }
 .tp-team-member-intro h3 {
-    font-family: 'Poppins', serif;
+    font-family: 'Poppins', serif; /* Assuming Poppins, fallback to serif */
     font-size: 2.5rem;
     margin: 0 0 1rem 0;
 }
@@ -140,11 +95,9 @@ margin: 0 auto;
     padding: 1.5rem 0;
     border-bottom: 1px solid #374151; /* Dark Gray Border */
     cursor: pointer;
-    /* Added transition for the padding */
     transition: padding-bottom 0.4s ease;
 }
 
-/* When active, highlight the name */
 .tp-team-member.tp-active .tp-member-name {
     color: #60a5fa; /* Brighter Blue */
 }
@@ -157,7 +110,6 @@ margin: 0 auto;
 }
 
 .tp-member-name {
-    /* Changed to Poppins per request */
     font-family: 'Poppins', sans-serif;
     font-size: 2.2rem; /* Slightly smaller for mobile */
     font-weight: 500;
@@ -166,15 +118,33 @@ margin: 0 auto;
     transition: color 0.3s;
 }
 
-@media (min-width: 768px) {
-    .tp-member-name {
-        font-size: 2.8rem;
-    }
+
+/* --- NEW: Mobile-Only Image --- */
+.tp-mobile-image-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.4s ease-in-out, padding-top 0.4s ease-in-out;
+    padding-top: 0;
 }
+.tp-mobile-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* You can change this aspect ratio */
+    object-fit: cover;
+    border-radius: 12px;
+    min-height: 0; /* Crucial for grid animation */
+}
+
+/* Show mobile image when active */
+.tp-team-member.tp-active .tp-mobile-image-wrapper {
+    grid-template-rows: 1fr;
+    padding-top: 1rem; /* Space between name and image */
+}
+
 
 /* --- Member Description Box --- */
 .tp-member-description {
-    /* Use grid for dynamic height animation */
     display: grid;
     grid-template-rows: 0fr;
     overflow: hidden;
@@ -183,7 +153,6 @@ margin: 0 auto;
     font-size: 0.95rem;
     line-height: 1.6;
     
-    /* Animate grid-template-rows */
     transition: grid-template-rows 0.4s ease-in-out, padding-top 0.4s ease-in-out;
     padding-top: 0; /* Animate padding-top as well */
 }
@@ -193,13 +162,48 @@ margin: 0 auto;
     font-style: italic;
     border-left: 3px solid #374151;
     padding-left: 1rem;
-    /* crucial for grid animation */
     min-height: 0; 
 }
 
-/* When the team-member is active, expand the description */
+/* Show description when active */
 .tp-team-member.tp-active .tp-member-description {
-    /* Animate to 1fr (auto-height) */
     grid-template-rows: 1fr;
-    padding-top: 1rem; /* Add space when it opens */
+    padding-top: 1rem; /* Space between image and description */
+}
+
+
+/* ---
+--- DESKTOP-SPECIFIC STYLES (min-width: 768px)
+--- */
+
+@media (min-width: 768px) {
+    .tp-team-container {
+        grid-template-columns: 1fr 1fr; /* 50/50 split for image and list */
+        gap: 4rem;
+    }
+
+    /* 1. Show the desktop sticky image */
+    .tp-team-image-container {
+        display: block; /* Show this container */
+        position: sticky;
+        top: 150px; /* Your desired top spacing */
+        height: 400px;
+        aspect-ratio: auto; 
+        margin: 0 auto; /* Center it */
+    }
+
+    /* 2. Hide the mobile inline image */
+    .tp-mobile-image-wrapper {
+        display: none;
+    }
+
+    /* 3. Restore desktop list padding */
+    .tp-team-list {
+        padding-top: 2rem;
+    }
+
+    /* 4. Restore desktop font size */
+    .tp-member-name {
+        font-size: 2.8rem;
+    }
 }

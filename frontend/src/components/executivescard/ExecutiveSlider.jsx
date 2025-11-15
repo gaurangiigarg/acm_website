@@ -30,7 +30,7 @@ const teamData = [
     name: 'Tanay Prabhakar', 
     img: TanayPrabhakar,
     description: "Upon my college arrival, the UPES-ACM Student Chapter warmly embraced me, alleviating overwhelming challenges. It swiftly became a familial refuge, fostering belonging and support. Beyond membership, it meant embracing a culture of coding excellence and technical advancement. As I progressed through my academic journey, I transitioned from a core member to an office bearer and now proudly hold the position of vice chairperson in this esteemed chapter.Reflecting on this journey, it has been nothing short of extraordinary. My aspiration as a leader is to propel the UPES-ACM Student Chapter to unprecedented heights, leaving a legacy that transcends the remarkable one I inherited."
-                      
+            
   },
   { 
     id: 'cho', 
@@ -44,7 +44,7 @@ const teamData = [
     title: 'Joint Secretary', 
     name: 'Advika Kaushik', 
     img: AdvikaKaushik,
-    description: "Joining UPES ACM was a turning point for me. I landed a spot on the VFX committee, leading the team as VFX Head. Now, I'm honored to serve as the chapter secretary. It's been a rollercoaster ride, filled with learnings. The positive and challenging work environment proved to be a fantastic combination for growth. I've broken out of my shell, becoming a more confident communicator.  From the initial steps to the leadership responsibilities, this journey within UPES ACM has been incredibly rewarding and instrumental in developing my teamwork and leadership skills. I'm incredibly grateful for the community, the challenges, and the friendships I've made along the way."
+    description: "Joining UPES ACM was a turning point for me. I landed a spot on the VFX committee, leading the team as VFX Head. Now, I'm honored to serve as the chapter secretary. It's been a rollercoaster ride, filled with learnings. The positive and challenging work environment proved to be a fantastic combination for growth. I've broken out of my shell, becoming a more confident communicator.  From the initial steps to the leadership responsibilities, this journey within UPES ACM has been incredibly rewarding and instrumental in developing my teamwork and leadership skills. I'm incredibly grateful for the community, the challenges, and the friendships I've made along the way."
   },
   { 
     id: 'cmo', 
@@ -74,12 +74,11 @@ const TeamPage = () => {
 
   return (
     <>
-      
-
       <div className="tp-page-content">
         <main className="tp-team-container">
           
-          {/* UPDATED: Added conditional 'tp-visible' class */}
+          {/* --- 1. DESKTOP STICKY IMAGE --- */}
+          {/* This is hidden on mobile by the CSS */}
           <div className={`tp-team-image-container ${activeMemberId ? 'tp-visible' : ''}`}>
             {teamData.map((member) => (
               <img
@@ -116,6 +115,19 @@ const TeamPage = () => {
               >
                 <span className="tp-member-title">{member.title}</span>
                 <h2 className="tp-member-name">{member.name}</h2>
+                
+                {/* --- 2. NEW MOBILE-ONLY IMAGE --- */}
+                {/* This is hidden on desktop by the CSS */}
+                <div className="tp-mobile-image-wrapper">
+                  <img 
+                    src={member.img} 
+                    alt={member.name} 
+                    className="tp-mobile-photo"
+                    onError={onImageError}
+                  />
+                </div>
+                
+                {/* --- 3. SHARED DESCRIPTION BOX --- */}
                 <div className="tp-member-description">
                   <p>{member.description}</p>
                 </div>
