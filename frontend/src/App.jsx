@@ -100,6 +100,8 @@ function MainLandingPage() {
         <Leaders />
 
         <Initiatives />
+
+        <ExecutiveSlider />
  
 
       <Contact />

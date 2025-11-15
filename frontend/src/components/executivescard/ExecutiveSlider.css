@@ -1,250 +1,205 @@
-.executive-slider-page {
-  position: relative;     
-  min-height: 100vh;      
-  overflow: hidden;       
+/* --- Header / Navigation --- */
+.tp-main-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 1px solid #374151; /* Dark Gray Border */
+    background-color: #181e2d; /* Match body */
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-
-.app-container {
-  position: relative;     
-  z-index: 1;             
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 1rem;
-  box-sizing: border-box;
-  background: transparent;  
-  color: #ccd6f6;
-  font-family: 'Poppins', monospace;
+.tp-main-header .tp-logo {
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
-.prismatic-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; 
+/* --- Main Page Layout (Sidebar + Content) --- */
+.tp-page-content {
+    display: grid;
+    /* Adjust grid for smaller screens */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+    max-width: 1280px; /* Constrain width */
+    margin: 0 auto; /* Center content */
 }
 
-.intro-header {
-  text-align: center;
-  margin-bottom: 0;
-  color: #1e0db3;
-  flex-shrink: 0;
-}
-
-/* Slider */
-.executives-slider {
-  position: relative;
-  width: 100%;
-  max-width: 1300px; 
-  margin: 0 auto;
-  padding-top: 2rem; 
-}
-
-.slides-container {
-  display: flex;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.slide {
-  flex: 0 0 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; 
-  gap: 1rem;
-  padding: 1rem 0;
-  min-height: 750px;
-}
-
-/* Card Styles */
-.team-card {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 950px; 
-  transform: scale(0.85);
-  will-change: transform, opacity; 
-  backface-visibility: hidden;
-}
-
-.card-0 {
-  align-self: flex-start; 
-}
-.card-1 {
-  align-self: flex-end; 
-  flex-direction: row-reverse; 
-}
-
-.image-container {
-  position: relative;
-  width: 300px;
-  height: 330px;
-  clip-path: polygon(0 15%, 15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
-  background: rgba(0, 4, 255, 0.107); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 1.25rem;
-  border: 1px solid rgba(100, 110, 255, 0.2);
-  z-index: 2;
-  flex-shrink: 0;
-  transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: contrast(1.1); 
-  clip-path: inherit;
-}
-
-.image-overlay {
-  position: absolute;
-  top: 2rem;
-  left: -0.75rem;
-  padding: 0.6rem 0.6rem;
-  font-size: 0.9rem;
-  background-color: #6480ff;
-  color: #0a192f;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-weight: bold;
-  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 90%);
-}
-
-.arrow-icon {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 20px;
-  height: 20px;
-  color: #6473ff;
-}
-
-.description-container {
-  position: relative;
-  padding: 1.5rem 2.5rem;
-  background: rgba(0, 4, 255, 0.107); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
-  width: 100%;
-  opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
-}
-
-/* Asymmetrical Layout Adjustments */
-.card-0 .description-container { margin-left: 2rem; }
-.card-1 .description-container { margin-right: 2rem; clip-path: polygon(0 0, 90% 0, 100% 15%, 100% 100%, 0 100%); }
-.card-1 .image-overlay { left: auto; right: -0.75rem; }
-.card-1 .desc-header { text-align: left; }
-
-/* Content Styling */
-.description-content { position: relative; z-index: 1; }
-.desc-header { text-align: right; margin-bottom: 2.5rem; }
-.desc-name { font-size: 1.25rem; font-weight: bold; margin: 0; color: #ccd6f6; text-shadow: 0 0 8px #0037ff; }
-.desc-title { font-size: 0.8rem; color: #6476ff; margin: 0; }
-.desc-text { font-size: 1rem; line-height: 1.7; color: #f2f2f3; }
-
-/* Animation Effects */
-.card-0 .image-container { transform: translateX(325px) translateY(-30px); }
-.card-0 .description-container { transform: translateX(50px); }
-.card-1 .image-container { transform: translateX(-325px) translateY(-30px); }
-.card-1 .description-container { transform: translateX(-50px); }
-
-.team-card.is-visible .image-container { transform: translateX(0) translateY(-30px); }
-.team-card.is-visible .description-container { opacity: 1; transform: translateX(0); }
-
-.image-container img { transform: translateZ(0); will-change: transform, opacity; }
-
-/* Mobile Fallback & Top Height Reduction */
-@media (max-width: 768px) {
-    .app-container {
-        justify-content: flex-start; /* Align content to top */
-        padding-top: 0.5rem;         /* Less top space */
-        padding-bottom: 1rem;        /* Minimal bottom space */
-        height: auto;                 /* Content defines height */
+/* Use media query for larger screens */
+@media (min-width: 1024px) {
+    .tp-page-content {
+        padding: 2rem 3rem;
     }
-
-    .team-card, .card-0, .card-1 {
-        flex-direction: column;
-        align-self: center;
-        gap: 1rem;
-        transform: scale(0.8);
-        max-width: 320px;
-    }
-
-    .image-container, .description-container {
-        opacity: 0;
-        transform: translateY(30px) !important; 
-    }
-
-    .team-card.is-visible .image-container,
-    .team-card.is-visible .description-container {
-        opacity: 1;
-        transform: translateY(0) !important;
-    }
-
-    .slide {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        min-height: auto;
-    }
-
-    .image-container {
-        width: 260px;
-        height: 300px;
-        padding: 1rem;
-    }
-
-    .description-container {
-        padding: 1.25rem 1.5rem;
-        font-size: 1rem;
-        max-width: 320px;
-    }
-
-    .desc-name { font-size: 1.2rem; }
-    .desc-title { font-size: 0.8rem; }
-    .desc-text { font-size: 0.95rem; line-height: 1.5; }
-
-    .slides-container { margin-top: 0; } /* Remove extra top margin */
 }
 
-/* Slider Navigation Buttons */
-.exec-slider-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  font-size: 24px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 5;
-  transition: background 0.3s ease;
+/* --- Team Content Layout (Image + List) --- */
+.tp-team-container {
+    display: grid;
+     /* Stack image on top of list on mobile */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
 }
 
-.exec-slider-nav-btn:hover { background: rgba(0, 0, 0, 0.7); }
-.exec-slider-prev-btn { left: 20px; }
-.exec-slider-next-btn { right: 20px; }
+@media (min-width: 768px) {
+    .tp-team-container {
+        grid-template-columns: 1fr 1fr; /* 50/50 split for image and list */
+        gap: 4rem;
+    }
+}
 
-@media (max-width: 768px) {
-  .exec-slider-nav-btn {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    padding: 8px; 
-  }
+/* --- 1. Sticky Image Container --- */
+.tp-team-image-container {
+    /* On mobile, it's not sticky, just a block */
+    position: relative;
+    width: 100%;
+    /* Reduced max-width */
+    max-width: 320px;
+    margin: 0 auto; /* Center it on mobile */
+    /* Use aspect-ratio for responsive height */
+    aspect-ratio: 4 / 5; 
+    height: auto;
+    
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); /* Blue Glow */
+    overflow: hidden; /* Ensures rounded corners on images */
+    background-color: #374151; /* Dark Gray BG */
 
-  .exec-slider-prev-btn { left: 6px; }
-  .exec-slider-next-btn { right: 6px; }
+    /* UPDATED: Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+}
+
+/* ADDED: Show when active */
+.tp-team-image-container.tp-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+@media (min-width: 768px) {
+    .tp-team-image-container {
+        position: sticky;
+        top: 120px; /* Adjusted sticky top after sidebar removal */
+        /* Reduced height */
+        height: 400px;
+        aspect-ratio: auto; /* Override aspect-ratio */
+        margin: 0 auto; /* Center it on desktop */
+    }
+}
+
+.tp-team-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    /* The Fade Effect */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+}
+
+.tp-team-photo.tp-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 2. Scrollable Team List --- */
+.tp-team-list {
+    padding-top: 0;
+}
+
+@media (min-width: 768px) {
+     .tp-team-list {
+        padding-top: 2rem;
+    }
+}
+
+.tp-team-member-intro {
+    border-bottom: 1px solid #374151; /* Dark Gray Border */
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.tp-team-member-intro h3 {
+    font-family: 'Poppins', serif;
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+}
+.tp-team-member-intro p {
+    font-size: 1rem;
+    color: #d1d5db; /* Light Gray */
+    max-width: 500px;
+}
+
+.tp-team-member {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #374151; /* Dark Gray Border */
+    cursor: pointer;
+    /* Added transition for the padding */
+    transition: padding-bottom 0.4s ease;
+}
+
+/* When active, highlight the name */
+.tp-team-member.tp-active .tp-member-name {
+    color: #60a5fa; /* Brighter Blue */
+}
+
+.tp-member-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #9ca3af; /* Medium-light gray */
+    letter-spacing: 0.5px;
+}
+
+.tp-member-name {
+    /* Changed to Poppins per request */
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem; /* Slightly smaller for mobile */
+    font-weight: 500;
+    margin: 0.25rem 0 0 0;
+    color: #f9fafb; /* Off-white */
+    transition: color 0.3s;
+}
+
+@media (min-width: 768px) {
+    .tp-member-name {
+        font-size: 2.8rem;
+    }
+}
+
+/* --- Member Description Box --- */
+.tp-member-description {
+    /* Use grid for dynamic height animation */
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    
+    color: #d1d5db; /* Light gray text */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    
+    /* Animate grid-template-rows */
+    transition: grid-template-rows 0.4s ease-in-out, padding-top 0.4s ease-in-out;
+    padding-top: 0; /* Animate padding-top as well */
+}
+
+.tp-member-description p {
+    margin: 0;
+    font-style: italic;
+    border-left: 3px solid #374151;
+    padding-left: 1rem;
+    /* crucial for grid animation */
+    min-height: 0; 
+}
+
+/* When the team-member is active, expand the description */
+.tp-team-member.tp-active .tp-member-description {
+    /* Animate to 1fr (auto-height) */
+    grid-template-rows: 1fr;
+    padding-top: 1rem; /* Add space when it opens */
 }
