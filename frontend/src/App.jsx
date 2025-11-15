@@ -96,9 +96,11 @@ function MainLandingPage() {
       <ChipsReveal />
 
 
-      <section className="leaders-executives-section">
-        <ExecutiveSlider />
-      </section>
+   
+        <Leaders />
+
+        <Initiatives />
+ 
 
       <Contact />
       <ContactForm />
