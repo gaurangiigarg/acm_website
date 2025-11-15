@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // --- NEW ---
 import './ExecutiveSlider.css'; 
 
 import PankajBadoni from '../../assets/img/coverphoto.jpg';
@@ -60,6 +60,7 @@ const teamData = [
 const TeamPage = () => {
   // Use state to track the active member's ID
   const [activeMemberId, setActiveMemberId] = useState(null);
+  const listRef = useRef(null); // --- NEW --- Create a ref for the list container
 
   // Fallback for missing images
   const onImageError = (e) => {
@@ -71,6 +72,26 @@ const TeamPage = () => {
     // If clicking the same one, close it. Otherwise, open the new one.
     setActiveMemberId(prevId => (prevId === memberId ? null : memberId));
   };
+
+  // --- NEW --- Add effect for handling outside clicks/taps
+  useEffect(() => {
+    const handleOutsideTap = (event) => {
+      // Check if the click is outside the listRef container
+      if (listRef.current && !listRef.current.contains(event.target)) {
+        setActiveMemberId(null); // Close any open item
+      }
+    };
+
+    // Add event listeners for both mouse and touch
+    document.addEventListener('mousedown', handleOutsideTap);
+    document.addEventListener('touchstart', handleOutsideTap);
+
+    // Cleanup function to remove listeners when the component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideTap);
+      document.removeEventListener('touchstart', handleOutsideTap);
+    };
+  }, []); // Empty dependency array means this runs once on mount
 
   return (
     <>
@@ -94,6 +115,7 @@ const TeamPage = () => {
 
           <div 
             className="tp-team-list" 
+            ref={listRef} // --- NEW --- Attach the ref to the list container
             // When mouse leaves the *entire list*, reset the active member
             onMouseLeave={() => setActiveMemberId(null)}
           >
@@ -111,7 +133,10 @@ const TeamPage = () => {
                 // Set this member as active on hover (for desktop)
                 onMouseEnter={() => setActiveMemberId(member.id)}
                 // Use toggle handler for click/touch (for mobile)
-                onClick={() => handleToggleActive(member.id)}
+                onClick={(e) => {
+                  e.stopPropagation(); // --- NEW --- Stop tap from bubbling to the document
+                  handleToggleActive(member.id);
+                }}
               >
                 <span className="tp-member-title">{member.title}</span>
                 <h2 className="tp-member-name">{member.name}</h2>
