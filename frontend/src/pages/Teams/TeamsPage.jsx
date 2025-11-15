@@ -20,7 +20,7 @@ const TeamsPage = () => {
       {/* UPDATED: Placed ColorBends in its own background container */}
       <div className="color-bends-background">
         <ColorBends
-  colors={["#0c08f7"]}
+  colors={["#0d0d82"]}
   rotation={0}
   speed={0.2}
   scale={1}
