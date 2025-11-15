@@ -82,7 +82,7 @@ function MainLandingPage() {
         <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
       </div>
 
-
+      <Home />
       <About />
       <RevealSection1 />
 

@@ -121,7 +121,7 @@ const TeamPage = () => {
           >
             <div className="tp-team-member-intro">
               <h3>Our Executives</h3>
-              <p>Anthem's management team has 200 combined years of deep experience in development, procurement, transactions, construction management, and asset management in South Africa.</p>
+              <p>Our executive team is a blend of passionate, driven, and skilled individuals who ensure the smooth functioning of our chapter. Together, they form the backbone of our operations, turning ideas into action and maintaining the standards, culture, and professionalism that define our chapter. Their dedication and teamwork are what keep our initiatives running with excellence throughout the year.</p>
             </div>
 
             {/* Map over the team data to create the list */}
