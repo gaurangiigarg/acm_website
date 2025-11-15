@@ -3,6 +3,10 @@ import './ExecutiveSlider.css';
 
 import PankajBadoni from '../../assets/img/coverphoto.jpg';
 import SangamKhanna from '../../assets/images/Sangam_Khanna.jpg';
+import TanayPrabhakar from '../../assets/images/TanayPrabhakar.jpg';
+import DakshMehrotra from '../../assets/images/Daksh_Mehrotra.jpeg';
+import AdvikaKaushik from '../../assets/images/Advika_Kaushik.jpg';
+import RudranshSogani from '../../assets/images/Rudransh_Sogani.jpg';
 
 // Updated data array to include the description
 const teamData = [
@@ -22,39 +26,34 @@ const teamData = [
   },
   { 
     id: 'coo', 
-    title: 'Chief Operating Officer', 
-    name: 'Ryan Hammond', 
-    img: 'https://placehold.co/400x500/C0AC9B/333?text=Ryan',
-    description: "Efficiency in operation is key. We streamline every process to ensure our projects are delivered on time and above expectations."
+    title: 'Vice-Chairperson, ACM', 
+    name: 'Tanay Prabhakar', 
+    img: TanayPrabhakar,
+    description: "Upon my college arrival, the UPES-ACM Student Chapter warmly embraced me, alleviating overwhelming challenges. It swiftly became a familial refuge, fostering belonging and support. Beyond membership, it meant embracing a culture of coding excellence and technical advancement. As I progressed through my academic journey, I transitioned from a core member to an office bearer and now proudly hold the position of vice chairperson in this esteemed chapter.Reflecting on this journey, it has been nothing short of extraordinary. My aspiration as a leader is to propel the UPES-ACM Student Chapter to unprecedented heights, leaving a legacy that transcends the remarkable one I inherited."
+                      
   },
   { 
     id: 'cho', 
-    title: 'Chief Human Capital Officer', 
-    name: 'Fatiema Ahmed', 
-    img: 'https://placehold.co/400x500/A9988B/333?text=Fatiema',
-    description: "Our people are our greatest asset. We foster a culture of collaboration, growth, and mutual respect. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    title: 'Secreatry', 
+    name: 'Daksh Mehrotra', 
+    img: DakshMehrotra,
+    description: " My journey with UPES ACM has been nothing short of transformative. From stumbling upon a Technical event in my first year to becoming a core member and now Secretary, it's been an extraordinary ride. Joining UPES ACM was like finding a second home-a supportive family where I could overcome confusion and stage fright. It provided a platform to share ideas, hone leadership skills, and improve coding abilities through initiatives like Code Anytime. It's more than just a student chapter-it's a supportive community fostering growth and coding excellence. UPES ACM has shaped not only my academic journey but also my character and aspirations, providing a place where aspirations thrive and individuals are empowered to reach their full potential."
   },
   { 
     id: 'cto', 
-    title: 'Chief Technical Officer', 
-    name: 'Dylan Theunissen', 
-    img: 'https://placehold.co/400x500/92847B/333?text=Dylan',
-    description: "Innovation drives us. We leverage cutting-edge technology to redefine construction and asset management."
+    title: 'Joint Secretary', 
+    name: 'Advika Kaushik', 
+    img: AdvikaKaushik,
+    description: "Joining UPES ACM was a turning point for me. I landed a spot on the VFX committee, leading the team as VFX Head. Now, I'm honored to serve as the chapter secretary. It's been a rollercoaster ride, filled with learnings. The positive and challenging work environment proved to be a fantastic combination for growth. I've broken out of my shell, becoming a more confident communicator.  From the initial steps to the leadership responsibilities, this journey within UPES ACM has been incredibly rewarding and instrumental in developing my teamwork and leadership skills. I'm incredibly grateful for the community, the challenges, and the friendships I've made along the way."
   },
   { 
     id: 'cmo', 
-    title: 'Chief Commercial Officer', 
-    name: 'Placeholder Name', 
-    img: 'https://placehold.co/400x500/8B7A6C/333?text=Placeholder',
-    description: "Placeholder quote about commercial strategy and market leadership. We connect with our clients."
+    title: 'Treasurer', 
+    name: 'Rudransh Sogani', 
+    img: RudranshSogani,
+    description: "When I was exposed to ACM and the ACM-W student organisation at UPES, my programming career had just started. Where I used to frequently get confused between the fundamentals of coding, activities like 21 Days of Code, Code Anytime, and Spy C increased my confidence in coding, that's when I decided to continue my career with ACM and the ACM-W student chapter. Being a part of ACM-W gives me a great deal of pleasure because what more could you ask for from a student chapter than a chapter that teaches you a lot about your skill, and not just the skill, but how to deal with public relations, how to organise events as a team, and much more. I'm happy to be a part of this vibrant student chapter."
   },
-  { 
-    id: 'cso', 
-    title: 'Chief Strategy Officer', 
-    name: 'Another Name', 
-    img: 'https://placehold.co/400x500/7A6C5F/333?text=Another',
-    description: "Another placeholder quote. Our vision is long-term, and our strategy is built on a foundation of data and experience."
-  },
+  
 ];
 
 
@@ -75,9 +74,7 @@ const TeamPage = () => {
 
   return (
     <>
-      <header className="tp-main-header">
-        <div className="tp-logo">Our Team</div>
-      </header>
+      
 
       <div className="tp-page-content">
         <main className="tp-team-container">
@@ -102,7 +99,7 @@ const TeamPage = () => {
             onMouseLeave={() => setActiveMemberId(null)}
           >
             <div className="tp-team-member-intro">
-              <h3>The Team</h3>
+              <h3>Our Executives</h3>
               <p>Anthem's management team has 200 combined years of deep experience in development, procurement, transactions, construction management, and asset management in South Africa.</p>
             </div>
 

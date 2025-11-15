@@ -55,7 +55,7 @@
     position: relative;
     width: 100%;
     /* Reduced max-width */
-    max-width: 320px;
+    max-width: 360px;
     margin: 0 auto; /* Center it on mobile */
     /* Use aspect-ratio for responsive height */
     aspect-ratio: 4 / 5; 
@@ -80,16 +80,16 @@
 
 
 @media (min-width: 768px) {
-    .tp-team-image-container {
-        position: sticky;
-        top: 120px; /* Adjusted sticky top after sidebar removal */
-        /* Reduced height */
-        height: 400px;
-        aspect-ratio: auto; /* Override aspect-ratio */
-        margin: 0 auto; /* Center it on desktop */
-    }
-}
+ .tp-team-image-container {
+ position: sticky;
+ top: 150px; 
+height: 400px;
+ aspect-ratio: auto;
 
+        /* UPDATED: Revert back to this to center the image */
+margin: 0 auto; 
+ }
+}
 .tp-team-photo {
     position: absolute;
     top: 0;
