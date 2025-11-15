@@ -17,7 +17,7 @@ function Home() {
 
       {/* ACM-W Button */}
       <a
-        href="https://upesacmw.org"  // Replace with actual ACM-W link
+        href="https://upesacmw.org" 
         className="acmw-button"
         target="_blank"
         rel="noopener noreferrer"
