@@ -72,9 +72,7 @@ function Navbar() {
             <Link to="/team" onClick={() => setIsMenuOpen(false)}>Team</Link>
           </li>
           <li>
-            <a href="#initiatives" onClick={(e) => handleScrollToSection(e, "initiatives")}>
-              Gallery
-            </a>
+            <Link to="/gallery" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
           </li>
           <li>
             <a href="#contact" onClick={(e) => handleScrollToSection(e, "contact")}>

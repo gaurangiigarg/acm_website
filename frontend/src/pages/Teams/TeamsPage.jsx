@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../Navbar'; // Assuming Navbar is in the parent directory
-import TeamGallery from './TeamsGallery'; // Import the new gallery component
+
 import './TeamsPage.css';
 import useLenis from '../../useLenis';
 import TeamGrid1 from './TeamGrid1';

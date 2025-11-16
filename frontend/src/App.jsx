@@ -1,30 +1,40 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { lazy, Suspense, useLayoutEffect, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, {
+  lazy,
+  Suspense,
+  useLayoutEffect,
+  useEffect,
+  useState,
+} from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
-import useLenis from './useLenis';
-// import Home from './home'; // --- REMOVED
-import Navbar from './Navbar';
-import About from './About';
-import BackgroundReveal from './BackgroundReveal';
-import ScrollReveal from '../ScrollReveal/ScrollReveal/ScrollReveal';
-import Silk from '../Silk_background/Silk/Silk';
-import RevealSection1 from './RevealSection1';
-import ExecutiveSlider from '../src/components/executivescard/ExecutiveSlider';
-import Initiatives from './Initiatives';
-import AboutUs from './pages/About/AboutUsSection';
-import TeamsPage from './pages/Teams/TeamsPage';
-import Contact from './Contact';
-import ContactForm from './ContactUS';
-import Footer from './Footer';
-import ScrollReveal1 from '../ScrollReveal/ScrollReveal/ScrollReveal1.jsx';
-import Executives from './Executives.jsx';
+import useLenis from "./useLenis";
+import Home from "./home";
+import Navbar from "./Navbar";
+import About from "./About";
+import BackgroundReveal from "./BackgroundReveal";
+import ScrollReveal from "../ScrollReveal/ScrollReveal/ScrollReveal";
+import Silk from "../Silk_background/Silk/Silk";
+import RevealSection1 from "./RevealSection1";
+import ExecutiveSlider from "../src/components/executivescard/ExecutiveSlider";
+import Initiatives from "./Initiatives";
+import AboutUs from "./pages/About/AboutUsSection";
+import TeamsPage from "./pages/Teams/TeamsPage";
+import Contact from "./Contact";
+import ContactForm from "./ContactUS";
+import Footer from "./Footer";
+import ScrollReveal1 from "../ScrollReveal/ScrollReveal/ScrollReveal1.jsx";
+import GalleryPage from "./pages/Gallery/Gallery.jsx";
 
-import './App.css';
+import "./App.css";
 
-const ChipsReveal = lazy(() => import('./ChipsReveal'));
-const Home = lazy(() => import('./home')); // --- ADDED
+const ChipsReveal = lazy(() => import("./ChipsReveal"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,13 +55,13 @@ function MainLandingPage() {
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth > 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useLayoutEffect(() => {
-    const section = document.querySelector('.scroll-reveal-section');
-    const bg = document.querySelector('.scroll-black-bg');
+    const section = document.querySelector(".scroll-reveal-section");
+    const bg = document.querySelector(".scroll-black-bg");
 
     if (section && bg) {
       let ctx = gsap.context(() => {
@@ -80,11 +90,19 @@ function MainLandingPage() {
   return (
     <>
       <Navbar />
+
+      {/* ⭐ Silk Background ONLY on Home Page */}
       <div className="global-silk-bg">
-        <Silk speed={5} scale={1} color="#0d1b3f" noiseIntensity={1.5} rotation={0} />
+        <Silk
+          speed={5}
+          scale={1}
+          color="#0d1b3f"
+          noiseIntensity={1.5}
+          rotation={0}
+        />
       </div>
 
-      {/* --- UPDATED: Added Suspense wrapper --- */}
+      {/* Home Section */}
       <Suspense fallback={null}>
         <Home />
       </Suspense>
@@ -92,28 +110,33 @@ function MainLandingPage() {
       <About />
       <RevealSection1 />
 
-      <ScrollReveal baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
+      <ScrollReveal
+        baseOpacity={0.8}
+        enableBlur={true}
+        baseRotation={20}
+        blurStrength={50}
+      >
         Want to know who makes all that happen?
       </ScrollReveal>
 
-      {/* ✅ BackgroundReveal is only rendered on larger screens */}
       {isLargeScreen && <BackgroundReveal />}
 
       <Suspense fallback={null}>
         <ChipsReveal />
       </Suspense>
 
+      <Initiatives />
 
-
-        <Initiatives />
-
-
-      <ScrollReveal1 baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
+      <ScrollReveal1
+        baseOpacity={0.8}
+        enableBlur={true}
+        baseRotation={20}
+        blurStrength={50}
+      >
         Look at what our executives have to say
       </ScrollReveal1>
 
-        <ExecutiveSlider />
- 
+      <ExecutiveSlider />
 
       <Contact />
       <ContactForm />
@@ -123,7 +146,7 @@ function MainLandingPage() {
 }
 
 export default function App() {
-  const basename = import.meta.env.BASE_URL || '/';
+  const basename = import.meta.env.BASE_URL || "/";
 
   return (
     <Router basename={basename}>
@@ -132,6 +155,7 @@ export default function App() {
         <Route path="/" element={<MainLandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<TeamsPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
       </Routes>
     </Router>
   );

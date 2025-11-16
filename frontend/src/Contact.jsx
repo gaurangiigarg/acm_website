@@ -121,7 +121,7 @@ const IntroContact = () => {
 
                 backgroundTl = gsap.fromTo(
                     target,
-                    { backgroundColor: '#02030a' },
+                    { backgroundColor: 'rgba(0,0,0,0)' },
                     {
                         backgroundColor: '#233B90',
                         ease: 'none',
