@@ -42,7 +42,7 @@
 
   background-size: 400% 100%; /* large surface for smooth motion */
   animation: smoothFlow 18s linear infinite; /* slow, even glide */
-
+ background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
