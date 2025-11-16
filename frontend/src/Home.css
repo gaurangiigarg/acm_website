@@ -78,6 +78,14 @@
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
+.text-button,
+.text-button:link,
+.text-button:visited,
+.text-button:hover,
+.text-button:active {
+  text-decoration: none !important;
+}
+
 /* SUBTLE GLOW ON HOVER */
 .text-button:hover {
   color: #ffffff;

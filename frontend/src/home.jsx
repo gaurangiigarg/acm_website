@@ -28,7 +28,7 @@ function LaserFlowBoxExample() {
         falloffStart={1.2}
         horizontalBeamOffset={0.2}
         verticalBeamOffset={-0.5}
-        color="#4157fb"
+        color="#3d52f0"
       />
 
       {/* TEXT BLOCK (LEFT SIDE, CENTERED VERTICALLY) */}
@@ -38,8 +38,16 @@ function LaserFlowBoxExample() {
           The Largest Computing Society, now at UPES
         </p>
         <div className="button-row">
-  <button className="text-button">Visit ACM-W</button>
-  <button className="text-button">Register Now</button>
+  <a 
+    href="https://www.upesacmw.org"
+    className="text-button"
+  >
+    Visit ACM-W
+  </a>
+
+  <div className="text-button">
+    Register Now
+  </div>
 </div>
       </div>
 
