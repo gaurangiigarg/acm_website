@@ -1,75 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-.home-container {
+/* FULLSCREEN BACKGROUND */
+.laserflow-container {
+  height: 100vh;
+  min-height: 100vh;
   position: relative;
-  width: 100vw;
-  height: 100vh;              
   overflow: hidden;
+  background-color: #020209;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* LEFT SIDE, CENTER VERTICALLY */
+.laserflow-text-block {
+  position: absolute;
+  top: 40%;
+  left: 6%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 40%;
+  
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;   /* horizontally center text */
+  text-align: center;    /* ensures multi-line centering */
 }
 
-.spline-wrapper {
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
+.laserflow-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0;
 
-.watermark-patch {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 80px; /* adjust size as needed */
-  opacity: 1;
-  z-index: 10;
-  pointer-events: none;
-}
+  /* VERY smooth gradient */
+  background: linear-gradient(
+    90deg,
+    #f7f7f7,
+    #122eac,
+    #0522ff,
+    #06219e,
+    #0a42dc
+  );
 
-/* ACM-W Button */
-.acmw-button {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 10;
-  pointer-events: auto;
-  padding: 0.9rem 2rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: 'myriad-pro', sans-serif;
-  text-transform: uppercase;
-  color: #ffffff;
-  border: 2px solid #4d6ef8;
-  border-radius: 50px;
+  background-size: 400% 100%; /* large surface for smooth motion */
+  animation: smoothFlow 18s linear infinite; /* slow, even glide */
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* SUBTITLE – LIGHT PURPLE/BLUE LIKE YOUR IMAGE */
+.laserflow-subtitle {
+  margin-top: 0px;
+  font-size: 1rem;
+  font-weight: 300;
   letter-spacing: 1px;
+  color: rgba(168, 170, 230, 0.85); /* soft lavender-blue */
+}
+
+.button-row {
+  margin-top: 25px;
+  display: flex;
+  gap: 30px;         /* space between buttons */
+  justify-content: flex-start;
+  padding-right: 20px;
+}
+
+/* TEXT-ONLY BUTTONS */
+.text-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #7e91e3;
   cursor: pointer;
-  box-shadow: 0 0 12px #1f3fee88;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-  text-decoration: none;
+
+  transition: color 0.25s ease, text-shadow 0.25s ease;
 }
 
-.acmw-button:hover {
-  background: #12248a;
-  color: #fff;
-  box-shadow: 0 0 20px #0f1a5e,
-              0 0 30px #1c37ccaa,
-              0 0 50px #172ba055;
-  transform: scale(1.06);
+/* SUBTLE GLOW ON HOVER */
+.text-button:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(65, 87, 251, 0.7);
 }
 
-/* 📱 Mobile fix */
-@media (max-width: 768px) {
-  .home-container {
-    width: 100vw;
-    height: 100vh;  
-    
-    margin-bottom: 1rem; 
-  }
 
-  .acmw-button {
-    font-size: 0.7rem;
-    padding: 0.7rem 1.5rem;
-  }
+/* VERY SLOW GRADIENT MOVEMENT */
+@keyframes gradientFlow {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }

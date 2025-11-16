@@ -1,32 +1,50 @@
-import { useRef } from 'react';
-import Spline from '@splinetool/react-spline';
-import './Home.css';
+import LaserFlow from '../LaserFlow/LaserFlow';
+import './Home.css'; // CSS MOVED HERE
 
-function Home() {
-  const wrapperRef = useRef(null);
-
+function LaserFlowBoxExample() {
   return (
-    <main className="home-container" ref={wrapperRef}>
-      {/* Spline 3D scene */}
-      <div className="spline-wrapper">
-        <Spline
-          scene="https://prod.spline.design/C6ZCHkUf6TA8vvX5/scene.splinecode"
-          className="spline-scene"
-        />
+    <div className="laserflow-container">
+      
+      {/* FULLSCREEN LASERFLOW */}
+      <LaserFlow
+        style={{
+          position: 'absolute',
+          inset: 0,
+          height: '100%',
+          width: '100%',
+        }}
+        LaserFlowBoxExample={false}
+        horizontalSizing={2}
+        verticalSizing={5}
+        wispDensity={1}
+        wispSpeed={15}
+        wispIntensity={5}
+        flowSpeed={0.35}
+        flowStrength={0.25}
+        fogIntensity={0.45}
+        fogScale={0.39}
+        fogFallSpeed={0.6}
+        decay={1.45}
+        falloffStart={1.2}
+        horizontalBeamOffset={0.2}
+        verticalBeamOffset={-0.5}
+        color="#4157fb"
+      />
+
+      {/* TEXT BLOCK (LEFT SIDE, CENTERED VERTICALLY) */}
+      <div className="laserflow-text-block">
+        <h1 className="laserflow-title">UPES ACM STUDENT CHAPTERS</h1>
+        <p className="laserflow-subtitle">
+          The Largest Computing Society, now at UPES
+        </p>
+        <div className="button-row">
+  <button className="text-button">Visit ACM-W</button>
+  <button className="text-button">Register Now</button>
+</div>
       </div>
 
-      {/* ACM-W Button */}
-      <a
-        href="https://upesacmw.org" 
-        className="acmw-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-      Visit ACM-W
-      </a>
-
-    </main>
+    </div>
   );
 }
 
-export default Home;
+export default LaserFlowBoxExample;
