@@ -17,8 +17,9 @@ import AboutUs from './pages/About/AboutUsSection';
 import TeamsPage from './pages/Teams/TeamsPage';
 import Contact from './Contact';
 import ContactForm from './ContactUS';
-import Leaders from './Leaders';
 import Footer from './Footer';
+import ScrollReveal1 from '../ScrollReveal/ScrollReveal/ScrollReveal1.jsx';
+import Executives from './Executives.jsx';
 
 import './App.css';
 
@@ -98,16 +99,18 @@ function MainLandingPage() {
       {/* ✅ BackgroundReveal is only rendered on larger screens */}
       {isLargeScreen && <BackgroundReveal />}
 
-      {/* This Suspense wrapper was already here */}
       <Suspense fallback={null}>
         <ChipsReveal />
       </Suspense>
 
 
-    
-        <Leaders />
 
         <Initiatives />
+
+
+      <ScrollReveal1 baseOpacity={0.8} enableBlur={true} baseRotation={20} blurStrength={50}>
+        Look at what our executives have to say
+      </ScrollReveal1>
 
         <ExecutiveSlider />
  
