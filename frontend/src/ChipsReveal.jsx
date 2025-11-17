@@ -94,7 +94,7 @@ const ChipsReveal = () => {
         >
           From nurturing fresh ideas to building scalable tech solutions, our journey doesn't stop here.
           Scroll ahead to discover the initiatives that bring our mission to life,<br />
-          — one project, one breakthrough at a time.
+          one project, one breakthrough at a time.
         </p>
       </div>
     </div>

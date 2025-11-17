@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react';
 
 // Data for the committees (no changes)
 const committeesData = [
-    { name: 'Technical', description: "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES and works on projects that help students learn." },
-    { name: 'Events', description: 'The brain of the chapter, organizes a variety of events, our vivacious team. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
-    { name: 'Design & VFX', description: 'This distinguished committee is the creative house of the chapters. This team always leads the forefront by making breathtaking videos and developing visually appealing graphic material.' },
-    { name: 'Editorial', description: "The Editorial Committee is the brainchild behind the Chapter's all formal communications, blogs, social media content and document all the daily proceedings." },
-    { name: 'CSR', description: 'Making a positive impact on society through meaningful community service initiatives.' },
-    { name: 'PR', description: 'Managing our public image, outreach, and communications to the wider world.' },
-    { name: 'Operations', description: 'The backbone of the chapter, ensuring everything runs smoothly behind the scenes.' },
+    { name: 'Technical', description: "The heartbeat of our Chapter, the Technical Team brings ideas to life, designing websites, apps, and managing technical infrastructure of events." },
+    { name: 'Events', description: 'The brain of the chapter, organizes a variety of events. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
+    { name: 'Design & VFX', description: 'Imagination in motion defines the Design & VFX Team. Their visuals bring events to life, making every initiative more engaging, memorable, and impactful for the community.' },
+    { name: 'Editorial', description: "From formal communications to blogs, social media, and event coverage, this team shapes how the chapter is seen and remembered. They give life to every word and idea, making sure UPES ACM's journey is shared with clarity and creativity." },
+    { name: 'CSR', description: 'At the heart of social responsibility, the CSR Team drives outreach initiatives, awareness campaigns, and community projects. Their work reflects our commitment to impact beyond academics.' },
+    { name: 'PR', description: "Acting as the chapter's voice and bridge, this team builds strong relationships, secures valuable sponsorships, and expands our reach. Their efforts ensure every initiative shines with the recognition it truly deserves." },
+    { name: 'Operations', description: 'Seamless execution starts here. From managing logistics to coordinating teams, Operations ensures everything runs smoothly. Working quietly behind the scenes, they provide the structure and support needed for every event and initiative to succeed without a hitch.' },
 ];
 
 // CSS (no changes)
@@ -99,14 +99,13 @@ const cssStyles = `
     }
 
     .CommitteesSection .committees-subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin-top: 2rem; 
-      margin-left: 1rem;
-      color: #9ca3af;
-      line-height: 1.4;
-    }
-
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 0.5rem;   /* reduced gap */
+  margin-left: 0;       /* aligns better under the title */
+  color: #9ca3af;
+  line-height: 1.4;
+}
     /* Mobile responsiveness (no changes) */
     @media (max-width: 768px) {
         .CommitteesSection .committees-scroll-area,

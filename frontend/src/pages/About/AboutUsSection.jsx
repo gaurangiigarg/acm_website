@@ -52,7 +52,7 @@ const AboutUsSection = () => {
         {/* Footer container */}
         <div className="about-us-footer-container">
           <p className="about-us-description">
-            We are a community of innovators and problem solvers, united by a passion for technology and a drive to create impactful solutions.
+            More than just a team, we are a collective of dreamers, creators, and achievers working together to make a difference.
           </p>
         </div>
 
