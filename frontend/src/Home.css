@@ -8,20 +8,21 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* LEFT SIDE, CENTER VERTICALLY */
+/* * 💻 BASE STYLES (LAPTOP/DESKTOP) - LEFT SIDE, CENTERED TEXT */
 .laserflow-text-block {
   position: absolute;
-  top: 40%;
-  left: 6%;
-  transform: translateY(-50%);
+  top: 40%; 
+  left: 6%; 
+  transform: translateY(-50%); 
   z-index: 10;
 
-  width: 40%;
+  width: 40%; 
+  max-width: 800px;
   
   display: flex;
   flex-direction: column;
-  align-items: center;   /* horizontally center text */
-  text-align: center;    /* ensures multi-line centering */
+  align-items: center;  
+  text-align: center;   
 }
 
 .laserflow-title {
@@ -30,7 +31,6 @@
   letter-spacing: 2px;
   margin: 0;
 
-  /* VERY smooth gradient */
   background: linear-gradient(
     90deg,
     #f7f7f7,
@@ -40,27 +40,27 @@
     #0a42dc
   );
 
-  background-size: 400% 100%; /* large surface for smooth motion */
-  animation: smoothFlow 18s linear infinite; /* slow, even glide */
- background-clip: text;
+  background-size: 400% 100%;
+  animation: smoothFlow 18s linear infinite;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* SUBTITLE – LIGHT PURPLE/BLUE LIKE YOUR IMAGE */
+
 .laserflow-subtitle {
   margin-top: 0px;
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 1px;
-  color: rgba(168, 170, 230, 0.85); /* soft lavender-blue */
+  color: rgba(168, 170, 230, 0.85);
 }
 
 .button-row {
   margin-top: 25px;
   display: flex;
-  gap: 30px;         /* space between buttons */
-  justify-content: flex-start;
-  padding-right: 20px;
+  gap: 30px; 
+  justify-content: center; 
+  padding-right: 0px;
 }
 
 /* TEXT-ONLY BUTTONS */
@@ -86,15 +86,58 @@
   text-decoration: none !important;
 }
 
-/* SUBTLE GLOW ON HOVER */
 .text-button:hover {
   color: #ffffff;
   text-shadow: 0 0 8px rgba(65, 87, 251, 0.7);
 }
 
 
-/* VERY SLOW GRADIENT MOVEMENT */
 @keyframes gradientFlow {
   0%   { background-position: 200% center; }
   100% { background-position: -200% center; }
+}
+
+/* 📱 MOBILE OVERRIDES (Max Width 768px) - FULL SCREEN CENTERED */
+@media (max-width: 768px) {
+  
+  /* --- NEW: FIX FOR DISAPPEARING LASER --- */
+  /* We align the 'bottom' (beam source) to the top, flip it, and scale it. */
+  .laserflow-container .laser-flow-container {
+    /* 1. Pivot around the bottom center */
+    transform-origin: 50% 100% !important; 
+    
+    /* 2. Translate Up (-100%) to put bottom at top. 
+       3. ScaleY(-1) to flip direction (downwards). 
+       4. Scale(3) to enlarge. */
+    transform: translateY(-100%) scaleY(-1) scale(3) !important; 
+  }
+  /* ----------------------------------- */
+
+  .laserflow-text-block {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+    width: 90%; 
+  }
+
+  .laserflow-title {
+    font-size: 1.5rem; 
+    letter-spacing: 1px;
+  }
+
+  .laserflow-subtitle {
+    font-size: 0.85rem;
+    padding: 0 10px; 
+  }
+
+  .button-row {
+    flex-direction: column; 
+    gap: 15px; 
+  }
+
+  .text-button {
+    font-size: 1rem;
+    padding: 10px 0; 
+  }
 }

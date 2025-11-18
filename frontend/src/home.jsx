@@ -31,24 +31,23 @@ function LaserFlowBoxExample() {
         color="#3d52f0"
       />
 
-      {/* TEXT BLOCK (LEFT SIDE, CENTERED VERTICALLY) */}
+      {/* TEXT BLOCK (CENTERED HORIZONTALLY & VERTICALLY) */}
       <div className="laserflow-text-block">
         <h1 className="laserflow-title">UPES ACM STUDENT CHAPTERS</h1>
         <p className="laserflow-subtitle">
           The Largest Computing Society, now at UPES
         </p>
         <div className="button-row">
-  <a 
-    href="https://www.upesacmw.org"
-    className="text-button"
-  >
-    Visit ACM-W
-  </a>
-
-  <div className="text-button">
-    Register Now
-  </div>
-</div>
+          <a 
+            href="https://www.upesacmw.org"
+            className="text-button"
+          >
+            Visit ACM-W
+          </a>
+          <div className="text-button">
+            Register Now
+          </div>
+        </div>
       </div>
 
     </div>
