@@ -100,6 +100,11 @@
 /* 📱 MOBILE OVERRIDES (Max Width 768px) - FULL SCREEN CENTERED */
 @media (max-width: 768px) {
   
+  /* --- TRANSPARENT BACKGROUND ON MOBILE --- */
+  .laserflow-container {
+    background-color: transparent !important;
+  }
+
   /* --- NEW: FIX FOR DISAPPEARING LASER --- */
   /* We align the 'bottom' (beam source) to the top, flip it, and scale it. */
   .laserflow-container .laser-flow-container {
