@@ -16,6 +16,7 @@ import member9 from '../../assets/images/Arartik_Tyagi.jpg';
 import member10 from '../../assets/images/Dhaniksha.jpg';
 import member11 from '../../assets/images/Devaansh_Kushwaha.jpg';
 import member12 from '../../assets/images/Abhinav_Kumar.JPG';
+import member13 from '../../assets/images/Divyanshu_arora.jpg';
 
 
 
@@ -84,6 +85,13 @@ const teamData = [
     imageUrl: member9,
     name: 'Arartik Tyagi',
     title: 'Operations Head, ACM',
+    githubUrl: '#',
+    linkedinUrl: '#'
+  },
+  {
+    imageUrl: member13,
+    name: 'Divyanshu Arora',
+    title: 'Design Head, ACM',
     githubUrl: '#',
     linkedinUrl: '#'
   },

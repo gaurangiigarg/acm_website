@@ -23,7 +23,7 @@ const cardData = [
     color: '#000000',
     title: null,
     description: null,
-    label: 'we prioritize social responsibility with the Hour of Code initiative, where our members dedicate time to teaching programming fundamentals to unprivileged students. This effort boosts digital literacy in the community and builds leadership skills.',
+    label: 'We prioritize social responsibility with the Hour of Code initiative, where our members dedicate time to teaching programming fundamentals to unprivileged students. This effort boosts digital literacy in the community and builds leadership skills.',
     image: null
   },
   {

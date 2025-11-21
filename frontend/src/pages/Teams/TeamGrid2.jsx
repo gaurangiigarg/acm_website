@@ -7,8 +7,8 @@ import './TeamGrid1.css';
 import member1 from '../../assets/images/coverphoto.jpg'; 
 import member2 from '../../assets/images/Sangam_Khanna.jpg';
 import member3 from '../../assets/images/TanayPrabhakar.jpg';
-import member4 from '../../assets/images/Rudransh_Sogani.JPG';
-import member5 from '../../assets/images/Daksh_Mehrotra.jpeg';
+import member4 from '../../assets/images/Rudransh.jpg';
+import member5 from '../../assets/images/Daksh_Mehrotra.jpg';
 import member6 from '../../assets/images/Advika_Kaushik.jpg';
 
 

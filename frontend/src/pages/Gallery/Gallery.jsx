@@ -1,14 +1,16 @@
 import InfiniteMenu from './GalleryMenu'
 import Navbar from '../../Navbar'; 
 
+import prodigyimg from '../../../src/assets/gallery_ball/1.jpg';
+
 function Gallery() {
 
   const items = [
     {
-      image: 'https://picsum.photos/300/300?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 1',
-      description: 'This is pretty cool, right?'
+      image: prodigyimg,
+      link: '/prodigy25', 
+      title: 'Prodigy 25',
+      description: 'The ACM tech fest'
     },
     {
       image: 'https://picsum.photos/400/400?grayscale',
@@ -33,8 +35,6 @@ function Gallery() {
   return (
     <>
     <Navbar />
-
-
     <div style={{ height: '100vh', position: 'relative' }}>
       <InfiniteMenu items={items} />
     </div>

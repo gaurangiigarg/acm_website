@@ -21,14 +21,14 @@ function LaserFlowBoxExample() {
         wispIntensity={5}
         flowSpeed={0.35}
         flowStrength={0.25}
-        fogIntensity={0.5}
-        fogScale={0.39}
+        fogIntensity={0.45}
+        fogScale={0.3}
         fogFallSpeed={0.6}
-        decay={1.45}
+        decay={1.1}
         falloffStart={1.2}
         horizontalBeamOffset={0.2}
         verticalBeamOffset={-0.5}
-        color="#3d52f0"
+        color="#2f32e4"
       />
 
       {/* TEXT BLOCK (CENTERED HORIZONTALLY & VERTICALLY) */}

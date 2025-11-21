@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
+import { useNavigate } from 'react-router-dom';
 import './GalleryMenu.css';
 
 const discVertShaderSource = `#version 300 es
@@ -73,8 +74,9 @@ void main() {
     float imageAspect = float(texSize.x) / float(texSize.y);
     float containerAspect = 1.0;
     
-    float scale = max(imageAspect / containerAspect, 
-                     containerAspect / imageAspect);
+    // CHANGE: 'min' ensures the image COVERS the disc. 'max' would contain it.
+    float scale = min(imageAspect / containerAspect, 
+                      containerAspect / imageAspect);
     
     vec2 st = vec2(vUvs.x, 1.0 - vUvs.y);
     st = (st - 0.5) * scale + 0.5;
@@ -912,6 +914,9 @@ export default function InfiniteMenu({ items = [] }) {
   const canvasRef = useRef(null);
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
+  
+  // 1. Initialize the hook
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -922,6 +927,8 @@ export default function InfiniteMenu({ items = [] }) {
       setActiveItem(items[itemIndex]);
     };
 
+    // Pass items. If items is empty, we still use defaultItems defined above,
+    // BUT you should pass the correct link in your items array.
     if (canvas) {
       sketch = new InfiniteGridMenu(canvas, items.length ? items : defaultItems, handleActiveItem, setIsMoving, sk =>
         sk.run()
@@ -944,10 +951,13 @@ export default function InfiniteMenu({ items = [] }) {
 
   const handleButtonClick = () => {
     if (!activeItem?.link) return;
+
+    // 2. Logic to handle External vs Internal links
     if (activeItem.link.startsWith('http')) {
       window.open(activeItem.link, '_blank');
     } else {
-      console.log('Internal route:', activeItem.link);
+      // This handles the internal routing
+      navigate(activeItem.link); 
     }
   };
 
@@ -961,6 +971,7 @@ export default function InfiniteMenu({ items = [] }) {
 
           <p className={`face-description ${isMoving ? 'inactive' : 'active'}`}> {activeItem.description}</p>
 
+          {/* The onClick here triggers the handleButtonClick above */}
           <div onClick={handleButtonClick} className={`action-button ${isMoving ? 'inactive' : 'active'}`}>
             <p className="action-button-icon">&#x2197;</p>
           </div>

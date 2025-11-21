@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import useLenis from './useLenis';    
 import './About.css';
-import image1 from '../src/assets/img/HOC/img5.jpeg';
-import image2 from '../src/assets/img/Prodigy24/umm.jpg';
-import image3 from '../src/assets/img/Prodigy24/grp.jpg';
+import image1 from '../src/assets/img/Prodigy25/hmm.jpg';
+import image2 from '../src/assets/img/Prodigy25/umm.jpg';
+import image3 from '../src/assets/img/Prodigy25/grp.jpg';
 import DecryptedText from '../Decrypted_Reveal/DecryptedText/DecryptedText';
 
 const About = () => {

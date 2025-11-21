@@ -4,9 +4,9 @@ import './ExecutiveSlider.css';
 import PankajBadoni from '../../assets/img/coverphoto.jpg';
 import SangamKhanna from '../../assets/images/Sangam_Khanna.jpg';
 import TanayPrabhakar from '../../assets/images/TanayPrabhakar.jpg';
-import DakshMehrotra from '../../assets/images/Daksh_Mehrotra.jpeg';
+import DakshMehrotra from '../../assets/images/Daksh_Mehrotra.jpg';
 import AdvikaKaushik from '../../assets/images/Advika_Kaushik.jpg';
-import RudranshSogani from '../../assets/images/Rudransh_Sogani.jpg';
+import RudranshSogani from '../../assets/images/Rudransh.jpg';
 
 // Updated data array to include the description
 const teamData = [

@@ -32,6 +32,9 @@ import Footer from "./Footer";
 import ScrollReveal1 from "../ScrollReveal/ScrollReveal/ScrollReveal1.jsx";
 import GalleryPage from "./pages/Gallery/Gallery.jsx";
 
+// 👇 1. Import the Prodigy25 component here
+import Prodigy25 from "../src/pages/Events_Gallery/Prodigy25.jsx"; 
+
 import "./App.css";
 
 const ChipsReveal = lazy(() => import("./ChipsReveal"));
@@ -156,6 +159,9 @@ export default function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<TeamsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        
+        {/* 👇 2. Add the route definition here */}
+        <Route path="/prodigy25" element={<Prodigy25 />} />
       </Routes>
     </Router>
   );
