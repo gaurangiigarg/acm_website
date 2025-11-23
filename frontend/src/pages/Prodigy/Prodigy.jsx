@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../../Navbar';
 import './Prodigy.css';
+import theme from '../../assets/ThemeReveal/reveal.mp4'
 
 // Assuming PrismaticBurst is a component that renders the dynamic background.
 import PrismaticBurst from '../../../PrismaticBurst/PrismaticBurst/PrismaticBurst'; 
@@ -159,17 +160,23 @@ const Prodigy = () => {
                 </div>
                 <span className="video-text">THEME REVEAL COMING SOON</span>
               </div>
-              {/* To add video, uncomment and add src:
-              <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                  title="Prodigy Theme Reveal" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen>
-              </iframe> 
-              */}
+              
+              <video
+  width="100%"
+  height="100%"
+  src={theme}
+  controls
+  autoPlay
+  muted
+  loop
+  playsInline
+  style={{
+    position: 'absolute',
+    inset: 0,
+    objectFit: 'cover'
+  }}
+/> 
+              
             </div>
             <div className="video-corner-accent top-left"></div>
             <div className="video-corner-accent bottom-right"></div>
