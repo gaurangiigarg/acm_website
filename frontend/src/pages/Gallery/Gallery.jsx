@@ -1,7 +1,8 @@
 import InfiniteMenu from './GalleryMenu'
 import Navbar from '../../Navbar'; 
 
-import prodigyimg from '../../../src/assets/gallery_ball/1.jpg';
+import prodigyimg from '../../assets/gallery_ball/prodigy.png';
+import ladyadaimg from '../../assets/gallery_ball/Lady_Ada.png';
 
 function Gallery() {
 
@@ -13,10 +14,10 @@ function Gallery() {
       description: 'The ACM tech fest'
     },
     {
-      image: 'https://picsum.photos/400/400?grayscale',
+      image: ladyadaimg,
       link: 'https://google.com/',
-      title: 'Item 2',
-      description: 'This is pretty cool, right?'
+      title: 'Lady Ada',
+      description: 'Innovation powered by women.'
     },
     {
       image: 'https://picsum.photos/500/500?grayscale',
@@ -35,7 +36,7 @@ function Gallery() {
   return (
     <>
     <Navbar />
-    <div style={{ height: '100vh', position: 'relative' }}>
+    <div style={{ height: '100%', position: 'relative' }}>
       <InfiniteMenu items={items} />
     </div>
     </>

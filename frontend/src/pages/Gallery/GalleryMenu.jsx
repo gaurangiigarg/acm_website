@@ -75,7 +75,7 @@ void main() {
     float containerAspect = 1.0;
     
     // CHANGE: 'min' ensures the image COVERS the disc. 'max' would contain it.
-    float scale = min(imageAspect / containerAspect, 
+    float scale = max(imageAspect / containerAspect, 
                       containerAspect / imageAspect);
     
     vec2 st = vec2(vUvs.x, 1.0 - vUvs.y);
