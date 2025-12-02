@@ -40,6 +40,12 @@ import image37 from "../../assets/events_gallery/prodigy25/37.jpg";
 import image38 from "../../assets/events_gallery/prodigy25/38.jpg";
 import image39 from "../../assets/events_gallery/prodigy25/39.jpg";
 import image40 from "../../assets/events_gallery/prodigy25/40.jpg";
+import image41 from "../../assets/events_gallery/prodigy25/41.jpg";
+import image42 from "../../assets/events_gallery/prodigy25/42.jpg";
+import image43 from "../../assets/events_gallery/prodigy25/43.jpg";
+import image44 from "../../assets/events_gallery/prodigy25/44.jpg"; 
+import image45 from "../../assets/events_gallery/prodigy25/45.jpg";
+import image46 from "../../assets/events_gallery/prodigy25/46.jpg";
 
 
 const items = [
@@ -239,7 +245,7 @@ const items = [
       id: '33',
       img: image33,
       url: null,
-      height: 500,
+      height: 700,
     },
     {
       id: '34',
@@ -269,7 +275,7 @@ const items = [
       id: '38',
       img: image38,
       url: null,
-      height: 700,
+      height: 600,
     },
     {
       id: '39',
@@ -283,6 +289,43 @@ const items = [
       url: null,
       height: 400,
     },
+    {
+      id: '41',
+      img: image41,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '42',
+      img: image42,
+      url: null,
+      height: 600,
+    },
+    {
+      id: '43',
+      img: image43,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '44',
+      img: image44,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '45',
+      img: image45,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '46',
+      img: image46,
+      url: null,
+      height: 400,
+    }
+    
 
 ];
 

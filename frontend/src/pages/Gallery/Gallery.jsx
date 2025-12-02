@@ -15,7 +15,7 @@ function Gallery() {
     },
     {
       image: ladyadaimg,
-      link: 'https://google.com/',
+      link: '/ladyada',
       title: 'Lady Ada',
       description: 'Innovation powered by women.'
     },

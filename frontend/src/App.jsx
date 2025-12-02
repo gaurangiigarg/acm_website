@@ -36,6 +36,8 @@ import GalleryPage from "./pages/Gallery/Gallery.jsx";
 import Prodigy25 from "../src/pages/Events_Gallery/Prodigy25.jsx";
 import Prodigypage from '../src/pages/Prodigy/Prodigy.jsx'
 
+import LadyAda from "../src/pages/Events_Gallery/LadyAda.jsx";
+
 import "./App.css";
 
 const ChipsReveal = lazy(() => import("./ChipsReveal"));
@@ -164,6 +166,7 @@ export default function App() {
         {/* 👇 2. Add the route definition here */}
         <Route path="/prodigy25" element={<Prodigy25 />} />
         <Route path="/prodigypage" element={<Prodigypage />} />
+        <Route path='/ladyada' element={<LadyAda />} /> 
       </Routes>
     </Router>
   );
