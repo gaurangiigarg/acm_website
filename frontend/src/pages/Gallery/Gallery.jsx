@@ -2,7 +2,8 @@ import InfiniteMenu from './GalleryMenu'
 import Navbar from '../../Navbar'; 
 
 import prodigyimg from '../../assets/gallery_ball/prodigy.png';
-import ladyadaimg from '../../assets/gallery_ball/Lady_Ada.png';
+import ladyadaimg from '../../assets/gallery_ball/Lady_Ada.jpeg';
+import aicwicimg from '../../assets/gallery_ball/AICWiC.JPG';
 
 function Gallery() {
 
@@ -10,7 +11,7 @@ function Gallery() {
     {
       image: prodigyimg,
       link: '/prodigy25', 
-      title: 'Prodigy 25',
+      title:"Prodigy' 25",
       description: 'The ACM tech fest'
     },
     {
@@ -20,10 +21,10 @@ function Gallery() {
       description: 'Innovation powered by women.'
     },
     {
-      image: 'https://picsum.photos/500/500?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 3',
-      description: 'This is pretty cool, right?'
+      image: aicwicimg,
+      link: '/aicwic',
+      title: "AICWiC' 25",
+      description: 'Celebrating Women in Technology'
     },
     {
       image: 'https://picsum.photos/600/600?grayscale',
