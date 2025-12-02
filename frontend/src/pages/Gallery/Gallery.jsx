@@ -26,12 +26,7 @@ function Gallery() {
       title: "AICWiC' 25",
       description: 'Celebrating Women in Technology'
     },
-    {
-      image: 'https://picsum.photos/600/600?grayscale',
-      link: 'https://google.com/',
-      title: 'Item 4',
-      description: 'This is pretty cool, right?'
-    }
+    
   ];
 
   return (

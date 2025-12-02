@@ -16,7 +16,7 @@ const cardData = [
     color: '#000000',
     title: 'CSR',
     description: 'Our CSR team puts words to action, bringing smiles to underprivileged communities',
-    label: 'Hour of Code',
+    label: 'Hour of AI',
     image: HOC
   },
   {
