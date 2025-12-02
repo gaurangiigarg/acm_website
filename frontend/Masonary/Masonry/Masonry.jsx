@@ -9,11 +9,11 @@ import { gsap } from "gsap";
 
 import "./Masonry.css";
 
-const useMedia = (
-  queries,
-  values,
-  defaultValue
-) => {
+// -----------------------------------------------------------
+// Unchanged Utility Hooks (useMedia, useMeasure)
+// -----------------------------------------------------------
+
+const useMedia = (queries, values, defaultValue) => {
   const get = () =>
     values[queries.findIndex((q) => matchMedia(q).matches)] ?? defaultValue;
 
@@ -49,18 +49,9 @@ const useMeasure = () => {
   return [ref, size];
 };
 
-const preloadImages = async (urls) => {
-  await Promise.all(
-    urls.map(
-      (src) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = img.onerror = () => resolve();
-        })
-    )
-  );
-};
+// -----------------------------------------------------------
+// Removed preloadImages function
+// -----------------------------------------------------------
 
 const Masonry = ({
   items,
@@ -85,19 +76,19 @@ const Masonry = ({
   );
 
   const [containerRef, { width }] = useMeasure();
-  const [imagesReady, setImagesReady] = useState(false);
+  // State for image readiness is no longer necessary globally
+  // const [imagesReady, setImagesReady] = useState(false);
 
   const getInitialPosition = (item) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
+    // Simplified initial position calculation for immediate animation
     if (!containerRect) return { x: item.x, y: item.y };
 
     let direction = animateFrom;
 
     if (animateFrom === "random") {
       const directions = ["top", "bottom", "left", "right"];
-      direction = directions[
-        Math.floor(Math.random() * directions.length)
-      ];
+      direction = directions[Math.floor(Math.random() * directions.length)];
     }
 
     switch (direction) {
@@ -119,9 +110,7 @@ const Masonry = ({
     }
   };
 
-  useEffect(() => {
-    preloadImages(items.map((i) => i.img)).then(() => setImagesReady(true));
-  }, [items]);
+  // Removed useEffect for preloadImages
 
   const grid = useMemo(() => {
     if (!width) return [];
@@ -132,6 +121,8 @@ const Masonry = ({
     return items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
+      // Note: If you want to use the actual image height, this needs a change.
+      // Assuming 'child.height' is a pre-calculated or estimated value.
       const height = child.height / 2;
       const y = colHeights[col];
 
@@ -144,7 +135,8 @@ const Masonry = ({
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
-    if (!imagesReady) return;
+    // Removed imagesReady check - component now visible immediately
+    // if (!imagesReady) return;
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
@@ -156,9 +148,10 @@ const Masonry = ({
       };
 
       if (!hasMounted.current) {
-        const initialPos = getInitialPosition(item, index);
+        // Initial Mount Animation
+        const initialPos = getInitialPosition(item); // Removed index argument
         const initialState = {
-          opacity: 0,
+          opacity: 0, // Starts invisible
           x: initialPos.x,
           y: initialPos.y,
           width: item.w,
@@ -167,14 +160,15 @@ const Masonry = ({
         };
 
         gsap.fromTo(selector, initialState, {
-          opacity: 1,
+          opacity: 1, // Animates to visible
           ...animationProps,
           ...(blurToFocus && { filter: "blur(0px)" }),
-          duration: 0.8,
-          ease: "power3.out",
+          duration: duration, // Use prop duration for initial animation
+          ease: ease, // Use prop ease for initial animation
           delay: index * stagger,
         });
       } else {
+        // Resize/Re-layout Animation (No change)
         gsap.to(selector, {
           ...animationProps,
           duration: duration,
@@ -186,7 +180,9 @@ const Masonry = ({
 
     hasMounted.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, stagger, animateFrom, blurToFocus, duration, ease]);
+
+  // Unchanged Mouse Event Handlers
 
   const handleMouseEnter = (e, item) => {
     const element = e.currentTarget;
@@ -196,7 +192,7 @@ const Masonry = ({
       gsap.to(selector, {
         scale: hoverScale,
         duration: 0.3,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
 
@@ -219,7 +215,7 @@ const Masonry = ({
       gsap.to(selector, {
         scale: 1,
         duration: 0.3,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
 
@@ -246,6 +242,7 @@ const Masonry = ({
             onMouseEnter={(e) => handleMouseEnter(e, item)}
             onMouseLeave={(e) => handleMouseLeave(e, item)}
           >
+            {/* The image is loaded here by the browser as soon as this div is rendered */}
             <div
               className="item-img"
               style={{ backgroundImage: `url(${item.img})` }}
