@@ -1,7 +1,7 @@
 import Masonry from "../../../Masonary/Masonry/Masonry"; // Double check this spelling "Masonary" vs "Masonry"
 import Navbar from '../../Navbar'; // Check if this path is correct relative to this file
 
-import image1 from '../../../src/assets/events_gallery/AICWiC/1.jpg';
+import image1 from '../../../src/assets/events_gallery/AICWiC/1.JPG';
 import image2 from '../../../src/assets/events_gallery/AICWiC/2.jpg';
 import image3 from '../../../src/assets/events_gallery/AICWiC/3.jpg';
 import image4 from '../../../src/assets/events_gallery/AICWiC/4.jpg';
