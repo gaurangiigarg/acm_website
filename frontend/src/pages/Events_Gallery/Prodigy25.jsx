@@ -16,6 +16,30 @@ import image13 from "../../assets/events_gallery/prodigy25/13.jpg";
 import image14 from "../../assets/events_gallery/prodigy25/14.jpg";
 import image15 from "../../assets/events_gallery/prodigy25/15.jpg";
 import image16 from "../../assets/events_gallery/prodigy25/16.jpg";
+import image17 from "../../assets/events_gallery/prodigy25/17.jpg";
+import image18 from "../../assets/events_gallery/prodigy25/18.jpg";
+import image19 from "../../assets/events_gallery/prodigy25/19.jpg";
+import image20 from "../../assets/events_gallery/prodigy25/20.jpg";
+import image21 from "../../assets/events_gallery/prodigy25/21.jpg";
+import image22 from "../../assets/events_gallery/prodigy25/22.jpg";
+import image23 from "../../assets/events_gallery/prodigy25/23.jpg";
+import image24 from "../../assets/events_gallery/prodigy25/24.jpg";
+import image25 from "../../assets/events_gallery/prodigy25/25.jpg";
+import image26 from "../../assets/events_gallery/prodigy25/26.jpg";
+import image27 from "../../assets/events_gallery/prodigy25/27.jpg";
+import image28 from "../../assets/events_gallery/prodigy25/28.jpg";
+import image29 from "../../assets/events_gallery/prodigy25/29.jpg";
+import image30 from "../../assets/events_gallery/prodigy25/30.jpg";
+import image31 from "../../assets/events_gallery/prodigy25/31.jpg";
+import image32 from "../../assets/events_gallery/prodigy25/32.jpg";
+import image33 from "../../assets/events_gallery/prodigy25/33.JPG";
+import image34 from "../../assets/events_gallery/prodigy25/34.jpg";
+import image35 from "../../assets/events_gallery/prodigy25/35.jpg";
+import image36 from "../../assets/events_gallery/prodigy25/36.jpg";
+import image37 from "../../assets/events_gallery/prodigy25/37.jpg";
+import image38 from "../../assets/events_gallery/prodigy25/38.jpg";
+import image39 from "../../assets/events_gallery/prodigy25/39.jpg";
+import image40 from "../../assets/events_gallery/prodigy25/40.jpg";
 
 
 const items = [
@@ -112,6 +136,150 @@ const items = [
     {
       id: "16",
       img: image16,
+      url: null,
+      height: 400,
+    },
+    {
+      id: "17",
+      img: image17,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '18',
+      img: image18,
+      url: null,
+      height: 600,
+    },
+    {
+      id: '19',
+      img: image19,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '20',
+      img: image20,
+      url: null,
+      height: 900,
+    },
+    {
+      id: '21',
+      img: image21,
+      url: null,
+      height: 800,
+    },
+    {
+      id: '22',
+      img: image22,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '23',
+      img: image23,
+      url: null,
+      height: 600,
+    },
+    {
+      id: '24',
+      img: image24,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '25',
+      img: image25,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '26',
+      img: image26,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '27',
+      img: image27,
+      url: null,
+      height: 300,
+    },
+    {
+      id: '28',
+      img: image28,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '29',
+      img: image29,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '30',
+      img: image30,
+      url: null,
+      height: 600,
+    },
+     {
+      id: '31',
+      img: image31,
+      url: null,
+      height: 300,
+    },
+    {
+      id: '32',
+      img: image32,
+      url: null,
+      height: 700,
+    },
+    {
+      id: '33',
+      img: image33,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '34',
+      img: image34,
+      url: null,
+      height: 700,
+    },
+    {
+      id: '35',
+      img: image35,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '36',
+      img: image36,
+      url: null,
+      height: 500,
+    },
+    {
+      id: '37',
+      img: image37,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '38',
+      img: image38,
+      url: null,
+      height: 700,
+    },
+    {
+      id: '39',
+      img: image39,
+      url: null,
+      height: 400,
+    },
+    {
+      id: '40',
+      img: image40,
       url: null,
       height: 400,
     },
