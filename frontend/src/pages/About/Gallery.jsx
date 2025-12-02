@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import DecryptedText from '../../../Decrypted_Reveal/DecryptedText/DecryptedText';
 
-import img1 from '../../assets/img/Gallery_Webp/HRK_0014.webp';
-import img2 from '../../assets/img/Gallery_Webp/HRK_0356.webp';
-import img3 from '../../assets/img/Gallery_Webp/HRK_7147.webp';
-import img4 from '../../assets/img/Gallery_Webp/umm.webp';
-import img5 from '../../assets/img/Gallery_Webp/img1.webp';
-import img6 from '../../assets/img/Gallery_Webp/img3.webp';
-import img7 from '../../assets/img/Gallery_Webp/img4.webp';
-import img8 from '../../assets/img/Gallery_Webp/img2.webp';
+import img1 from '../../assets/events_gallery/AICWiC/31.jpg'
+import img2 from '../../assets/events_gallery/Prodigy25/1.jpg';
+import img3 from '../../assets/events_gallery/Prodigy25/32.jpg';
+import img4 from '../../assets/events_gallery/AICWiC/3.jpg';
+import img5 from '../../assets/events_gallery/Prodigy25/28.jpg';
+import img6 from '../../assets/events_gallery/Prodigy25/40.jpg';
+import img7 from '../../assets/events_gallery/AICWiC/1.jpg';
+import img8 from '../../assets/events_gallery/AICWiC/25.jpg';
 
 const galleryData = [
   { imageUrl: img1, size: 'large' },
