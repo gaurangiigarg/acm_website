@@ -29,92 +29,92 @@ const teamData = [
     imageUrl: member1, // 2. Use the imported variables
     name: 'Mayank Kumar',
     title: 'Technical Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/mayank-kumar-27',
+    linkedinUrl: 'https://www.linkedin.com/in/mayankkumarupes/'
   },
   {
     imageUrl: member2,
     name: 'Navneet Kumar',
     title: 'Joint Technical Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/upesnavneet',
+    linkedinUrl: 'https://www.linkedin.com/in/navneetkumar-/#'
   },
   {
     imageUrl: member3,
     name: 'Rahul Mankani',
     title: 'Events Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/rahul5002',
+    linkedinUrl: 'https://www.linkedin.com/in/rahul-mankani/'
   },
   {
     imageUrl: member4,
     name: 'Niharika Chand',
     title: 'Joint Events Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/niharika24chand',
+    linkedinUrl: 'https://www.linkedin.com/in/niharika-chand24/'
   },
   {
     imageUrl: member5,
     name: 'Shlok Madan',
     title: 'PR Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/Shlok1205',
+    linkedinUrl: 'https://www.linkedin.com/in/shlokmadan/'
   },
   {
     imageUrl: member6,
     name: 'Mishthi Nagpal',
     title: 'Joint PR Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/MishthiNagpal11',
+    linkedinUrl: 'https://www.linkedin.com/in/mishthi-nagpal/'
   },
   {
     imageUrl: member7,
     name: 'Prabhjeet Singh',
     title: 'CSR Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/Prabhjeet8963',
+    linkedinUrl: 'https://www.linkedin.com/in/singh-prabhjeet'
   },
   {
     imageUrl: member8,
     name: 'Ahad Khan',
     title: 'Editorial Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/cmdahad',
+    linkedinUrl: 'https://www.linkedin.com/in/ahad-172794264/'
   },
   {
     imageUrl: member9,
     name: 'Arartik Tyagi',
     title: 'Operations Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/arartiktyagi',
+    linkedinUrl: 'https://www.linkedin.com/in/arartik-tyagi-572b83318/'
   },
   {
     imageUrl: member13,
     name: 'Divyanshu Arora',
     title: 'Design Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/divyanshuarora23',
+    linkedinUrl: 'https://www.linkedin.com/in/divyanshuarora23/'
   },
   {
     imageUrl: member10,
     name: 'Dhaniksha',
     title: 'Joint Design Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/Dhaniksha29/',
+    linkedinUrl: 'https://www.linkedin.com/in/dhanikshabisht/'
   },
   {
     imageUrl: member11,
     name: 'Devaansh Kushwaha',
     title: 'VFX Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/devaanshkushwaha06',
+    linkedinUrl: 'https://www.linkedin.com/in/devaansh-kushwaha-316340338/'
   },
   {
     imageUrl: member12,
     name: 'Abhinav Kumar',
     title: 'Joint VFX Head, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/abhinav-22-human',
+    linkedinUrl: 'https://www.linkedin.com/in/abhinav-kumar-30b8a5215/'
   }
   
 ];

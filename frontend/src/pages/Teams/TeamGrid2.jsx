@@ -22,43 +22,42 @@ const teamData = [
     imageUrl: member1, // 2. Use the imported variables
     name: 'Mr. Pankaj Badoni',
     title: 'Faculty Coordinator',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    linkedinUrl: 'https://www.linkedin.com/in/badoni18pankaj/'
   },
   {
     imageUrl: member2,
     name: 'Sangam Khanna',
     title: 'Chairperson, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/CatoxiRetreater',
+    linkedinUrl: 'https://www.linkedin.com/in/khannasangam/'
   },
   {
     imageUrl: member3,
     name: 'Tanay Prabhakar',
     title: 'Vice-Chairperson, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/tanayprabhakar',
+    linkedinUrl: 'https://www.linkedin.com/in/tanayprabhakar/#'
   },
   {
     imageUrl: member4,
     name: 'Rudransh Sogani',
     title: 'Treasurer, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/rudranshsogani',
+    linkedinUrl: 'https://www.linkedin.com/in/rudransh-sogani-7211a6276/'
   },
   {
     imageUrl: member5,
     name: 'Daksh Mehrotra',
     title: 'Secretary, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/DakshMehrotra',
+    linkedinUrl: 'https://www.linkedin.com/in/mehrotradaksh/'
   },
   {
     imageUrl: member6,
     name: 'Advika Kaushik',
     title: 'Joint Secretary, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/advikakaushik',
+    linkedinUrl: 'https://www.linkedin.com/in/advika-kaushik-76731a293/'
   }
 ];
 

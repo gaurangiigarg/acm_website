@@ -14,7 +14,7 @@ import member7 from '../../assets/images/supragaya.jpg';
 import member8 from '../../assets/images/Dev_Sharma.jpeg';
 import member9 from '../../assets/images/Md_Arslan.jpg';
 import member10 from '../../assets/images/Smriti_Walia.jpg';
-import member11 from '../../assets/images/Jahnavi_Saxena.png';
+import member11 from '../../assets/images/Jahnavi_Saxena.jpeg';
 import member12 from '../../assets/images/Hiral_Mittal.jpg';
 import member13 from '../../assets/images/Amrit.jpg';
 import member14 from '../../assets/images/anshi.jpeg';
@@ -29,99 +29,99 @@ const teamData = [
     imageUrl: member1, // 2. Use the imported variables
     name: 'Lavanya Arora',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/LavanyaArora08',
+    linkedinUrl: 'https://www.linkedin.com/in/lavanya-arora-279498249/'
   },
   {
     imageUrl: member2,
     name: 'Kavya Chugh',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/KavyaChugh',
+    linkedinUrl: 'https://www.linkedin.com/in/kavyachugh/'
   },
   {
     imageUrl: member3,
     name: 'Rishitt Gupta',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/rishuu42',
+    linkedinUrl: 'https://www.linkedin.com/in/rishitt-gupta-aaa7a1251/'
   },
   {
     imageUrl: member4,
     name: 'Aarohi Sharma',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/Aarohi-Sharma',
+    linkedinUrl: 'https://www.linkedin.com/in/aarohi-sharma23/'
   },
   {
     imageUrl: member5,
     name: 'Gurmehr Singh Gulati',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/gurmehr04',
+    linkedinUrl: 'https://www.linkedin.com/in/gurmehr04/'
   },
   {
     imageUrl: member6,
     name: 'Milan Singhal',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/milansinghal2004',
+    linkedinUrl: 'https://www.linkedin.com/in/singhalmilan92/'
   },
   {
     imageUrl: member7,
     name: 'Supragya Gandotra',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/supragya1',
+    linkedinUrl: 'https://www.linkedin.com/in/supragya-gandotra/'
   },
   {
     imageUrl: member8,
     name: 'Dev Sharma',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/devvsharma',
+    linkedinUrl: 'https://www.linkedin.com/in/devvsharma/'
   },
   {
     imageUrl: member9,
     name: 'Md Arslan',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/mdarslan7',
+    linkedinUrl: 'https://www.linkedin.com/in/mdarslan7/'
   },
   {
     imageUrl: member10,
     name: 'Smriti Walia',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/mdarslan7',
+    linkedinUrl: 'https://www.linkedin.com/in/mdarslan7/'
   },
   {
     imageUrl: member11,
     name: 'Jahnavi Saxena',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/jahnavisaxena',
+    linkedinUrl: 'https://www.linkedin.com/in/jahnavi-saxena-1318a6286/'
   },
   {
     imageUrl: member12,
     name: 'Hiral Mittal',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://www.linkedin.com/in/hiral-mittal-b88068298',
+    linkedinUrl: 'https://www.linkedin.com/in/jahnavi-saxena-1318a6286/'
   },
   {
     imageUrl: member13,
     name: 'Amrit Raj Garg',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/AmritRajGarg',
+    linkedinUrl: 'https://www.linkedin.com/in/amritrajgarg/'
   },
   {
     imageUrl: member14,
     name: 'Anshi Agarwal',
     title: 'BOE, ACM',
-    githubUrl: '#',
-    linkedinUrl: '#'
+    githubUrl: 'https://github.com/anshiagrawal22',
+    linkedinUrl: 'https://www.linkedin.com/in/anshiagrawal22/'
   },
 ];
 
