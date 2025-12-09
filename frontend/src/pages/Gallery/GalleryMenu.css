@@ -109,9 +109,44 @@
   transition: 0.1s ease;
 }
 
-@media (max-width: 1500px) {
+
+
+@media (max-width: 768px) {
+
+  /* Let these elements float ABOVE the WebGL canvas */
   .face-title,
+  .face-description,
+  .action-button {
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 9999 !important;
+    pointer-events: auto;
+  }
+
+  /* TITLE — top of screen */
+  .face-title {
+    top: 8rem !important;
+    width: 90%;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+    line-height: 1.2;
+  }
+
+  /* DESCRIPTION — bottom above button */
   .face-description {
-    display: none;
+    top: 30rem;
+    bottom: 6rem !important;
+    width: 90%;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.4;
+  }
+
+  /* BUTTON — moved slightly above bottom */
+  .action-button {
+    bottom: 2rem !important;
   }
 }
