@@ -205,22 +205,22 @@ const Prodigy = () => {
 
           <div className="domain-grid">
             <div className="domain-card fade-on-scroll" style={{ transitionDelay: '0ms' }}>
-              <div className="card-icon">⚖️</div>
+              <div className="card-icon"></div>
               <h4>Tech x Law</h4>
               <p>Solving legal complexities through automation, AI governance, and smart contracts.</p>
             </div>
             <div className="domain-card fade-on-scroll" style={{ transitionDelay: '100ms' }}>
-              <div className="card-icon">💼</div>
+              <div className="card-icon"></div>
               <h4>Tech x Business</h4>
               <p>Revolutionizing fintech, market analytics, and algorithmic trading strategies.</p>
             </div>
             <div className="domain-card fade-on-scroll" style={{ transitionDelay: '200ms' }}>
-              <div className="card-icon">🎨</div>
+              <div className="card-icon"></div>
               <h4>Tech x Design</h4>
               <p>Merging generative art, UI/UX psychology, and spatial computing for immersive experiences.</p>
             </div>
             <div className="domain-card fade-on-scroll" style={{ transitionDelay: '300ms' }}>
-              <div className="card-icon">🌱</div>
+              <div className="card-icon"></div>
               <h4>Tech x Sustainability</h4>
               <p>Engineering solutions for climate change, green energy, and smart urban planning.</p>
             </div>
@@ -259,7 +259,7 @@ const Prodigy = () => {
         <section className="prodigy-cta fade-on-scroll">
           <button className="register-btn">REGISTER NOW</button>
           <div className="date-location">
-            <span>MARCH 2025</span>
+            <span>NOVEMBER 2025</span>
             <span className="separator">|</span>
             <span>UPES DEHRADUN</span>
           </div>
