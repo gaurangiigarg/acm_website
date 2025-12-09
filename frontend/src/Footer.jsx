@@ -85,9 +85,9 @@ const Footer = () => {
               
               {/* ✅ UPDATED: Use Link for routing to other pages */}
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/teams">Teams</Link></li>
+              <li><Link to="/team">Teams</Link></li>
               
-              <li><a href="#about">Gallery</a></li>
+              <li><Link to="/gallery">Gallery</Link></li>
               <li><a href="#join">Become a Member</a></li>
             </ul>
           </div>
@@ -96,15 +96,10 @@ const Footer = () => {
             <h3 className="footer-heading">Connect</h3>
             <div className="social-icons">
               <a href="https://github.com/upesacm" target="_blank" rel="noopener noreferrer"><GithubIcon /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><LinkedinIcon /></a>
+              <a href="https://www.linkedin.com/company/upesacm/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><LinkedinIcon /></a>
               <a href="https://instagram.com/upesacm" target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
             </div>
-            <div className="contact-mail">
-              <a href="mailto:contact@acmchapter.com">
-                <MailIcon />
-                <span>contact@acmchapter.com</span>
-              </a>
-            </div>
+            
           </div>
         </div>
 

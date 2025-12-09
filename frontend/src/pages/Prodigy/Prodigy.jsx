@@ -257,7 +257,12 @@ const Prodigy = () => {
 
         {/* FOOTER / CTA */}
         <section className="prodigy-cta fade-on-scroll">
-          <button className="register-btn">REGISTER NOW</button>
+          <button 
+  className="register-btn"
+  onClick={() => window.open("https://linktr.ee/acmprodigy25", "_blank")}
+>
+  REGISTER NOW
+</button>
           <div className="date-location">
             <span>NOVEMBER 2025</span>
             <span className="separator">|</span>
