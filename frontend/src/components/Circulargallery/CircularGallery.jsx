@@ -8,7 +8,7 @@ const DEFAULT_GLOW_COLOR = '132, 0, 255';
 const MOBILE_BREAKPOINT = 768;
 
 import DOC from '../../assets/img/webp_images/img4.webp';
-import HOC from '../../assets/img/webp_images/img3.webp';
+import HOC from '../../assets/img/HOC/img5.jpeg';
 import codeanytime from '../../assets/img/webp_images/codeanytime25.jpg'
 import Spyc from '../../assets/img/webp_images/img2.webp';
 const cardData = [

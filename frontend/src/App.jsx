@@ -38,6 +38,7 @@ import Prodigypage from '../src/pages/Prodigy/Prodigy.jsx'
 
 import LadyAda from "../src/pages/Events_Gallery/LadyAda.jsx";
 import AICWiC from "../src/pages/Events_Gallery/AICWiC.jsx";
+import HOAI from "../src/pages/Events_Gallery/HOAI.jsx";
 
 import "./App.css";
 
@@ -168,7 +169,8 @@ export default function App() {
         <Route path="/prodigy25" element={<Prodigy25 />} />
         <Route path="/prodigypage" element={<Prodigypage />} />
         <Route path='/ladyada' element={<LadyAda />} /> 
-        <Route path='/aicwic' element={<AICWiC />} /> 
+        <Route path='/aicwic' element={<AICWiC />} />
+        <Route path='/hoai' element={<HOAI />} />
       </Routes>
     </Router>
   );

@@ -4,6 +4,7 @@ import Navbar from '../../Navbar';
 import prodigyimg from '../../assets/gallery_ball/prodigy.png';
 import ladyadaimg from '../../assets/gallery_ball/Lady_Ada.jpeg';
 import aicwicimg from '../../assets/gallery_ball/AICWiC.JPG';
+import HOAIimg from '../../assets/gallery_ball/HOAI.JPG';
 
 function Gallery() {
 
@@ -25,6 +26,12 @@ function Gallery() {
       link: '/aicwic',
       title: "AICWiC' 25",
       description: 'Celebrating Women in Technology'
+    },
+    {
+      image: HOAIimg,
+      link: '/hoai',
+      title: "HOAI",
+      description: 'AI For Social Good'
     },
     
   ];
