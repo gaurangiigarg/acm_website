@@ -135,7 +135,7 @@
 
   /* --- DESCRIPTION (bigger + more room + below disc) --- */
   .face-description {
-    top: calc(50vh + 150px) !important; /* sits nicely below the ball */
+    top: calc(50vh + 180px) !important; /* sits nicely below the ball */
     width: 85% !important;     /* more room */
     max-width: 420px !important;
     font-size: 1.3rem !important;  /* increased */
