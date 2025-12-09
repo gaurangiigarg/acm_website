@@ -115,43 +115,43 @@
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 99999 !important;
-    box-sizing: border-box;
-    width: calc(100% - 32px);
-    text-align: center;
+    text-align: center !important;
     color: #fff;
+    box-sizing: border-box;
   }
 
-  /* --- Title: Just ABOVE the ball --- */
+  /* --- TITLE (larger + just above the disc) --- */
   .face-title {
-    top: calc(50vh - 190px) !important; 
-    /* adjust ↑ this value to move closer/farther from the disc */
-    font-size: 1.4rem !important;
-    font-weight: 700;
-    line-height: 1.2;
+    top: calc(50vh - 210px) !important; /* adjust if needed */
+    width: 90% !important;
+    max-width: 350px;
+    font-size: 1.8rem !important;  /* increased */
+    font-weight: 800;
+    line-height: 1.25;
     pointer-events: none;
-    padding: 0 12px;
   }
-  .face-title.active { pointer-events: auto; opacity: 1; }
+  .face-title.active { opacity: 1; pointer-events: auto; }
   .face-title.inactive { opacity: 0; }
 
-  /* --- Description: Just BELOW the ball --- */
+  /* --- DESCRIPTION (bigger + more room + below disc) --- */
   .face-description {
-    top: calc(50vh + 160px) !important;
-    /* adjust ↑ this value to move closer/farther below the disc */
-    font-size: 1rem !important;
-    line-height: 1.35;
-    pointer-events: none;
+    top: calc(50vh + 150px) !important; /* sits nicely below the ball */
+    width: 85% !important;     /* more room */
+    max-width: 420px !important;
+    font-size: 1.3rem !important;  /* increased */
+    line-height: 1.5 !important;  /* better readability */
     padding: 0 12px;
+    pointer-events: none;
   }
-  .face-description.active { pointer-events: auto; opacity: 1; }
+  .face-description.active { opacity: 1; pointer-events: auto; }
   .face-description.inactive { opacity: 0; }
 
-  /* --- Button just below description --- */
+  /* --- BUTTON (moved lower) --- */
   .action-button {
     top: calc(50vh + 240px) !important;
-    width: 56px !important;
-    height: 56px !important;
-    border-width: 4px !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-width: 5px !important;
     pointer-events: auto !important;
   }
 }
