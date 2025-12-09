@@ -127,7 +127,7 @@ function MainLandingPage() {
         Want to know who makes all that happen?
       </ScrollReveal>
 
-      {isLargeScreen && <BackgroundReveal />}
+<BackgroundReveal />
 
       <Suspense fallback={null}>
         <ChipsReveal />
