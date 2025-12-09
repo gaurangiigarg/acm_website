@@ -106,92 +106,52 @@
   transition: opacity 0.12s ease, transform 0.12s ease;
 }
 
-/* ---------------- MOBILE OVERLAY (small screens only) ---------------- */
 @media (max-width: 768px) {
 
-  /*
-    Fixes:
-    - pin title to top of viewport (fixed)
-    - pin description to bottom of viewport (fixed)
-    - keep the action button centered above the bottom
-    - ensure everything sits above the WebGL canvas (high z-index)
-    - remove transforms that caused title to remain near center
-  */
-
-  /* Base overlay style for the three elements */
   .face-title,
   .face-description,
   .action-button {
     position: fixed !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 99999 !important; /* very high so it floats above canvas */
+    z-index: 99999 !important;
     box-sizing: border-box;
+    width: calc(100% - 32px);
+    text-align: center;
+    color: #fff;
   }
 
-  /* Title: pinned to top */
+  /* --- Title: Just ABOVE the ball --- */
   .face-title {
-    top: 14px !important;               /* small gap from top chrome */
-    width: calc(100% - 32px) !important;
-    max-width: 900px;
-    text-align: center !important;
-    font-size: 1.25rem !important;      /* readable on mobile */
+    top: calc(50vh - 190px) !important; 
+    /* adjust ↑ this value to move closer/farther from the disc */
+    font-size: 1.4rem !important;
     font-weight: 700;
-    line-height: 1.15;
-    color: #fff;
-    margin: 0 auto;
-    padding: 0 16px;
-    pointer-events: none;               /* only interactive when .active */
-    transform: translateX(-50%) !important;
+    line-height: 1.2;
+    pointer-events: none;
+    padding: 0 12px;
   }
-  /* allow click/tap when active */
   .face-title.active { pointer-events: auto; opacity: 1; }
+  .face-title.inactive { opacity: 0; }
 
-  /* Description: pinned above the action button */
+  /* --- Description: Just BELOW the ball --- */
   .face-description {
-    bottom: 92px !important;            /* place above the button by default */
-    width: calc(100% - 32px) !important;
-    max-width: 900px;
-    text-align: center !important;
+    top: calc(50vh + 160px) !important;
+    /* adjust ↑ this value to move closer/farther below the disc */
     font-size: 1rem !important;
-    line-height: 1.3;
-    color: #fff;
-    margin: 0 auto;
-    padding: 0 16px;
-    pointer-events: none;               /* only interactive when .active */
-    transform: translateX(-50%) !important;
-    opacity: 0;                         /* default hidden until .active */
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    line-height: 1.35;
+    pointer-events: none;
+    padding: 0 12px;
   }
   .face-description.active { pointer-events: auto; opacity: 1; }
+  .face-description.inactive { opacity: 0; }
 
-  /* Action button centered near bottom */
+  /* --- Button just below description --- */
   .action-button {
-    bottom: 18px !important;            /* small gap from bottom */
+    top: calc(50vh + 240px) !important;
     width: 56px !important;
     height: 56px !important;
     border-width: 4px !important;
-    transform: translateX(-50%) scale(1) !important;
-    pointer-events: auto !important;    /* clickable on mobile always */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    pointer-events: auto !important;
   }
-
-  /* When title/description set to inactive, keep transitions subtle */
-  .face-title.inactive,
-  .face-description.inactive {
-    opacity: 0 !important;
-    transition: opacity 0.12s ease !important;
-    pointer-events: none !important;
-  }
-
-  /* Make sure desktop-specific transform doesn't reappear */
-  .face-title { transform: translateX(-50%) !important; }
-  .face-description { transform: translateX(-50%) !important; }
-}
-
-/* ---------------- very small screens tweak ---------------- */
-@media (max-width: 360px) {
-  .face-title { font-size: 1.05rem !important; top: 10px !important; }
-  .face-description { font-size: 0.95rem !important; bottom: 88px !important; }
-  .action-button { width: 48px !important; height: 48px !important; bottom: 14px !important; }
 }
