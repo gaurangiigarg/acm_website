@@ -13,7 +13,7 @@ function Gallery() {
       image: prodigyimg,
       link: '/prodigy25', 
       title:"Prodigy' 25",
-      description: 'The ACM tech fest'
+      description: 'The ACM tech fest.'
     },
     {
       image: ladyadaimg,
@@ -25,13 +25,13 @@ function Gallery() {
       image: aicwicimg,
       link: '/aicwic',
       title: "AICWiC' 25",
-      description: 'Celebrating Women in Technology'
+      description: 'Celebrating Women in Technology.'
     },
     {
       image: HOAIimg,
       link: '/hoai',
       title: "HOAI",
-      description: 'AI For Social Good'
+      description: 'AI For Social Good.'
     },
     
   ];

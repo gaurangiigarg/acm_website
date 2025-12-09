@@ -1,18 +1,16 @@
-/* Note: this CSS is only an example, you can overlay whatever you want using the activeItem logic */
-
+/* ---------------- Canvas ---------------- */
 #infinite-grid-menu-canvas {
   cursor: grab;
   width: 100%;
   height: 100%;
   overflow-y: hidden;
   position: absolute;
+  inset: 0; /* ensure it fills the container */
   outline: none;
 }
+#infinite-grid-menu-canvas:active { cursor: grabbing; }
 
-#infinite-grid-menu-canvas:active {
-  cursor: grabbing;
-}
-
+/* ---------------- Action Button (desktop default) ---------------- */
 .action-button {
   position: absolute;
   left: 50%;
@@ -26,17 +24,10 @@
   border-radius: 50%;
   cursor: pointer;
   border: 5px solid #000;
+  transform: translateX(-50%); /* center by default */
 }
 
-.face-title {
-  user-select: none;
-  position: absolute;
-  font-weight: 700;
-  font-size: 3rem;
-  left: 1.6em;
-  top: 50%;
-}
-
+/* Icon inside button */
 .action-button-icon {
   user-select: none;
   position: relative;
@@ -45,25 +36,35 @@
   font-size: 26px;
 }
 
+/* ---------------- Title (desktop default) ---------------- */
+/* Desktop: keep original visual placement on the left/center area */
 .face-title {
+  user-select: none;
   position: absolute;
+  font-weight: 700;
+  font-size: 3rem;
+  left: 1.6em;
   top: 50%;
-  transform: translate(20%, -50%);
+  transform: translate(20%, -50%); /* desktop offset */
+  color: #fff;
+  line-height: 1.05;
+  z-index: 20;
 }
 
+/* Active / inactive states for title (desktop + mobile use same classes) */
 .face-title.active {
   opacity: 1;
   transform: translate(20%, -50%);
   pointer-events: auto;
-  transition: 0.5s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
-
 .face-title.inactive {
   pointer-events: none;
   opacity: 0;
-  transition: 0.1s ease;
+  transition: opacity 0.12s ease, transform 0.12s ease;
 }
 
+/* ---------------- Description (desktop default) ---------------- */
 .face-description {
   user-select: none;
   position: absolute;
@@ -72,81 +73,125 @@
   font-size: 1.2rem;
   right: 1%;
   transform: translate(0, -50%);
+  color: #fff;
+  line-height: 1.2;
+  z-index: 20;
 }
-
 .face-description.active {
   opacity: 1;
   transform: translate(-90%, -50%);
   pointer-events: auto;
-  transition: 0.5s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
-
 .face-description.inactive {
   pointer-events: none;
   transform: translate(-60%, -50%);
   opacity: 0;
-  transition: 0.1s ease;
+  transition: opacity 0.12s ease, transform 0.12s ease;
 }
 
-.action-button {
-  position: absolute;
-  left: 50%;
-}
-
+/* ---------------- Action button states (desktop) ---------------- */
 .action-button.active {
   bottom: 3.8em;
   transform: translateX(-50%) scale(1);
   opacity: 1;
   pointer-events: auto;
-  transition: 0.5s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
-
 .action-button.inactive {
   bottom: -80px;
   transform: translateX(-50%) scale(0);
   opacity: 0;
   pointer-events: none;
-  transition: 0.1s ease;
+  transition: opacity 0.12s ease, transform 0.12s ease;
 }
 
-
-
+/* ---------------- MOBILE OVERLAY (small screens only) ---------------- */
 @media (max-width: 768px) {
 
-  /* Let these elements float ABOVE the WebGL canvas */
+  /*
+    Fixes:
+    - pin title to top of viewport (fixed)
+    - pin description to bottom of viewport (fixed)
+    - keep the action button centered above the bottom
+    - ensure everything sits above the WebGL canvas (high z-index)
+    - remove transforms that caused title to remain near center
+  */
+
+  /* Base overlay style for the three elements */
   .face-title,
   .face-description,
   .action-button {
     position: fixed !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 9999 !important;
-    pointer-events: auto;
+    z-index: 99999 !important; /* very high so it floats above canvas */
+    box-sizing: border-box;
   }
 
-  /* TITLE — top of screen */
+  /* Title: pinned to top */
   .face-title {
-    top: 8rem !important;
-    width: 90%;
-    text-align: center;
-    font-size: 1.4rem;
-    color: white;
-    line-height: 1.2;
+    top: 14px !important;               /* small gap from top chrome */
+    width: calc(100% - 32px) !important;
+    max-width: 900px;
+    text-align: center !important;
+    font-size: 1.25rem !important;      /* readable on mobile */
+    font-weight: 700;
+    line-height: 1.15;
+    color: #fff;
+    margin: 0 auto;
+    padding: 0 16px;
+    pointer-events: none;               /* only interactive when .active */
+    transform: translateX(-50%) !important;
   }
+  /* allow click/tap when active */
+  .face-title.active { pointer-events: auto; opacity: 1; }
 
-  /* DESCRIPTION — bottom above button */
+  /* Description: pinned above the action button */
   .face-description {
-    top: 30rem;
-    bottom: 6rem !important;
-    width: 90%;
-    text-align: center;
-    font-size: 1rem;
-    color: white;
-    line-height: 1.4;
+    bottom: 92px !important;            /* place above the button by default */
+    width: calc(100% - 32px) !important;
+    max-width: 900px;
+    text-align: center !important;
+    font-size: 1rem !important;
+    line-height: 1.3;
+    color: #fff;
+    margin: 0 auto;
+    padding: 0 16px;
+    pointer-events: none;               /* only interactive when .active */
+    transform: translateX(-50%) !important;
+    opacity: 0;                         /* default hidden until .active */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .face-description.active { pointer-events: auto; opacity: 1; }
+
+  /* Action button centered near bottom */
+  .action-button {
+    bottom: 18px !important;            /* small gap from bottom */
+    width: 56px !important;
+    height: 56px !important;
+    border-width: 4px !important;
+    transform: translateX(-50%) scale(1) !important;
+    pointer-events: auto !important;    /* clickable on mobile always */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
   }
 
-  /* BUTTON — moved slightly above bottom */
-  .action-button {
-    bottom: 2rem !important;
+  /* When title/description set to inactive, keep transitions subtle */
+  .face-title.inactive,
+  .face-description.inactive {
+    opacity: 0 !important;
+    transition: opacity 0.12s ease !important;
+    pointer-events: none !important;
   }
+
+  /* Make sure desktop-specific transform doesn't reappear */
+  .face-title { transform: translateX(-50%) !important; }
+  .face-description { transform: translateX(-50%) !important; }
+}
+
+/* ---------------- very small screens tweak ---------------- */
+@media (max-width: 360px) {
+  .face-title { font-size: 1.05rem !important; top: 10px !important; }
+  .face-description { font-size: 0.95rem !important; bottom: 88px !important; }
+  .action-button { width: 48px !important; height: 48px !important; bottom: 14px !important; }
 }
