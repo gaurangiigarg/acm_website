@@ -11,7 +11,7 @@ const committeesData = [
     { name: 'Operations', description: 'Seamless execution starts here. From managing logistics to coordinating teams, Operations ensures everything runs smoothly. Working quietly behind the scenes, they provide the structure and support needed for every event and initiative to succeed without a hitch.' },
 ];
 
-// CSS (no changes)
+// CSS (only card width for mobile changed)
 const cssStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
@@ -99,14 +99,14 @@ const cssStyles = `
     }
 
     .CommitteesSection .committees-subtitle {
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin-top: 0.5rem;   /* reduced gap */
-  margin-left: 0;       /* aligns better under the title */
-  color: #9ca3af;
-  line-height: 1.4;
-}
-    /* Mobile responsiveness (no changes) */
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-top: 0.5rem;
+        color: #9ca3af;
+        line-height: 1.4;
+    }
+
+    /* --- Mobile Responsiveness --- */
     @media (max-width: 768px) {
         .CommitteesSection .committees-scroll-area,
         .CommitteesSection .committees-sticky-content {
@@ -138,20 +138,31 @@ const cssStyles = `
             overflow: visible;
         }
 
+        /* --- UPDATED: Bigger mobile cards --- */
         .CommitteesSection .committee-card-item {
-          position: relative;
-          width: 80%;
-          max-width: 260px;
-          height: auto; 
-          padding: 1rem;
-          opacity: 1;
-          transform: none !important;
-          transition: none;
+            position: relative;
+            width: 95%;           /* increased from 80% */
+            max-width: 340px;     /* increased from 260px */
+            height: auto;
+            padding: 1rem;
+            opacity: 1;
+            transform: none !important;
+            transition: none;
         }
 
-        .CommitteesSection .committee-card-item h3 { font-size: 1.2rem; }
-        .CommitteesSection .committee-card-item p { font-size: 0.8rem; line-height: 1.4; }
-        .CommitteesSection .committees-subtitle { font-size: 0.9rem; margin-top: 1rem; }
+        .CommitteesSection .committee-card-item h3 { 
+            font-size: 1.2rem; 
+        }
+
+        .CommitteesSection .committee-card-item p { 
+            font-size: 0.8rem; 
+            line-height: 1.4; 
+        }
+
+        .CommitteesSection .committees-subtitle { 
+            font-size: 0.9rem; 
+            margin-top: 1rem; 
+        }
     }
 `;
 
@@ -170,6 +181,7 @@ const Committees = () => {
         if (!scrollContainer || cards.length === 0) return;
 
         let ticking = false;
+
         const updateCards = () => {
             const scrollContainerTop = scrollContainer.offsetTop;
             const scrollContainerHeight = scrollContainer.offsetHeight;
@@ -183,22 +195,25 @@ const Committees = () => {
 
             cards.forEach((card, i) => {
                 if (!card) return;
-                // ✅ REVERTED: Restored original z-index logic for "stack on top" effect
+
                 card.style.zIndex = i;
 
                 if (i <= activeCardIndex) {
                     card.style.transform = 'translateX(0%)';
-                } else if (i === activeCardIndex + 1) {
+                } 
+                else if (i === activeCardIndex + 1) {
                     const slideProgress = cardProgress - activeCardIndex;
                     const translateX = 150 * (1 - slideProgress);
                     card.style.transform = `translateX(${translateX}%)`;
-                } else {
+                } 
+                else {
                     card.style.transform = 'translateX(150%)';
                 }
             });
+
             ticking = false;
         };
-        
+
         const handleScroll = () => {
             if (!ticking) {
                 window.requestAnimationFrame(updateCards);
@@ -207,11 +222,13 @@ const Committees = () => {
         };
 
         let resizeTimeout;
+
         const setupEventListeners = () => {
             clearTimeout(resizeTimeout);
+
             resizeTimeout = setTimeout(() => {
                 const isMobile = window.innerWidth <= 768;
-                
+
                 window.removeEventListener('scroll', handleScroll);
 
                 if (!isMobile) {
@@ -245,6 +262,7 @@ const Committees = () => {
                                 Who make it all happen, our committees.
                             </p>
                         </div>
+
                         <div className="committees-cards-wrapper">
                             {committeesData.map((committee, index) => (
                                 <div
@@ -257,6 +275,7 @@ const Committees = () => {
                                 </div>
                             ))}
                         </div>
+
                     </div>
                 </div>
             </div>

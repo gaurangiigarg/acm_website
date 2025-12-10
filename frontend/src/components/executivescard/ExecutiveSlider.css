@@ -20,28 +20,26 @@
 /* --- Team Content Layout (Image + List) --- */
 .tp-team-container {
     display: grid;
-     /* Stack image on top of list on mobile */
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack image above list on mobile */
     gap: 2rem;
     width: 100%;
 }
 
 /* --- 1. Sticky Image Container (Desktop Only) --- */
 .tp-team-image-container {
-    /* UPDATED: Hidden by default on mobile */
-    display: none; 
-    
+    display: none; /* Hidden on mobile */
+
     position: relative;
     width: 100%;
     max-width: 360px;
-    margin: 0 auto; /* Center it on mobile */
-    aspect-ratio: 4 / 5; 
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
     height: auto;
-    
+
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); /* Blue Glow */
-    overflow: hidden; /* Ensures rounded corners on images */
-    background-color: #374151; /* Dark Gray BG */
+    overflow: hidden;
+    background-color: #374151;
 
     opacity: 0;
     visibility: hidden;
@@ -60,6 +58,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s;
@@ -76,36 +75,38 @@
 }
 
 .tp-team-member-intro {
-    border-bottom: 1px solid #374151; /* Dark Gray Border */
+    border-bottom: 1px solid #374151;
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
 }
+
 .tp-team-member-intro h3 {
-    font-family: 'Poppins', serif; /* Assuming Poppins, fallback to serif */
+    font-family: 'Poppins', serif;
     font-size: 2.5rem;
     margin: 0 0 1rem 0;
 }
+
 .tp-team-member-intro p {
     font-size: 1rem;
-    color: #d1d5db; /* Light Gray */
+    color: #d1d5db;
     max-width: 500px;
 }
 
 .tp-team-member {
     padding: 1.5rem 0;
-    border-bottom: 1px solid #374151; /* Dark Gray Border */
+    border-bottom: 1px solid #374151;
     cursor: pointer;
     transition: padding-bottom 0.4s ease;
 }
 
 .tp-team-member.tp-active .tp-member-name {
-    color: #60a5fa; /* Brighter Blue */
+    color: #60a5fa;
 }
 
 .tp-member-title {
     font-size: 0.8rem;
     text-transform: uppercase;
-    color: #9ca3af; /* Medium-light gray */
+    color: #9ca3af;
     letter-spacing: 0.5px;
 }
 
@@ -114,10 +115,9 @@
     font-size: 2.2rem; /* Slightly smaller for mobile */
     font-weight: 500;
     margin: 0.25rem 0 0 0;
-    color: #f9fafb; /* Off-white */
+    color: #f9fafb;
     transition: color 0.3s;
 }
-
 
 /* --- NEW: Mobile-Only Image --- */
 .tp-mobile-image-wrapper {
@@ -127,34 +127,34 @@
     transition: grid-template-rows 0.4s ease-in-out, padding-top 0.4s ease-in-out;
     padding-top: 0;
 }
+
 .tp-mobile-photo {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9; /* You can change this aspect ratio */
+    aspect-ratio: 16 / 9; /* Adjustable */
     object-fit: cover;
     border-radius: 12px;
-    min-height: 0; /* Crucial for grid animation */
+    min-height: 0;
 }
 
 /* Show mobile image when active */
 .tp-team-member.tp-active .tp-mobile-image-wrapper {
     grid-template-rows: 1fr;
-    padding-top: 1rem; /* Space between name and image */
+    padding-top: 1rem;
 }
-
 
 /* --- Member Description Box --- */
 .tp-member-description {
     display: grid;
     grid-template-rows: 0fr;
     overflow: hidden;
-    
-    color: #d1d5db; /* Light gray text */
+
+    color: #d1d5db;
     font-size: 0.95rem;
     line-height: 1.6;
-    
+
     transition: grid-template-rows 0.4s ease-in-out, padding-top 0.4s ease-in-out;
-    padding-top: 0; /* Animate padding-top as well */
+    padding-top: 0;
 }
 
 .tp-member-description p {
@@ -162,20 +162,15 @@
     font-style: italic;
     border-left: 3px solid #374151;
     padding-left: 1rem;
-    min-height: 0; 
+    min-height: 0;
 }
 
 /* Show description when active */
 .tp-team-member.tp-active .tp-member-description {
     grid-template-rows: 1fr;
-    padding-top: 1rem; /* Space between image and description */
+    padding-top: 1rem;
 }
-
-
-/* ---
---- DESKTOP-SPECIFIC STYLES (min-width: 768px)
---- */
-
+/* --- Larger Mobile Image Container --- */
 @media (max-width: 767px) {
     .tp-mobile-image-wrapper {
         grid-template-rows: 0fr;
@@ -195,5 +190,39 @@
         aspect-ratio: 4 / 5; /* Taller look instead of 16:9 */
         border-radius: 14px;
         object-fit: cover;
+    }
+}
+
+/* --- Desktop Styles (min-width: 768px) --- */
+@media (min-width: 768px) {
+
+    .tp-team-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+
+    /* Sticky desktop image */
+    .tp-team-image-container {
+        display: block;
+        position: sticky;
+        top: 150px;
+        height: 400px;
+        aspect-ratio: auto;
+        margin: 0 auto;
+    }
+
+    /* Hide mobile image */
+    .tp-mobile-image-wrapper {
+        display: none;
+    }
+
+    /* Restore desktop padding */
+    .tp-team-list {
+        padding-top: 2rem;
+    }
+
+    /* Larger desktop name size */
+    .tp-member-name {
+        font-size: 2.8rem;
     }
 }
