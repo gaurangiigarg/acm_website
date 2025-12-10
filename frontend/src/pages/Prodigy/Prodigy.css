@@ -11,49 +11,164 @@
   --border-color: rgba(255, 255, 255, 0.1);
 }
 
+
+
+
+
+
+/* --- 2. BACKGROUND LAYER FIX --- */
+.prismatic-bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;      /* Use % not vw to avoid scrollbar width calculation issues */
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden; /* CLIP any canvas elements sticking out */
+}
+
+/* --- 3. MAIN CONTAINER FIX --- */
+.prodigy-container {
+  background-color: rgba(2, 6, 23, 0); 
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%; /* Strictly limit width */
+  color: var(--text-white);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow-x: hidden; /* CRITICAL: Clips animations/glows sticking out */
+  z-index: 1;
+  display: flex;       /* Ensures child margins don't collapse and create extra height */
+  flex-direction: column;
+}
+
+/* --- CUSTOM NAVBAR --- */
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box; /* Ensures padding doesn't add to width */
+}
+
+/* ... Keep the rest of your CSS (Logo, Links, Hero, etc.) below this ... */
+/* ... STARTING FROM .nav-logo-container ... */
+
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+/* (Continue with the rest of the file as previously provided...) */
+
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 5px rgba(61, 82, 240, 0.5));
+}
+
+.nav-logo-text {
+  color: var(--text-white);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links-container li a {
+  text-decoration: none;
+  color: var(--text-grey);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-links-container li a:hover {
+  color: var(--primary-blue);
+  text-shadow: 0 0 10px rgba(61, 82, 240, 0.6);
+}
+
+.social-icon a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.social-icon a:hover {
+  transform: translateY(-2px);
+  color: var(--accent-cyan) !important;
+}
+
+.nav-separator {
+  color: var(--primary-blue);
+  opacity: 0.5;
+  font-weight: 300;
+}
+
 /* --- PRISMATIC BURST BACKGROUND LAYER --- */
 .prismatic-bg-layer {
   position: fixed;
   inset: 0;
-  width: 100vw;
+  width: 100%; /* Changed from 100vw to 100% to prevent scrollbar overlap */
   height: 100vh;
-  z-index: -2; /* Ensure it's behind everything */
+  z-index: -2;
 }
 
 /* --- BASE (Main Content Wrapper) --- */
 .prodigy-container {
-  /* CRITICAL CHANGE: Background must be semi-transparent so the fixed PrismaticBurst is visible. */
   background-color: rgba(2, 6, 23, 0); 
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
   color: var(--text-white);
   font-family: 'Inter', sans-serif;
   position: relative;
-  overflow-x: hidden;
-  z-index: 1; /* Keep content above fixed background */
+  overflow-x: hidden; /* Ensure content doesn't spill over */
+  z-index: 1;
 }
 
-/* --- BACKGROUND FX (Retained for layering effects over the PrismaticBurst) --- */
+/* --- BACKGROUND FX --- */
 .prodigy-bg-glow {
-  position: absolute; /* Scrolls with content */
+  position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 80vw;
   height: 60vh;
   background: radial-gradient(circle, rgba(61, 82, 240, 0.15) 0%, transparent 70%);
-  z-index: 2; /* Layered effect */
+  z-index: 2;
   pointer-events: none;
 }
 
 .prodigy-grid-lines {
-  position: absolute; /* Scrolls with content */
+  position: absolute;
   inset: 0;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
-  z-index: 2; /* Layered effect */
+  z-index: 2;
   pointer-events: none;
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
@@ -83,14 +198,12 @@
     transform: translateY(0);
 }
 
-/* Specific delay for domain cards */
 .domain-card.visible { transition: opacity 0.6s ease, transform 0.6s ease; }
-
 
 /* --- HERO SECTION --- */
 .prodigy-hero {
   position: relative;
-  z-index: 3; /* Keep hero content on top */
+  z-index: 3;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -543,7 +656,7 @@
 .prodigy-footer {
   position: relative;
   z-index: 3;
-  width: 100%;
+  width: 100vw;
   text-align: center;
   padding: 80px 20px 40px 20px;
   background-color: rgba(2, 6, 23, 0.8);
@@ -599,6 +712,22 @@
 
 /* --- MOBILE --- */
 @media (max-width: 768px) {
+  .custom-navbar {
+    padding: 0 20px;
+  }
+  
+  .nav-logo-text {
+    display: none;
+  }
+
+  .nav-links-container {
+    gap: 15px;
+  }
+
+  .nav-links-container li a {
+    font-size: 0.8rem;
+  }
+
   .hero-title {
     font-size: 3.5rem;
   }
