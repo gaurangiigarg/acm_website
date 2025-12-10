@@ -1,0 +1,44 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --text-color: #c9d1d9;
+    --heading-color: #ffffff;
+    --highlight-color: #1929b9;
+    --logo-color: #ffffff; /* White logos look better on dark blue */
+}
+
+/* Main wrapper for the section */
+.sponsors-section-wrapper {
+    width: 100%;
+    padding: 6rem 4%;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: transparent;
+    display: flex;
+    flex-direction: column; /* Heading stays above */
+    gap: 6rem; /* Space between heading and cards */
+}
+/* Heading styles */
+.sponsors-heading {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: var(--heading-color);
+    text-align: center;      /* Center the text */
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto;          /* Center the heading block */
+}
+
+.sponsors-heading .highlight {
+    color: var(--highlight-color);
+}
+
+.sponsors-cards {
+    display: flex;
+    flex-direction: row;   /* align cards horizontally */
+    justify-content: center; /* center the group */
+    gap: 2.3rem;             /* spacing between cards */
+    flex-wrap: wrap;       /* optional: allow wrapping on smaller screens */
+}
