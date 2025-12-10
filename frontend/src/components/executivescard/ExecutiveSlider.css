@@ -176,34 +176,24 @@
 --- DESKTOP-SPECIFIC STYLES (min-width: 768px)
 --- */
 
-@media (min-width: 768px) {
-    .tp-team-container {
-        grid-template-columns: 1fr 1fr; /* 50/50 split for image and list */
-        gap: 4rem;
-    }
-
-    /* 1. Show the desktop sticky image */
-    .tp-team-image-container {
-        display: block; /* Show this container */
-        position: sticky;
-        top: 150px; /* Your desired top spacing */
-        height: 400px;
-        aspect-ratio: auto; 
-        margin: 0 auto; /* Center it */
-    }
-
-    /* 2. Hide the mobile inline image */
+@media (max-width: 767px) {
     .tp-mobile-image-wrapper {
-        display: none;
+        grid-template-rows: 0fr;
+        padding-top: 0;
     }
 
-    /* 3. Restore desktop list padding */
-    .tp-team-list {
-        padding-top: 2rem;
+    .tp-team-member.tp-active .tp-mobile-image-wrapper {
+        grid-template-rows: 1fr;
+        padding-top: 1rem;
     }
 
-    /* 4. Restore desktop font size */
-    .tp-member-name {
-        font-size: 2.8rem;
+    .tp-mobile-photo {
+        width: 100%;
+        height: auto;
+
+        /* Make mobile image larger */
+        aspect-ratio: 4 / 5; /* Taller look instead of 16:9 */
+        border-radius: 14px;
+        object-fit: cover;
     }
 }
