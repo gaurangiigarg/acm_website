@@ -23,7 +23,7 @@ const otherCommittees = [
   {
     title: 'Events',
     description:
-      'The brain of the chapter, organizes a variety of events, our vivacious team. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.',
+      'The brain of the chapter, organizes a variety of events. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.',
   },
   {
     title: 'Public Relations & Sponsorship',
