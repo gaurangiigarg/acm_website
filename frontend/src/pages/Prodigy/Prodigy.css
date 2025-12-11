@@ -407,8 +407,9 @@
 /* --- DOMAIN GRID --- */
 .domain-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Force 3 cards in one line */
   gap: 20px;
+  width: 100%;
 }
 
 .domain-card {
@@ -751,5 +752,19 @@
   }
   .prodigy-footer .separator {
     display: none;
+  }
+}
+
+/* Tablet layout — 2 per row */
+@media (max-width: 900px) {
+  .domain-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile layout — 1 per row (stacked) */
+@media (max-width: 600px) {
+  .domain-grid {
+    grid-template-columns: 1fr;
   }
 }
