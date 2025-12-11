@@ -28,7 +28,7 @@ const otherCommittees = [
   {
     title: 'Public Relations & Sponsorship',
     description:
-      "The PR and Sponsorship team puts in immeasurable efforts to secure sponsorships for the events, responds to inquiries, and tries to increase the chapter's.",
+      "The PR and Sponsorship team puts in immeasurable efforts to secure sponsorships for the events, respond to inquiries, and tries to increase the chapter's outreach",
   },
   {
     title: 'Design & VFX',
