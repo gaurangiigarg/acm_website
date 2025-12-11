@@ -25,7 +25,7 @@ const About = () => {
       let scrollPercent = scrollTop / shrinkScrollDistance;
       if (scrollPercent > 1) scrollPercent = 1;
 
-      const startFontSize = 25, endFontSize = 8;
+      const startFontSize = 10, endFontSize = 4;
       const startFlex = 55, endFlex = 25;
 
       const currentFontSize = startFontSize - (startFontSize - endFontSize) * scrollPercent;
@@ -92,7 +92,7 @@ const About = () => {
           <div className="left-panel">
             <h1 className="about-text">
               <DecryptedText
-                        text="ABOUT"
+                        text="ABOUT US"
                         sequential={true}
                         useOriginalCharsOnly={false}
                         animateOn="view"

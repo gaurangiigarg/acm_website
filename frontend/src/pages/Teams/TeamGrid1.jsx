@@ -92,8 +92,8 @@ const teamData = [
     imageUrl: member10,
     name: 'Smriti Walia',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/mdarslan7',
-    linkedinUrl: 'https://www.linkedin.com/in/mdarslan7/'
+    githubUrl: 'https://github.com/iismrityii',
+    linkedinUrl: 'https://www.linkedin.com/in/smritiwalia/'
   },
   {
     imageUrl: member11,
@@ -106,8 +106,8 @@ const teamData = [
     imageUrl: member12,
     name: 'Hiral Mittal',
     title: 'BOE, ACM',
-    githubUrl: 'https://www.linkedin.com/in/hiral-mittal-b88068298',
-    linkedinUrl: 'https://www.linkedin.com/in/jahnavi-saxena-1318a6286/'
+    githubUrl: 'https://github.com/hiral-2501',
+    linkedinUrl: 'https://www.linkedin.com/in/hiral-mittal-b88068298'
   },
   {
     imageUrl: member13,
