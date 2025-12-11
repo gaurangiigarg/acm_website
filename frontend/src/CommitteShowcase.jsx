@@ -18,7 +18,7 @@ const otherCommittees = [
   {
     title: 'Technical',
     description:
-      "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES and works on projects that help students learn.",
+      "The Chapter's backbone, the Technical Team not only designs the websites and apps for the Chapter, but also propogates the culture of coding across entire UPES campus and works on projects that help students learn.",
   },
   {
     title: 'Events',
@@ -33,12 +33,12 @@ const otherCommittees = [
   {
     title: 'Design & VFX',
     description:
-      'This distinguished committee is the creative house of the chapters. This team always leads the forefront by making breathtaking videos and developing visually appealing graphic material.',
+      'This distinguished committee is the creative house of the chapter. This team always leads the forefront by making breathtaking videos and developing visually appealing graphic material.',
   },
   {
     title: 'Editorial',
     description:
-      "The Editorial Committee is the brainchild behind the Chapter's all formal communications, blogs, social media content and document all the daily proceedings. This teams gives life to everything you see or read about UPES ACM.",
+      "The Editorial Committee is behind the Chapter's all formal communications, blogs, social media content and document all the daily proceedings. This teams gives life to everything you see or read about UPES ACM.",
   },
 ];
 
