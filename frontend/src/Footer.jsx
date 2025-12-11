@@ -88,7 +88,7 @@ const Footer = () => {
               <li><Link to="/team">Teams</Link></li>
               
               <li><Link to="/gallery">Gallery</Link></li>
-              <li><a href="#join">Become a Member</a></li>
+              <li><a href="https://konfhub.com/register-now">Become a Member</a></li>
             </ul>
           </div>
 

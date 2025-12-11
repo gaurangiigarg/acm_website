@@ -63,7 +63,10 @@ body {
     font-weight: 900;
     line-height: 0.8;
     color: var(--text-color-secondary);
-    text-shadow: 0 0 10px var(--shadow-color-1), 0 0 20px var(--shadow-color-2), 0 0 30px var(--shadow-color-3);
+    text-shadow: 
+        0 0 3px var(--shadow-color-1),
+        0 0 6px var(--shadow-color-2),
+        0 0 10px var(--shadow-color-3) !important;
     white-space: nowrap;
     transition: font-size 0.1s linear;
 }
@@ -190,10 +193,11 @@ body {
     }
 
     .about-text {
-        font-size: 20vw !important; /* Override inline styles if any */
+        font-size: 5vw !important; 
         opacity: 1 !important;
         text-align: center;
-        white-space: normal;
+        white-space: nowrap !important;   /* <-- forces ABOUT US to stay on one line */
+    letter-spacing: 0.8vw !important; /* <-- actual inline gap between words */
     }
 
     /* Right panel styling for mobile */

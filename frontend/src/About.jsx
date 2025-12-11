@@ -25,8 +25,8 @@ const About = () => {
       let scrollPercent = scrollTop / shrinkScrollDistance;
       if (scrollPercent > 1) scrollPercent = 1;
 
-      const startFontSize = 10, endFontSize = 4;
-      const startFlex = 55, endFlex = 25;
+      const startFontSize = 15, endFontSize = 5;
+      const startFlex = 75, endFlex = 30;
 
       const currentFontSize = startFontSize - (startFontSize - endFontSize) * scrollPercent;
       const currentLeftFlex = startFlex - (startFlex - endFlex) * scrollPercent;

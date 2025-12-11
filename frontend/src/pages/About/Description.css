@@ -63,7 +63,9 @@ body {
     font-weight: 900;
     line-height: 0.8;
     color: var(--text-color-secondary);
-    text-shadow: 0 0 10px var(--shadow-color-1), 0 0 20px var(--shadow-color-2), 0 0 30px var(--shadow-color-3);
+    text-shadow: 0 0 3px var(--shadow-color-1),
+        0 0 6px var(--shadow-color-2),
+        0 0 10px var(--shadow-color-3) !important;
     white-space: nowrap;
     transition: font-size 0.1s linear;
 }
