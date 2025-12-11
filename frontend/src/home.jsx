@@ -35,7 +35,7 @@ function LaserFlowBoxExample() {
       <div className="laserflow-text-block">
         <h1 className="laserflow-title">UPES ACM STUDENT CHAPTERS</h1>
         <p className="laserflow-subtitle">
-          The Largest Computing Society, now at UPES
+          The Largest Computing Society, now at UPES.
         </p>
         <div className="button-row">
           <a 
@@ -44,9 +44,13 @@ function LaserFlowBoxExample() {
           >
             Visit ACM-W
           </a>
-          <div className="text-button">
-            Register Now
-          </div>
+          <a 
+            href="https://konfhub.com/register-now"
+            className="text-button"
+          >
+            Become a Member
+          </a>
+          
         </div>
       </div>
 

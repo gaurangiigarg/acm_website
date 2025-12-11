@@ -27,7 +27,7 @@
 
 .laserflow-title {
   font-size: 2.2rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 2px;
   margin: 0;
 
@@ -50,7 +50,7 @@
 .laserflow-subtitle {
   margin-top: 0px;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 1px;
   color: rgba(168, 170, 230, 0.85);
 }
@@ -70,7 +70,7 @@
   padding: 0;
   margin: 0;
   font-size: 0.95rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 1px;
   color: #7e91e3;
   cursor: pointer;
