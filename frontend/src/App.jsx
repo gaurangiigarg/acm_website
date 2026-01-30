@@ -139,6 +139,7 @@ function MainLandingPage() {
         baseOpacity={0.8}
         enableBlur={true}
         //
+        //
         baseRotation={20}
         blurStrength={50}
       >
