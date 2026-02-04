@@ -158,20 +158,18 @@ export default function App() {
   const basename = import.meta.env.BASE_URL || "/";
 
   return (
-    <Router basename={basename}>
+     <Router>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLandingPage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<TeamsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
-        
-        {/* 👇 2. Add the route definition here */}
         <Route path="/prodigy25" element={<Prodigy25 />} />
         <Route path="/prodigypage" element={<Prodigypage />} />
-        <Route path='/ladyada' element={<LadyAda />} /> 
-        <Route path='/aicwic' element={<AICWiC />} />
-        <Route path='/hoai' element={<HOAI />} />
+        <Route path="/ladyada" element={<LadyAda />} />
+        <Route path="/aicwic" element={<AICWiC />} />
+        <Route path="/hoai" element={<HOAI />} />
       </Routes>
     </Router>
   );
