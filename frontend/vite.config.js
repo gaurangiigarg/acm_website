@@ -4,6 +4,6 @@ import glsl from 'vite-plugin-glsl'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  base: './',
   plugins: [tailwindcss(), react(), glsl()],
-  base: '/', // ✅ must be '/' for Netlify
 })
