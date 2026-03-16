@@ -32,7 +32,6 @@ import Footer from "./Footer";
 import ScrollReveal1 from "../ScrollReveal/ScrollReveal/ScrollReveal1.jsx";
 import GalleryPage from "./pages/Gallery/Gallery.jsx";
 
-// 👇 1. Import the Prodigy25 component here
 import Prodigy25 from "../src/pages/Events_Gallery/Prodigy25.jsx";
 import Prodigypage from '../src/pages/Prodigy/Prodigy.jsx'
 
