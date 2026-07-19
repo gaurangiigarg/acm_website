@@ -6,7 +6,7 @@ import mrigank_singh from '../../assets/images/added/mrigank_singh.jpg';
 import MayankKumar from '../../assets/images/Mayank.jpg';
 import Krish_mishra from '../../assets/images/added/krish_mishra.jpg';
 import PrabhjeetSingh from '../../assets/images/PRABHJEET_SINGH.jpg';
-import DakshSethi from '../../assets/images/added/Daksh_sethi.jpg';
+import DakshSethi from '../../assets/images/added/daksh_sethi.jpg';
 import ShlokMadan from '../../assets/images/Shlok_Madan.jpg';
 
 // Updated data array to include the description
