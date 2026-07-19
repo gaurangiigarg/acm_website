@@ -6,7 +6,7 @@ import TiltedCard from '../../../TitledCard/TiltedCard/TiltedCard'
 import Dell from '../../assets/img/logos/Dell.jpg'; 
 import IBM from '../../assets/img/logos/IBM.jpg';
 import Azure from '../../assets/img/logos/Azure.jpg';
-import PyNet from '../../assets/img/logos/PyNet.jpg';
+import HackerRank from '../../assets/img/logos/Hackerank.png';
 import AWS from '../../assets/img/logos/AWS.jpg';
 
 const Sponsors = () => {
@@ -74,8 +74,8 @@ const Sponsors = () => {
     />
 
     <TiltedCard
-      imageSrc={PyNet}
-      altText="PyNet Logo"
+      imageSrc={HackerRank}
+      altText="HackerRank Logo"
       containerHeight="250px"
       containerWidth="250px"
       imageHeight="250px"

@@ -5,11 +5,12 @@ import './TeamGrid1.css';
 
 // 1. Import your local images from an assets folder
 import member1 from '../../assets/images/coverphoto.jpg'; 
-import member2 from '../../assets/images/Sangam_Khanna.jpg';
-import member3 from '../../assets/images/TanayPrabhakar.jpg';
-import member4 from '../../assets/images/Rudransh.jpg';
-import member5 from '../../assets/images/Daksh_Mehrotra.jpg';
-import member6 from '../../assets/images/Advika_Kaushik.jpg';
+import member2 from '../../assets/images/added/mrigank_singh.jpg';
+import member3 from '../../assets/images/Mayank.jpg';
+import member4 from '../../assets/images/Shlok_Madan.jpg';
+import member5 from '../../assets/images/added/krish_mishra.jpg';
+import member6 from '../../assets/images/PRABHJEET_SINGH.jpg';
+import member7 from '../../assets/images/added/Daksh_sethi.jpg';
 
 
 
@@ -26,38 +27,45 @@ const teamData = [
   },
   {
     imageUrl: member2,
-    name: 'Sangam Khanna',
+    name: 'Mrigank Singh',
     title: 'Chairperson, ACM',
-    githubUrl: 'https://github.com/CatoxiRetreater',
-    linkedinUrl: 'https://www.linkedin.com/in/khannasangam/'
+    githubUrl: 'https://github.com/Mrigank005',
+    linkedinUrl: 'https://www.linkedin.com/in/mrigank005/'
   },
   {
-    imageUrl: member3,
-    name: 'Tanay Prabhakar',
-    title: 'Vice-Chairperson, ACM',
-    githubUrl: 'https://github.com/tanayprabhakar',
-    linkedinUrl: 'https://www.linkedin.com/in/tanayprabhakar/#'
+      imageUrl: member3, 
+      name: 'Mayank Kumar',
+      title: 'Web Master, ACM',
+      githubUrl: 'https://github.com/mayank-kumar-27',
+      linkedinUrl: 'https://www.linkedin.com/in/mayankkumarupes/'
   },
   {
-    imageUrl: member4,
-    name: 'Rudransh Sogani',
-    title: 'Treasurer, ACM',
-    githubUrl: 'https://github.com/rudranshsogani',
-    linkedinUrl: 'https://www.linkedin.com/in/rudransh-sogani-7211a6276/'
+      imageUrl: member4,
+      name: 'Shlok Madan',
+      title: 'Treasurer, ACM',
+      githubUrl: 'https://github.com/Shlok1205',
+      linkedinUrl: 'https://www.linkedin.com/in/shlokmadan/'
   },
   {
     imageUrl: member5,
-    name: 'Daksh Mehrotra',
-    title: 'Secretary, ACM',
-    githubUrl: 'https://github.com/DakshMehrotra',
-    linkedinUrl: 'https://www.linkedin.com/in/mehrotradaksh/'
+    name: 'Krish Mishra',
+    title: 'Vice-Chairperson, ACM',
+    githubUrl: 'https://github.com/kri297',
+    linkedinUrl: 'https://www.linkedin.com/in/krish-mishra-45933a306/'
   },
   {
-    imageUrl: member6,
-    name: 'Advika Kaushik',
+      imageUrl: member6,
+      name: 'Prabhjeet Singh',
+      title: 'Secretary, ACM',
+      githubUrl: 'https://github.com/Prabhjeet8963',
+      linkedinUrl: 'https://www.linkedin.com/in/singh-prabhjeet'
+  },
+  {
+    imageUrl: member7,
+    name: 'Daksh Sethi',
     title: 'Joint Secretary, ACM',
-    githubUrl: 'https://github.com/advikakaushik',
-    linkedinUrl: 'https://www.linkedin.com/in/advika-kaushik-76731a293/'
+    githubUrl: 'https://github.com/dakshsethi06',
+    linkedinUrl: 'https://www.linkedin.com/in/daksh-sethi-47a483363'
   }
 ];
 

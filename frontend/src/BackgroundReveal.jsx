@@ -4,7 +4,9 @@ import React, { useEffect, useRef } from 'react';
 const committeesData = [
     { name: 'Technical', description: "The heartbeat of our Chapter, the Technical Team brings ideas to life, designing websites, apps, and managing technical infrastructure of events." },
     { name: 'Events', description: 'The brain of the chapter, organizes a variety of events. Through creative concepts and flawless event execution, the Events team makes sure that attendees enjoy every minute from conception to conclusion.' },
-    { name: 'Design & VFX', description: 'Imagination in motion defines the Design & VFX Team. Their visuals bring events to life, making every initiative more engaging, memorable, and impactful for the community.' },
+    { name: 'Design', description: 'Imagination in motion defines the Design Team. Their visuals bring events to life, making every initiative more engaging, memorable, and impactful for the community.' },
+    { name: 'VFX', description: 'Masters of motion and detail, the VFX Team crafts compelling videos and visual effects that elevate every event, turning ideas into experiences worth watching.' },
+    { name: 'Media', description: 'The eyes and lens of the chapter, the Media Team captures and shares the essence of our events and initiatives through photography, videography, and digital platforms.' },
     { name: 'Editorial', description: "From formal communications to blogs, social media, and event coverage, this team shapes how the chapter is seen and remembered. They give life to every word and idea, making sure UPES ACM's journey is shared with clarity and creativity." },
     { name: 'CSR', description: 'At the heart of social responsibility, the CSR Team drives outreach initiatives, awareness campaigns, and community projects. Their work reflects our commitment to impact beyond academics.' },
     { name: 'PR', description: "Acting as the chapter's voice and bridge, this team builds strong relationships, secures valuable sponsorships, and expands our reach. Their efforts ensure every initiative shines with the recognition it truly deserves." },

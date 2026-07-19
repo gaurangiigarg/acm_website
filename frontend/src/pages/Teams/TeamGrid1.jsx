@@ -4,21 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './TeamGrid1.css';
 
 // 1. Import your local images from an assets folder
-import member1 from '../../assets/images/Lavanya.jpg'; // Example path, adjust to your project structure
-import member2 from '../../assets/images/Kavya.jpeg';
-import member3 from '../../assets/images/Rishitt_Gupta.jpg';
-import member4 from '../../assets/images/Aarohi_Sharma.jpg';
-import member5 from '../../assets/images/Gurmehr_Gulati.jpg';
-import member6 from '../../assets/images/milan_singhal.jpg';
-import member7 from '../../assets/images/supragaya.jpg';
-import member8 from '../../assets/images/Dev_Sharma.jpeg';
-import member9 from '../../assets/images/Md_Arslan.jpg';
-import member10 from '../../assets/images/Smriti_Walia.jpg';
-import member11 from '../../assets/images/Jahnavi_Saxena.jpeg';
-import member12 from '../../assets/images/Hiral_Mittal.jpg';
-import member13 from '../../assets/images/Amrit.jpg';
-import member14 from '../../assets/images/anshi.jpeg';
-
+import member1 from '../../assets/images/Sangam_Khanna.jpg'; // Example path, adjust to your project structure
+import member2 from '../../assets/images/added/devanshi_raghav.jpg';
+import member3 from '../../assets/images/TanayPrabhakar.jpg';
+import member4 from '../../assets/images/added/hritvik_garg.jpg';
+import member5 from '../../assets/images/Rudransh.jpg';
+import member6 from '../../assets/images/Advika_Kaushik.jpg';
+import member7 from '../../assets/images/Daksh_Mehrotra.jpg';
+import member8 from '../../assets/images/added/atharv_chandorikar.webp';
+import member9 from '../../assets/images/Jahnavi_Saxena.jpeg';
+import member10 from '../../assets/images/Hiral_Mittal.jpg';
+import member11 from '../../assets/images/added/mouli_rathor.jpg';
+import member12 from '../../assets/images/rahul_mankani.jpg';
+import member13 from '../../assets/images/added/vridhi_jain.jpeg';
+import member14 from '../../assets/images/Ahad_Khan.jpg';
+import member15 from '../../assets/images/added/bhavya_talwar.webp';
 
 // Register the GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -26,102 +26,109 @@ gsap.registerPlugin(ScrollTrigger);
 // --- Data for the team members ---
 const teamData = [
   {
-    imageUrl: member1, // 2. Use the imported variables
-    name: 'Lavanya Arora',
-    title: 'BOE, ACM',
-    githubUrl: 'https://github.com/LavanyaArora08',
-    linkedinUrl: 'https://www.linkedin.com/in/lavanya-arora-279498249/'
+      imageUrl: member1,
+      name: 'Sangam Khanna',
+      title: 'BOE, ACM',
+      githubUrl: 'https://github.com/CatoxiRetreater',
+      linkedinUrl: 'https://www.linkedin.com/in/khannasangam/'
   },
   {
     imageUrl: member2,
-    name: 'Kavya Chugh',
+    name: 'Devanshi Raghav',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/KavyaChugh',
-    linkedinUrl: 'https://www.linkedin.com/in/kavyachugh/'
+    githubUrl: 'https://github.com/devanshiraghav',
+    linkedinUrl: 'https://www.linkedin.com/in/devanshi-raghav-01b26a298/'
   },
   {
     imageUrl: member3,
-    name: 'Rishitt Gupta',
+    name: 'Tanay Prabhakar',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/rishuu42',
-    linkedinUrl: 'https://www.linkedin.com/in/rishitt-gupta-aaa7a1251/'
+    githubUrl: 'https://github.com/tanayprabhakar',
+    linkedinUrl: 'https://www.linkedin.com/in/tanayprabhakar/#'
   },
   {
     imageUrl: member4,
-    name: 'Aarohi Sharma',
+    name: 'Hritvik Garg',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/Aarohi-Sharma',
-    linkedinUrl: 'https://www.linkedin.com/in/aarohi-sharma23/'
+    githubUrl: 'https://github.com/hritvikgarg',
+    linkedinUrl: 'https://www.linkedin.com/in/hritvik-garg-818a09278/'
   },
   {
     imageUrl: member5,
-    name: 'Gurmehr Singh Gulati',
+    name: 'Rudransh Sogani',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/gurmehr04',
-    linkedinUrl: 'https://www.linkedin.com/in/gurmehr04/'
+    githubUrl: 'https://github.com/rudranshsogani',
+    linkedinUrl: 'https://www.linkedin.com/in/rudransh-sogani-7211a6276/'
   },
   {
-    imageUrl: member6,
-    name: 'Milan Singhal',
-    title: 'BOE, ACM',
-    githubUrl: 'https://github.com/milansinghal2004',
-    linkedinUrl: 'https://www.linkedin.com/in/singhalmilan92/'
+      imageUrl: member6,
+      name: 'Advika Kaushik',
+      title: 'BOE, ACM',
+      githubUrl: 'https://github.com/advikakaushik',
+      linkedinUrl: 'https://www.linkedin.com/in/advika-kaushik-76731a293/'
   },
   {
-    imageUrl: member7,
-    name: 'Supragya Gandotra',
-    title: 'BOE, ACM',
-    githubUrl: 'https://github.com/supragya1',
-    linkedinUrl: 'https://www.linkedin.com/in/supragya-gandotra/'
+      imageUrl: member7,
+      name: 'Daksh Mehrotra',
+      title: 'BOE, ACM',
+      githubUrl: 'https://github.com/DakshMehrotra',
+      linkedinUrl: 'https://www.linkedin.com/in/mehrotradaksh/'
   },
   {
     imageUrl: member8,
-    name: 'Dev Sharma',
+    name: 'Atharv Chandorikar',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/devvsharma',
-    linkedinUrl: 'https://www.linkedin.com/in/devvsharma/'
+    githubUrl: 'https://github.com/Atharv-2',
+    linkedinUrl: 'https://www.linkedin.com/in/atharv-chandorikar-721979291/'
   },
   {
     imageUrl: member9,
-    name: 'Md Arslan',
-    title: 'BOE, ACM',
-    githubUrl: 'https://github.com/mdarslan7',
-    linkedinUrl: 'https://www.linkedin.com/in/mdarslan7/'
-  },
-  {
-    imageUrl: member10,
-    name: 'Smriti Walia',
-    title: 'BOE, ACM',
-    githubUrl: 'https://github.com/iismrityii',
-    linkedinUrl: 'https://www.linkedin.com/in/smritiwalia/'
-  },
-  {
-    imageUrl: member11,
     name: 'Jahnavi Saxena',
     title: 'BOE, ACM',
     githubUrl: 'https://github.com/jahnavisaxena',
     linkedinUrl: 'https://www.linkedin.com/in/jahnavi-saxena-1318a6286/'
   },
   {
-    imageUrl: member12,
+    imageUrl: member10,
     name: 'Hiral Mittal',
     title: 'BOE, ACM',
     githubUrl: 'https://github.com/hiral-2501',
     linkedinUrl: 'https://www.linkedin.com/in/hiral-mittal-b88068298'
   },
   {
-    imageUrl: member13,
-    name: 'Amrit Raj Garg',
+    imageUrl: member11,
+    name: 'Mouli Rathor',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/AmritRajGarg',
-    linkedinUrl: 'https://www.linkedin.com/in/amritrajgarg/'
+    githubUrl: 'https://github.com/MouliRathor',
+    linkedinUrl: 'https://www.linkedin.com/in/mouli-rathor-992a79350'
+  },
+  {
+    imageUrl: member12,
+    name: 'Rahul Mankani',
+    title: 'BOE, ACM',
+    githubUrl: 'https://github.com/rahul5002',
+    linkedinUrl: 'https://www.linkedin.com/in/rahul-mankani/'
+  },
+  {
+    imageUrl: member13,
+    name: 'Vridhi Jain',
+    title: 'BOE, ACM',
+    githubUrl: 'https://github.com/Vridhi29',
+    linkedinUrl: 'https://www.linkedin.com/in/vridhi-jain-158239343/'
   },
   {
     imageUrl: member14,
-    name: 'Anshi Agarwal',
+    name: 'Ahad Khan',
     title: 'BOE, ACM',
-    githubUrl: 'https://github.com/anshiagrawal22',
-    linkedinUrl: 'https://www.linkedin.com/in/anshiagrawal22/'
+    githubUrl: 'https://github.com/cmdahad',
+    linkedinUrl: 'https://www.linkedin.com/in/ahad-172794264/'
+  },
+  {
+    imageUrl: member15,
+    name: 'Bhavya Talwar',
+    title: 'BOE, ACM',
+    githubUrl: 'https://github.com/bhavyatalwar04',
+    linkedinUrl: 'https://www.linkedin.com/in/talwarbhavya/'
   },
 ];
 

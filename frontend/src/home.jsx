@@ -45,7 +45,7 @@ function LaserFlowBoxExample() {
             Visit ACM-W
           </a>
           <a 
-            href="https://konfhub.com/register-now"
+            href="https://konfhub.com/register-now26"
             className="text-button"
           >
             Become a Member

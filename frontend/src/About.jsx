@@ -114,7 +114,7 @@ const About = () => {
 =
             <div className="right-panel-text-container">
               <div className="text-section">
-                <h2>One of the best <span>Student Chapters</span> since 10 years.</h2>
+                <h2>One of the best <span>Student Chapters</span> since 11 years.</h2>
                 <p>
                   Work with the industry's finest, an network of professionals
                   that's grown together through years of collaboration, united

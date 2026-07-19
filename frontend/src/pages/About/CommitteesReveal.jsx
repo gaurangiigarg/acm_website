@@ -4,7 +4,9 @@ import React, { useEffect, useRef } from 'react';
 const committeesData = [
     { name: 'Technical', description: "The Chapter's backbone." },
     { name: 'Events', description: 'The Brain of the Chapter.' },
-    { name: 'Design & VFX', description: 'The creative house of the Chapter.' },
+    { name: 'Design', description: 'The visual identity of the Chapter.' },
+    { name: 'VFX', description: 'Motion and magic behind every video.' },
+    { name: 'Media', description: 'The eyes and lens of the Chapter.' },
     { name: 'Editorial', description: "The Voice of the Chapter" },
     { name: 'CSR', description: 'Keeping the chapter connected with society' },
     { name: 'PR', description: 'Managing our public image, outreach, and communications to the wider world.' },
