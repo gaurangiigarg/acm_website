@@ -10,7 +10,7 @@ const committeesData = [
     { name: 'Editorial', description: "From formal communications to blogs, social media, and event coverage, this team shapes how the chapter is seen and remembered. They give life to every word and idea, making sure UPES ACM's journey is shared with clarity and creativity." },
     { name: 'CSR', description: 'At the heart of social responsibility, the CSR Team drives outreach initiatives, awareness campaigns, and community projects. Their work reflects our commitment to impact beyond academics.' },
     { name: 'PR', description: "Acting as the chapter's voice and bridge, this team builds strong relationships, secures valuable sponsorships, and expands our reach. Their efforts ensure every initiative shines with the recognition it truly deserves." },
-    { name: 'Operations', description: 'Seamless execution starts here. From managing logistics to coordinating teams, Operations ensures everything runs smoothly. Working quietly behind the scenes, they provide the structure and support needed for every event and initiative to succeed without a hitch.' },
+    { name: 'Operations', description: 'Seamless execution starts here. From managing logistics to coordinating teams, Operations keeps everything running smoothly. Working behind the scenes, they provide the structure and support that ensures every event and initiative succeeds.' },
 ];
 
 // CSS (only card width for mobile changed)

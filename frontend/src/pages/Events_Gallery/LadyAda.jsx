@@ -1,21 +1,21 @@
 import Masonry from "../../../Masonary/Masonry/Masonry"; // Double check this spelling "Masonary" vs "Masonry"
 import Navbar from '../../Navbar'; // Check if this path is correct relative to this file
 
-import image1 from '../../../src/assets/events_gallery/LadyAda/1.jpg';
-import image2 from '../../../src/assets/events_gallery/LadyAda/2.jpg';
-import image3 from '../../../src/assets/events_gallery/LadyAda/3.jpg';
-import image4 from '../../../src/assets/events_gallery/LadyAda/4.jpg';
-import image5 from '../../../src/assets/events_gallery/LadyAda/5.jpg';
-import image6 from '../../../src/assets/events_gallery/LadyAda/6.jpg';
-import image7 from '../../../src/assets/events_gallery/LadyAda/7.jpg';
-import image8 from '../../../src/assets/events_gallery/LadyAda/8.jpg';
-import image9 from '../../../src/assets/events_gallery/LadyAda/9.jpg';
+import image1 from '../../../src/assets/events_gallery/LadyAda/1.JPG';
+import image2 from '../../../src/assets/events_gallery/LadyAda/2.JPG';
+import image3 from '../../../src/assets/events_gallery/LadyAda/3.JPG';
+import image4 from '../../../src/assets/events_gallery/LadyAda/4.JPG';
+import image5 from '../../../src/assets/events_gallery/LadyAda/5.JPG';
+import image6 from '../../../src/assets/events_gallery/LadyAda/6.JPG';
+import image7 from '../../../src/assets/events_gallery/LadyAda/7.JPG';
+import image8 from '../../../src/assets/events_gallery/LadyAda/8.JPG';
+import image9 from '../../../src/assets/events_gallery/LadyAda/9.JPG';
 import image10 from '../../../src/assets/events_gallery/LadyAda/10.jpeg';
 import image11 from '../../../src/assets/events_gallery/LadyAda/11.jpeg';
 import image12 from '../../../src/assets/events_gallery/LadyAda/12.jpeg';
 import image13 from '../../../src/assets/events_gallery/LadyAda/13.jpeg';
-import image14 from '../../../src/assets/events_gallery/LadyAda/14.jpg';
-import image15 from '../../../src/assets/events_gallery/LadyAda/15.jpg';
+import image14 from '../../../src/assets/events_gallery/LadyAda/14.JPG';
+import image15 from '../../../src/assets/events_gallery/LadyAda/15.JPG';
 
 const items = [
     {

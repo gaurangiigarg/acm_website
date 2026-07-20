@@ -10,7 +10,7 @@ import member3 from '../../assets/images/Mayank.jpg';
 import member4 from '../../assets/images/Shlok_Madan.jpg';
 import member5 from '../../assets/images/added/krish_mishra.jpg';
 import member6 from '../../assets/images/PRABHJEET_SINGH.jpg';
-import member7 from '../../assets/images/added/Daksh_sethi.jpg';
+import member7 from '../../assets/images/added/daksh_sethi.jpg';
 
 
 

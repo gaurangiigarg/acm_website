@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import useLenis from '../../useLenis';    
 import './Description.css';
-import image1 from '../../../src/assets/img/Prodigy25/HRK_6712.jpg';
+import image1 from '../../../src/assets/img/Prodigy25/HRK_6712.JPG';
 import image2 from '../../../src/assets/img/Prodigy25/umm.jpg';
 import image3 from '../../../src/assets/img/Prodigy25/grp.jpg';
 import DecryptedText from '../../../Decrypted_Reveal/DecryptedText/DecryptedText';

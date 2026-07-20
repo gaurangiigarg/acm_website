@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Gallery.css';
 import DecryptedText from '../../../Decrypted_Reveal/DecryptedText/DecryptedText';
 
-import img1 from '../../assets/events_gallery/AICWiC/31.jpg'
-import img2 from '../../assets/events_gallery/Prodigy25/1.jpg';
-import img3 from '../../assets/events_gallery/Prodigy25/32.jpg';
-import img4 from '../../assets/events_gallery/AICWiC/3.jpg';
-import img5 from '../../assets/events_gallery/Prodigy25/28.jpg';
-import img6 from '../../assets/events_gallery/Prodigy25/40.jpg';
-import img7 from '../../assets/events_gallery/AICWiC/1.jpg';
+import img1 from '../../assets/events_gallery/AICWiC/31.JPG';
+import img2 from '../../assets/events_gallery/prodigy25/1.jpg';
+import img3 from '../../assets/events_gallery/prodigy25/32.JPG';
+import img4 from '../../assets/events_gallery/AICWiC/3.JPG';
+import img5 from '../../assets/events_gallery/prodigy25/28.JPG';
+import img6 from '../../assets/events_gallery/prodigy25/40.jpg';
+import img7 from '../../assets/events_gallery/AICWiC/1.JPG';
 import img8 from '../../assets/events_gallery/AICWiC/25.jpg';
 
 const galleryData = [

@@ -2,11 +2,11 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Carousel.css";
 
-import img1 from '../../src/assets/img/Prodigy24/umm.jpg';
-import img2 from '../../src/assets/img/Prodigy24/grp.jpg';
-import img3 from '../../src/assets/img/Prodigy24/HRK_6866.JPG';
+import img1 from '../../src/assets/img/Prodigy25/umm.jpg';
+import img2 from '../../src/assets/img/Prodigy25/grp.jpg';
+import img3 from '../../src/assets/img/Prodigy25/HRK_6866.JPG';
 import img4 from '../../src/assets/img/HOC/img5.jpeg';
-import img5 from '../../src/assets/img/Prodigy24/HRK_6866.JPG';
+import img5 from '../../src/assets/img/Prodigy25/HRK_6866.JPG';
 
 const DEFAULT_ITEMS = [
   {

@@ -17,7 +17,7 @@ import SOB from '../../assets/Prodigy_posters/SOB.png';
 import SOD from '../../assets/Prodigy_posters/SOD.jpg';
 
 import gss from '../../assets/Prodigy_posters/gss.png';
-import photography from '../../assets/Prodigy_posters/photography.jpg';
+import photography from '../../assets/Prodigy_posters/Photography.jpg';
 
 import logo from '../../assets/acmlogoo.png';
 
